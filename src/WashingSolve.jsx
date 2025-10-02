@@ -71,7 +71,24 @@ export default function WasherRepairWebsite() {
     const whatsappMessage = `Hi! I need washing machine repair.%0AName: ${formData.name}%0APhone: ${formData.phone}%0AIssue: ${formData.issue}%0AMessage: ${formData.message}`;
     window.open(`https://wa.me/${phoneNumber.replace(/\+/g, '')}?text=${whatsappMessage}`, '_blank');
   };
-
+    const reportConversion = (url) => {
+  const callback = () => {
+    if (typeof url !== "undefined") {
+      window.location = url;
+    }
+  };
+  if (typeof window.gtag !== "undefined") {
+    window.gtag("event", "conversion", {
+      send_to: "AW-17619132152/VlBACJSN7aUbEPi9utFB",
+      value: 1.0,
+      currency: "USD",
+      event_callback: callback,
+    });
+  } else {
+    callback();
+  }
+  return false;
+};
   return (
     <div className="min-h-screen bg-gray-900">
       {/* Fixed Header */}
@@ -83,11 +100,17 @@ export default function WasherRepairWebsite() {
               <h1 className="text-xl md:text-2xl font-bold">Washertroubleshoot SG</h1>
             </div>
             <div className="flex gap-2 items-center">
-              <a href={`tel:${phoneNumber}`} className="bg-orange-500 hover:bg-orange-600 px-3 sm:px-4 py-2 rounded-lg font-semibold flex items-center gap-2 transition-all transform hover:scale-105">
+              <a href={`tel:${phoneNumber}`}  onClick={(e) => {
+          e.preventDefault();
+          reportConversion(`https://wa.me/${phoneNumber.replace(/\+/g, "")}`);
+        }} className="bg-orange-500 hover:bg-orange-600 px-3 sm:px-4 py-2 rounded-lg font-semibold flex items-center gap-2 transition-all transform hover:scale-105">
                 <Phone className="w-4 h-4" />
                 <span className="hidden sm:inline">Call Now</span>
               </a>
-              <a href={`https://wa.me/${phoneNumber.replace(/\+/g, '')}`} target="_blank" rel="noopener noreferrer" className="bg-green-500 hover:bg-green-600 px-3 sm:px-4 py-2 rounded-lg font-semibold flex items-center gap-2 transition-all transform hover:scale-105">
+              <a href={`https://wa.me/${phoneNumber.replace(/\+/g, '')}`}  onClick={(e) => {
+          e.preventDefault();
+          reportConversion(`https://wa.me/${phoneNumber.replace(/\+/g, "")}`);
+        }} target="_blank" rel="noopener noreferrer" className="bg-green-500 hover:bg-green-600 px-3 sm:px-4 py-2 rounded-lg font-semibold flex items-center gap-2 transition-all transform hover:scale-105">
                 <MessageCircle className="w-4 h-4" />
                 <span className="hidden sm:inline">WhatsApp</span>
               </a>
@@ -140,7 +163,10 @@ export default function WasherRepairWebsite() {
               <Phone className="w-6 h-6" />
               Call Now
             </a>
-            <a href={`https://wa.me/${phoneNumber.replace(/\+/g, '')}`} target="_blank" rel="noopener noreferrer" className="bg-green-500 hover:bg-green-600 px-8 py-4 rounded-lg text-xl font-bold flex items-center gap-3 transition-all transform hover:scale-105 shadow-lg">
+            <a href={`https://wa.me/${phoneNumber.replace(/\+/g, '')}`}  onClick={(e) => {
+          e.preventDefault();
+          reportConversion(`https://wa.me/${phoneNumber.replace(/\+/g, "")}`);
+        }} target="_blank" rel="noopener noreferrer" className="bg-green-500 hover:bg-green-600 px-8 py-4 rounded-lg text-xl font-bold flex items-center gap-3 transition-all transform hover:scale-105 shadow-lg">
               <MessageCircle className="w-6 h-6" />
               WhatsApp Us
             </a>
