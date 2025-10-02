@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { Phone, MessageCircle, Wrench, Droplets, AlertCircle, Volume2, DoorOpen, Zap, Wind, Power, Code, Hammer, CheckCircle, Clock, Award, DollarSign, MapPin, Mail, ChevronDown, ChevronUp } from 'lucide-react';
+import { Phone, MessageCircle, Wrench, Droplets, AlertCircle, Volume2, DoorOpen, Zap, Wind, Power, Code, Hammer, CheckCircle, Clock, Award, DollarSign, MapPin, Mail, ChevronDown, ChevronUp, Menu, X } from 'lucide-react';
 
 export default function WasherRepairWebsite() {
   const [activeSection, setActiveSection] = useState('home');
   const [openFaq, setOpenFaq] = useState(null);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
@@ -16,6 +17,7 @@ export default function WasherRepairWebsite() {
 
   const scrollToSection = (section) => {
     setActiveSection(section);
+    setMobileMenuOpen(false);
     const element = document.getElementById(section);
     if (element) {
       const offset = 100;
@@ -73,25 +75,31 @@ export default function WasherRepairWebsite() {
   return (
     <div className="min-h-screen bg-gray-900">
       {/* Fixed Header */}
-      <header className="fixed top-0 w-full bg-gradient-to-r from-blue-900 to-blue-700 text-white shadow-lg z-50">
+    <header className="fixed top-0 w-full bg-gradient-to-r from-blue-900 to-blue-700 text-white shadow-lg z-50">
         <div className="max-w-7xl mx-auto px-4 py-3">
-          <div className="flex justify-between items-center flex-wrap gap-3">
+          <div className="flex justify-between items-center gap-3">
             <div className="flex items-center gap-3">
               <Wrench className="w-8 h-8" />
               <h1 className="text-xl md:text-2xl font-bold">Washertroubleshoot SG</h1>
             </div>
-            <div className="flex gap-3">
-              <a href={`tel:${phoneNumber}`} className="bg-orange-500 hover:bg-orange-600 px-4 py-2 rounded-lg font-semibold flex items-center gap-2 transition-all transform hover:scale-105">
+            <div className="flex gap-2 items-center">
+              <a href={`tel:${phoneNumber}`} className="bg-orange-500 hover:bg-orange-600 px-3 sm:px-4 py-2 rounded-lg font-semibold flex items-center gap-2 transition-all transform hover:scale-105">
                 <Phone className="w-4 h-4" />
                 <span className="hidden sm:inline">Call Now</span>
               </a>
-              <a href={`https://wa.me/${phoneNumber.replace(/\+/g, '')}`} target="_blank" rel="noopener noreferrer" className="bg-green-500 hover:bg-green-600 px-4 py-2 rounded-lg font-semibold flex items-center gap-2 transition-all transform hover:scale-105">
+              <a href={`https://wa.me/${phoneNumber.replace(/\+/g, '')}`} target="_blank" rel="noopener noreferrer" className="bg-green-500 hover:bg-green-600 px-3 sm:px-4 py-2 rounded-lg font-semibold flex items-center gap-2 transition-all transform hover:scale-105">
                 <MessageCircle className="w-4 h-4" />
                 <span className="hidden sm:inline">WhatsApp</span>
               </a>
+              <button 
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                className="bg-blue-800 hover:bg-blue-600 px-3 py-2 rounded-lg transition-colors sm:hidden"
+              >
+                {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              </button>
             </div>
           </div>
-          <nav className="mt-3 border-t border-blue-600 pt-3">
+          <nav className="mt-3 border-t border-blue-600 pt-3 hidden sm:block">
             <ul className="flex justify-center gap-6 flex-wrap text-sm md:text-base">
               {['home', 'about', 'services', 'pricing', 'faqs', 'contact'].map(section => (
                 <li key={section}>
@@ -102,6 +110,20 @@ export default function WasherRepairWebsite() {
               ))}
             </ul>
           </nav>
+          {/* Mobile Menu */}
+          {mobileMenuOpen && (
+            <nav className="mt-3 border-t border-blue-600 pt-3 sm:hidden">
+              <ul className="flex flex-col gap-3 text-base">
+                {['home', 'about', 'services', 'pricing', 'faqs', 'contact'].map(section => (
+                  <li key={section}>
+                    <button onClick={() => scrollToSection(section)} className="hover:text-yellow-300 transition-colors capitalize font-medium w-full text-left py-2">
+                      {section === 'faqs' ? 'FAQs' : section.replace('-', ' ')}
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          )}
         </div>
       </header>
 
@@ -445,6 +467,17 @@ export default function WasherRepairWebsite() {
           </div>
         </div>
       </footer>
+
+      {/* Floating WhatsApp Button */}
+      <a 
+        href={`https://wa.me/${phoneNumber.replace(/\+/g, '')}`} 
+        target="_blank" 
+        rel="noopener noreferrer"
+        className="fixed bottom-6 right-6 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-lg z-50 transition-all transform hover:scale-110 animate-pulse"
+        aria-label="Contact us on WhatsApp"
+      >
+        <MessageCircle className="w-6 h-6" />
+      </a>
     </div>
   );
 }
