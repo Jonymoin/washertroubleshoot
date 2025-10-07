@@ -382,7 +382,7 @@ export default function WasherRepairWebsite() {
                     <Phone className="w-4 h-4" />
                     Call
                   </a>
-                  <a href={`https://wa.me/${phoneNumber.replace(/\+/g, '')}`} target="_blank" rel="noopener noreferrer" className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded font-semibold inline-flex items-center gap-2">
+                  <a href={`https://wa.me/${phoneNumber.replace(/\+/g, '')}`}  target="_blank" rel="noopener noreferrer" className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded font-semibold inline-flex items-center gap-2">
                     <MessageCircle className="w-4 h-4" />
                     WhatsApp
                   </a>
@@ -459,12 +459,13 @@ export default function WasherRepairWebsite() {
             <div>
               <h4 className="text-lg font-bold mb-4">Quick Links</h4>
               <ul className="space-y-2">
-                <li><button onClick={() => scrollToSection('home')} className="text-gray-400 hover:text-white transition-colors">Home</button></li>
-                <li><button onClick={() => scrollToSection('services')} className="text-gray-400 hover:text-white transition-colors">Services</button></li>
-                <li><button onClick={() => scrollToSection('pricing')} className="text-gray-400 hover:text-white transition-colors">Pricing</button></li>
-                <li><button onClick={() => scrollToSection('faqs')} className="text-gray-400 hover:text-white transition-colors">FAQs</button></li>
-                <li><button onClick={() => scrollToSection('contact')} className="text-gray-400 hover:text-white transition-colors">Contact</button></li>
-              </ul>
+  <li><a href="https://washertroubleshootsg.com/#home" className="text-gray-400 hover:text-white transition-colors">Home</a></li>
+  <li><a href="https://washertroubleshootsg.com/#about" className="text-gray-400 hover:text-white transition-colors">About</a></li>
+  <li><a href="https://washertroubleshootsg.com/#services" className="text-gray-400 hover:text-white transition-colors">Services</a></li>
+  <li><a href="https://washertroubleshootsg.com/#pricing" className="text-gray-400 hover:text-white transition-colors">Pricing</a></li>
+  <li><a href="https://washertroubleshootsg.com/#faqs" className="text-gray-400 hover:text-white transition-colors">FAQs</a></li>
+  <li><a href="https://washertroubleshootsg.com/#contact" className="text-gray-400 hover:text-white transition-colors">Contact</a></li>
+</ul>
             </div>
             <div>
               <h4 className="text-lg font-bold mb-4">Contact Info</h4>
