@@ -92,64 +92,85 @@ export default function WasherRepairWebsite() {
   return (
     <div className="min-h-screen bg-gray-900">
       {/* Fixed Header */}
-    <header className="fixed top-0 w-full bg-gradient-to-r from-blue-900 to-blue-700 text-white shadow-lg z-50">
-        <div className="max-w-7xl mx-auto px-4 py-3">
-          <div className="flex justify-between items-center gap-3">
-            <div className="flex items-center gap-3">
-              <Wrench className="w-8 h-8" />
-              <h1 className="text-xl md:text-2xl font-bold">Washertroubleshoot SG</h1>
-            </div>
-            <div className="flex gap-2 items-center">
-              <a href={`tel:${phoneNumber}`} onClick={(e) => {
-    e.preventDefault();
-    // Call conversion track kore tel link a redirect hobe
-    reportConversion(`tel:${phoneNumber}`);
-        }} className="bg-orange-500 hover:bg-orange-600 px-3 sm:px-4 py-2 rounded-lg font-semibold flex items-center gap-2 transition-all transform hover:scale-105">
-                <Phone className="w-4 h-4" />
-                <span className="hidden sm:inline">Call Now</span>
-              </a>
-              <a href={`https://wa.me/${phoneNumber.replace(/\+/g, '')}`}  onClick={(e) => {
-          e.preventDefault();
-          reportConversion(`https://wa.me/${phoneNumber.replace(/\+/g, "")}`);
-        }} target="_blank" rel="noopener noreferrer" className="bg-green-500 hover:bg-green-600 px-3 sm:px-4 py-2 rounded-lg font-semibold flex items-center gap-2 transition-all transform hover:scale-105">
-                <MessageCircle className="w-4 h-4" />
-                <span className="hidden sm:inline">WhatsApp</span>
-              </a>
-              <button 
-                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="bg-blue-800 hover:bg-blue-600 px-3 py-2 rounded-lg transition-colors sm:hidden"
+      {/* Fixed top buttons */}
+<div className="fixed top-0 w-full flex justify-around bg-white py-2 z-50 shadow-md">
+  <a
+    href={`tel:${phoneNumber}`}
+    onClick={(e) => {
+      e.preventDefault();
+      reportConversion(`tel:${phoneNumber}`);
+    }}
+    className="bg-orange-500 hover:bg-orange-600 px-3 sm:px-4 py-2 rounded-lg font-semibold flex items-center gap-2 transition-all transform hover:scale-105 text-white"
+  >
+    <Phone className="w-4 h-4" />
+    <span>Call Now</span>
+  </a>
+
+  <a
+    href={`https://wa.me/${phoneNumber.replace(/\+/g, "")}`}
+    onClick={(e) => {
+      e.preventDefault();
+      reportConversion(`https://wa.me/${phoneNumber.replace(/\+/g, "")}`);
+    }}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="bg-green-500 hover:bg-green-600 px-3 sm:px-4 py-2 rounded-lg font-semibold flex items-center gap-2 transition-all transform hover:scale-105 text-white"
+  >
+    <MessageCircle className="w-4 h-4" />
+    <span>WhatsApp</span>
+  </a>
+</div>
+    <header className="w-full bg-gradient-to-r from-blue-900 to-blue-700 text-white shadow-lg mt-16 sm:mt-14">
+  <div className="max-w-7xl mx-auto px-4 py-3">
+    <div className="flex justify-between items-center gap-3">
+      <div className="flex items-center gap-3">
+        <Wrench className="w-8 h-8" />
+        <h1 className="text-xl md:text-2xl font-bold">Washertroubleshoot SG</h1>
+      </div>
+      <div className="flex gap-2 items-center">
+        <button
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          className="bg-blue-800 hover:bg-blue-600 px-3 py-2 rounded-lg transition-colors sm:hidden"
+        >
+          {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+        </button>
+      </div>
+    </div>
+
+    <nav className="mt-3 border-t border-blue-600 pt-3 hidden sm:block">
+      <ul className="flex justify-center gap-6 flex-wrap text-sm md:text-base">
+        {['home', 'about', 'services', 'pricing', 'faqs', 'contact'].map(section => (
+          <li key={section}>
+            <button
+              onClick={() => scrollToSection(section)}
+              className="hover:text-yellow-300 transition-colors capitalize font-medium"
+            >
+              {section === 'faqs' ? 'FAQs' : section.replace('-', ' ')}
+            </button>
+          </li>
+        ))}
+      </ul>
+    </nav>
+
+    {/* Mobile Menu */}
+    {mobileMenuOpen && (
+      <nav className="mt-3 border-t border-blue-600 pt-3 sm:hidden">
+        <ul className="flex flex-col gap-3 text-base">
+          {['home', 'about', 'services', 'pricing', 'faqs', 'contact'].map(section => (
+            <li key={section}>
+              <button
+                onClick={() => scrollToSection(section)}
+                className="hover:text-yellow-300 transition-colors capitalize font-medium w-full text-left py-2"
               >
-                {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+                {section === 'faqs' ? 'FAQs' : section.replace('-', ' ')}
               </button>
-            </div>
-          </div>
-          <nav className="mt-3 border-t border-blue-600 pt-3 hidden sm:block">
-            <ul className="flex justify-center gap-6 flex-wrap text-sm md:text-base">
-              {['home', 'about', 'services', 'pricing', 'faqs', 'contact'].map(section => (
-                <li key={section}>
-                  <button onClick={() => scrollToSection(section)} className="hover:text-yellow-300 transition-colors capitalize font-medium">
-                    {section === 'faqs' ? 'FAQs' : section.replace('-', ' ')}
-                  </button>
-                </li>
-              ))}
-            </ul>
-          </nav>
-          {/* Mobile Menu */}
-          {mobileMenuOpen && (
-            <nav className="mt-3 border-t border-blue-600 pt-3 sm:hidden">
-              <ul className="flex flex-col gap-3 text-base">
-                {['home', 'about', 'services', 'pricing', 'faqs', 'contact'].map(section => (
-                  <li key={section}>
-                    <button onClick={() => scrollToSection(section)} className="hover:text-yellow-300 transition-colors capitalize font-medium w-full text-left py-2">
-                      {section === 'faqs' ? 'FAQs' : section.replace('-', ' ')}
-                    </button>
-                  </li>
-                ))}
-              </ul>
-            </nav>
-          )}
-        </div>
-      </header>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    )}
+  </div>
+</header>
 
       {/* Hero Section */}
       <section id="home" className="pt-32 pb-20 bg-gradient-to-br from-blue-900 via-blue-800 to-blue-900 text-white relative overflow-hidden">
