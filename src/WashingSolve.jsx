@@ -121,7 +121,7 @@ export default function WasherRepairWebsite() {
     <span>WhatsApp</span>
   </a>
 </div>
-    <header className="w-full bg-red-600 text-white shadow-lg mt-16 sm:mt-14">
+    <header className="w-full bg-white text-black shadow-lg mt-16 sm:mt-14">
   <div className="max-w-7xl mx-auto px-4 py-3">
     <div className="flex justify-between items-center gap-3">
       <div className="flex items-center gap-3">
@@ -131,7 +131,7 @@ export default function WasherRepairWebsite() {
       <div className="flex gap-2 items-center">
         <button
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="bg-red-700 hover:bg-blue-600 px-3 py-2 rounded-lg transition-colors sm:hidden"
+          className="bg-gray-700 hover:bg-blue-600 px-3 py-2 rounded-lg transition-colors sm:hidden"
         >
           {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
         </button>
