@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState , useEffect } from 'react';
 import { Phone, MessageCircle, Wrench, Droplets, AlertCircle, Volume2, DoorOpen, Zap, Wind, Power, Code, Hammer, CheckCircle, Clock, Award, DollarSign, MapPin, Mail, ChevronDown, ChevronUp, Menu, X } from 'lucide-react';
 
 export default function WasherRepairWebsite() {
@@ -100,9 +100,10 @@ export default function WasherRepairWebsite() {
               <h1 className="text-xl md:text-2xl font-bold">Washertroubleshoot SG</h1>
             </div>
             <div className="flex gap-2 items-center">
-              <a href={`tel:${phoneNumber}`}  onClick={(e) => {
-          e.preventDefault();
-          reportConversion(`https://wa.me/${phoneNumber.replace(/\+/g, "")}`);
+              <a href={`tel:${phoneNumber}`} onClick={(e) => {
+    e.preventDefault();
+    // Call conversion track kore tel link a redirect hobe
+    reportConversion(`tel:${phoneNumber}`);
         }} className="bg-orange-500 hover:bg-orange-600 px-3 sm:px-4 py-2 rounded-lg font-semibold flex items-center gap-2 transition-all transform hover:scale-105">
                 <Phone className="w-4 h-4" />
                 <span className="hidden sm:inline">Call Now</span>
