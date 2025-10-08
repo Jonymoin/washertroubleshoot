@@ -1,5 +1,6 @@
 import React, { useState , useEffect } from 'react';
 import { Phone, MessageCircle, Wrench, Droplets, AlertCircle, Volume2, DoorOpen, Zap, Wind, Power, Code, Hammer, CheckCircle, Clock, Award, DollarSign, MapPin, Mail, ChevronDown, ChevronUp, Menu, X } from 'lucide-react';
+import HeroIntro from './HeroIntro';
 
 export default function WasherRepairWebsite() {
   const [activeSection, setActiveSection] = useState('home');
@@ -120,7 +121,7 @@ export default function WasherRepairWebsite() {
     <span>WhatsApp</span>
   </a>
 </div>
-    <header className="w-full bg-gradient-to-r from-blue-900 to-blue-700 text-white shadow-lg mt-16 sm:mt-14">
+    <header className="w-full bg-red-600 text-white shadow-lg mt-16 sm:mt-14">
   <div className="max-w-7xl mx-auto px-4 py-3">
     <div className="flex justify-between items-center gap-3">
       <div className="flex items-center gap-3">
@@ -130,7 +131,7 @@ export default function WasherRepairWebsite() {
       <div className="flex gap-2 items-center">
         <button
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="bg-blue-800 hover:bg-blue-600 px-3 py-2 rounded-lg transition-colors sm:hidden"
+          className="bg-red-700 hover:bg-blue-600 px-3 py-2 rounded-lg transition-colors sm:hidden"
         >
           {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
         </button>
@@ -195,7 +196,7 @@ export default function WasherRepairWebsite() {
           </div>
         </div>
       </section>
-
+        <HeroIntro />
       {/* About Section */}
       <section id="about" className="py-20 bg-gray-900">
         <div className="max-w-6xl mx-auto px-4">
@@ -212,7 +213,7 @@ export default function WasherRepairWebsite() {
                 We solve almost all types of washing machine issues across Singapore.
               </p>
             </div>
-            <div className="bg-blue-900 p-8 rounded-lg">
+            <div className="bg-gray-700 p-8 rounded-lg">
               <h3 className="text-2xl font-bold mb-6 text-white">What Sets Us Apart</h3>
               <ul className="space-y-4">
                 <li className="flex items-start gap-3">
@@ -242,14 +243,14 @@ export default function WasherRepairWebsite() {
       </section>
 
       {/* Services Section */}
-      <section id="services" className="py-20 bg-blue-900">
+      <section id="services" className="py-20 bg-gray-700">
         <div className="max-w-7xl mx-auto px-4">
           <h2 className="text-4xl font-bold text-center mb-4 text-white">Our Repair Services</h2>
           <p className="text-center text-gray-300 mb-12 text-lg">We fix all types of washing machine problems quickly and professionally</p>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {services.map((service, idx) => (
-              <div key={idx} className="bg-gray-900 p-6 rounded-lg shadow-md hover:shadow-xl transition-all transform hover:-translate-y-1 border-t-4 border-blue-500">
-                <div className="text-blue-400 mb-4">{service.icon}</div>
+              <div key={idx} className="bg-gray-900 p-6 rounded-lg shadow-md hover:shadow-xl transition-all transform hover:-translate-y-1 border-t-4 border-red-500">
+                <div className="text-red-400 mb-4">{service.icon}</div>
                 <h3 className="text-xl font-bold mb-3 text-white">{service.title}</h3>
                 <p className="text-gray-300 leading-relaxed">{service.desc}</p>
               </div>
@@ -270,7 +271,7 @@ export default function WasherRepairWebsite() {
             </div>
             <div className="grid md:grid-cols-3 gap-6 mb-8">
               <div className="bg-gray-900 p-6 rounded-lg shadow text-center">
-                <div className="text-3xl font-bold text-green-400 mb-2">$50</div>
+                <div className="text-3xl font-bold text-green-400 mb-2">$50-$80</div>
                 <div className="text-gray-300">Simple Repairs</div>
               </div>
               <div className="bg-gray-900 p-6 rounded-lg shadow text-center">
@@ -305,7 +306,7 @@ export default function WasherRepairWebsite() {
       </section>
 
       {/* Why Choose Us */}
-      <section className="py-20 bg-gradient-to-br from-blue-900 to-blue-700 text-white">
+      <section className="py-20 text-white">
         <div className="max-w-6xl mx-auto px-4">
           <h2 className="text-4xl font-bold text-center mb-12">Why Choose Washertroubleshoot SG?</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -367,7 +368,7 @@ export default function WasherRepairWebsite() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-20 bg-blue-900">
+      <section id="contact" className="py-20">
         <div className="max-w-6xl mx-auto px-4">
           <h2 className="text-4xl font-bold text-center mb-12 text-white">Contact Us</h2>
           <div className="grid md:grid-cols-2 gap-12">
@@ -396,11 +397,11 @@ export default function WasherRepairWebsite() {
                   </div>
                 </div>
               </div>
-              <div className="mt-8 p-6 bg-gray-900 rounded-lg border-l-4 border-blue-500">
+              <div className="mt-8 p-6 bg-gray-900 rounded-lg border-l-4 border-red-600">
                 <h4 className="font-bold text-white mb-2">Need Immediate Assistance?</h4>
                 <p className="text-gray-300 mb-4">Contact us now for fast and reliable washing machine repair service!</p>
                 <div className="flex gap-3">
-                  <a href={`tel:${phoneNumber}`} className="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded font-semibold inline-flex items-center gap-2">
+                  <a href={`tel:${phoneNumber}`} className="bg-red-500 hover:bg-orange-600 text-white px-4 py-2 rounded font-semibold inline-flex items-center gap-2">
                     <Phone className="w-4 h-4" />
                     Call
                   </a>
@@ -457,7 +458,7 @@ export default function WasherRepairWebsite() {
                     placeholder="Additional details about your washing machine problem..."
                   ></textarea>
                 </div>
-                <button type="submit" className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition-colors flex items-center justify-center gap-2">
+                <button type="submit" className="w-full bg-red-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition-colors flex items-center justify-center gap-2">
                   <MessageCircle className="w-5 h-5" />
                   Send via WhatsApp
                 </button>
