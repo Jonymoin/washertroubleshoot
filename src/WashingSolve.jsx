@@ -101,7 +101,7 @@ export default function WasherRepairWebsite() {
       e.preventDefault();
       reportConversion(`tel:${phoneNumber}`);
     }}
-    className="bg-orange-500 hover:bg-orange-600 px-3 sm:px-4 py-2 rounded-lg font-semibold flex items-center gap-2 transition-all transform hover:scale-105 text-white"
+    className="bg-white hover:bg-orange-600 px-7 py-2 rounded-lg font-semibold flex items-center gap-2 transition-all transform hover:scale-105 text-black"
   >
     <Phone className="w-4 h-4" />
     <span>Call Now</span>
@@ -115,7 +115,7 @@ export default function WasherRepairWebsite() {
     }}
     target="_blank"
     rel="noopener noreferrer"
-    className="bg-green-500 hover:bg-green-600 px-3 sm:px-4 py-2 rounded-lg font-semibold flex items-center gap-2 transition-all transform hover:scale-105 text-white"
+    className="bg-green-500 hover:bg-green-600 px-7  py-2 rounded-lg font-semibold flex items-center gap-2 transition-all transform hover:scale-105 text-white"
   >
     <MessageCircle className="w-4 h-4" />
     <span>WhatsApp</span>
@@ -182,7 +182,7 @@ export default function WasherRepairWebsite() {
           <h2 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">Affordable & Professional<br/>Washing Machine Repair in Singapore</h2>
           <p className="text-xl md:text-2xl mb-8 text-blue-100">Fast, Reliable, and Budget-Friendly – Prices from $50 to $160 only.</p>
           <div className="flex gap-4 justify-center flex-wrap">
-            <a href={`tel:${phoneNumber}`} className="bg-orange-500 hover:bg-orange-600 px-8 py-4 rounded-lg text-xl font-bold flex items-center gap-3 transition-all transform hover:scale-105 shadow-lg">
+            <a href={`tel:${phoneNumber}`} className="bg-white hover:bg-orange-600 px-12 py-4 rounded-lg text-xl font-bold flex items-center gap-3 transition-all transform hover:scale-105 shadow-lg text-black">
               <Phone className="w-6 h-6" />
               Call Now
             </a>
