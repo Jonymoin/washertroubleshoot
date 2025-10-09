@@ -197,6 +197,68 @@ export default function WasherRepairWebsite() {
         </div>
       </section>
         <HeroIntro />
+         {/* Pricing Section */}
+      <section id="pricing" className="py-20 bg-gray-900">
+        <div className="max-w-4xl mx-auto px-4">
+          <h2 className="text-4xl font-bold text-center mb-4 text-white">Transparent Pricing</h2>
+          <p className="text-center text-gray-300 mb-12 text-lg">No hidden charges. Affordable service you can trust.</p>
+          <div className="bg-gradient-to-br from-blue-900 to-blue-800 p-8 md:p-12 rounded-2xl shadow-lg border-2 border-blue-700">
+            <div className="text-center mb-8">
+              <div className="text-5xl md:text-6xl font-bold text-white mb-2">$50 - $160</div>
+              <div className="text-xl text-gray-300">Per Repair Service</div>
+            </div>
+            <div className="grid md:grid-cols-3 gap-6 mb-8">
+              <div className="bg-gray-900 p-6 rounded-lg shadow text-center">
+                <div className="text-3xl font-bold text-green-400 mb-2">$50-$80</div>
+                <div className="text-gray-300">Simple Repairs</div>
+              </div>
+              <div className="bg-gray-900 p-6 rounded-lg shadow text-center">
+                <div className="text-3xl font-bold text-blue-400 mb-2">$80-$120</div>
+                <div className="text-gray-300">Standard Repairs</div>
+              </div>
+              <div className="bg-gray-900 p-6 rounded-lg shadow text-center">
+                <div className="text-3xl font-bold text-orange-400 mb-2">$160</div>
+                <div className="text-gray-300">Complex Repairs</div>
+              </div>
+            </div>
+            <div className="space-y-3">
+              <div className="flex items-center gap-3 text-gray-300">
+                <CheckCircle className="w-6 h-6 text-green-400 flex-shrink-0" />
+                <span> Diagnostic and inspection</span>
+              </div>
+              <div className="flex items-center gap-3 text-gray-300">
+                <CheckCircle className="w-6 h-6 text-green-400 flex-shrink-0" />
+                <span>Transparent pricing before work begins</span>
+              </div>
+              <div className="flex items-center gap-3 text-gray-300">
+                <CheckCircle className="w-6 h-6 text-green-400 flex-shrink-0" />
+                <span>No hidden charges or surprise fees</span>
+              </div>
+              <div className="flex items-center gap-3 text-gray-300">
+                <CheckCircle className="w-6 h-6 text-green-400 flex-shrink-0" />
+                <span>Affordable rates across all services</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+         {/* Services Section */}
+      <section id="services" className="py-20 bg-gray-700">
+        <div className="max-w-7xl mx-auto px-4">
+          <h2 className="text-4xl font-bold text-center mb-4 text-white">Our Repair Services</h2>
+          <p className="text-center text-gray-300 mb-12 text-lg">We fix all types of washing machine problems quickly and professionally</p>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {services.map((service, idx) => (
+              <div key={idx} className="bg-gray-900 p-6 rounded-lg shadow-md hover:shadow-xl transition-all transform hover:-translate-y-1 border-t-4 border-white">
+                <div className="text-green-400 mb-4">{service.icon}</div>
+                <h3 className="text-xl font-bold mb-3 text-white">{service.title}</h3>
+                <p className="text-gray-300 leading-relaxed">{service.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* About Section */}
       <section id="about" className="py-20 bg-gray-900">
         <div className="max-w-6xl mx-auto px-4">
@@ -242,68 +304,8 @@ export default function WasherRepairWebsite() {
         </div>
       </section>
 
-      {/* Services Section */}
-      <section id="services" className="py-20 bg-gray-700">
-        <div className="max-w-7xl mx-auto px-4">
-          <h2 className="text-4xl font-bold text-center mb-4 text-white">Our Repair Services</h2>
-          <p className="text-center text-gray-300 mb-12 text-lg">We fix all types of washing machine problems quickly and professionally</p>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {services.map((service, idx) => (
-              <div key={idx} className="bg-gray-900 p-6 rounded-lg shadow-md hover:shadow-xl transition-all transform hover:-translate-y-1 border-t-4 border-red-500">
-                <div className="text-red-400 mb-4">{service.icon}</div>
-                <h3 className="text-xl font-bold mb-3 text-white">{service.title}</h3>
-                <p className="text-gray-300 leading-relaxed">{service.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Pricing Section */}
-      <section id="pricing" className="py-20 bg-gray-900">
-        <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-4xl font-bold text-center mb-4 text-white">Transparent Pricing</h2>
-          <p className="text-center text-gray-300 mb-12 text-lg">No hidden charges. Affordable service you can trust.</p>
-          <div className="bg-gradient-to-br from-blue-900 to-blue-800 p-8 md:p-12 rounded-2xl shadow-lg border-2 border-blue-700">
-            <div className="text-center mb-8">
-              <div className="text-5xl md:text-6xl font-bold text-white mb-2">$50 - $160</div>
-              <div className="text-xl text-gray-300">Per Repair Service</div>
-            </div>
-            <div className="grid md:grid-cols-3 gap-6 mb-8">
-              <div className="bg-gray-900 p-6 rounded-lg shadow text-center">
-                <div className="text-3xl font-bold text-green-400 mb-2">$50-$80</div>
-                <div className="text-gray-300">Simple Repairs</div>
-              </div>
-              <div className="bg-gray-900 p-6 rounded-lg shadow text-center">
-                <div className="text-3xl font-bold text-blue-400 mb-2">$80-$120</div>
-                <div className="text-gray-300">Standard Repairs</div>
-              </div>
-              <div className="bg-gray-900 p-6 rounded-lg shadow text-center">
-                <div className="text-3xl font-bold text-orange-400 mb-2">$160</div>
-                <div className="text-gray-300">Complex Repairs</div>
-              </div>
-            </div>
-            <div className="space-y-3">
-              <div className="flex items-center gap-3 text-gray-300">
-                <CheckCircle className="w-6 h-6 text-green-400 flex-shrink-0" />
-                <span> Diagnostic and inspection</span>
-              </div>
-              <div className="flex items-center gap-3 text-gray-300">
-                <CheckCircle className="w-6 h-6 text-green-400 flex-shrink-0" />
-                <span>Transparent pricing before work begins</span>
-              </div>
-              <div className="flex items-center gap-3 text-gray-300">
-                <CheckCircle className="w-6 h-6 text-green-400 flex-shrink-0" />
-                <span>No hidden charges or surprise fees</span>
-              </div>
-              <div className="flex items-center gap-3 text-gray-300">
-                <CheckCircle className="w-6 h-6 text-green-400 flex-shrink-0" />
-                <span>Affordable rates across all services</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+     
+     
 
       {/* Why Choose Us */}
       <section className="py-20 text-white">
