@@ -1,6 +1,7 @@
 import React, { useState , useEffect } from 'react';
 import { Phone, MessageCircle, Wrench, Droplets, AlertCircle, Volume2, DoorOpen, Zap, Wind, Power, Code, Hammer, CheckCircle, Clock, Award, DollarSign, MapPin, Mail, ChevronDown, ChevronUp, Menu, X } from 'lucide-react';
 import HeroIntro from './HeroIntro';
+import { FaWhatsapp } from 'react-icons/fa';
 
 export default function WasherRepairWebsite() {
   const [activeSection, setActiveSection] = useState('home');
@@ -32,17 +33,17 @@ export default function WasherRepairWebsite() {
   };
 
   const services = [
-    { icon: <Wrench className="w-12 h-12" />, title: 'Washer Not Spinning', desc: 'Motor or belt issues causing spin failure. We diagnose and fix it quickly.' },
-    { icon: <Droplets className="w-12 h-12" />, title: 'Water Leakage', desc: 'Leaking from hoses, pumps, or seals. We stop the leak and prevent damage.' },
-    { icon: <AlertCircle className="w-12 h-12" />, title: 'Machine Not Draining', desc: 'Clogged pumps or drain issues. We ensure proper water drainage.' },
-    { icon: <Volume2 className="w-12 h-12" />, title: 'Strange Noises', desc: 'Unusual sounds during operation. We identify and eliminate the noise source.' },
-    { icon: <DoorOpen className="w-12 h-12" />, title: 'Door Not Opening', desc: 'Lock mechanism problems. We safely open and repair the door system.' },
-    { icon: <Zap className="w-12 h-12" />, title: 'Power/Electrical Issues', desc: 'No power or electrical faults. We restore safe electrical operation.' },
-    { icon: <Wind className="w-12 h-12" />, title: 'Vibration & Shaking', desc: 'Excessive movement during spin. We balance and stabilize your machine.' },
-    { icon: <Power className="w-12 h-12" />, title: 'Not Starting', desc: 'Complete failure to start. We diagnose and resolve startup problems.' },
-    { icon: <Code className="w-12 h-12" />, title: 'Error Codes', desc: 'Display showing error messages. We decode and fix the underlying issue.' },
-    { icon: <Hammer className="w-12 h-12" />, title: 'General Malfunctions', desc: 'Any other washing machine problem. Our experts can handle it all.' }
-  ];
+  { icon: <Wrench className="w-12 h-12" />, title: 'Washer Not Spinning', desc: 'Motor or belt issues causing spin failure. We diagnose and fix it quickly.' },
+  { icon: <Droplets className="w-12 h-12" />, title: 'Water Leakage', desc: 'Leaking from hoses, pumps, or seals. We stop the leak and prevent damage.' },
+  { icon: <AlertCircle className="w-12 h-12" />, title: 'Machine Not Draining', desc: 'Clogged pumps or drain issues. We ensure proper water drainage.' },
+  { icon: <Volume2 className="w-12 h-12" />, title: 'Strange Noises', desc: 'Unusual sounds during operation. We identify and eliminate the noise source.' },
+  { icon: <DoorOpen className="w-12 h-12" />, title: 'Door Not Opening', desc: 'Lock mechanism problems. We safely open and repair the door system.' },
+  { icon: <Zap className="w-12 h-12" />, title: 'Power/Electrical Issues', desc: 'No power or electrical faults. We restore safe electrical operation.' },
+  { icon: <Wind className="w-12 h-12" />, title: 'Vibration & Shaking', desc: 'Excessive movement during spin. We balance and stabilize your machine.' },
+  { icon: <Power className="w-12 h-12" />, title: 'Not Starting', desc: 'Complete failure to start. We diagnose and resolve startup problems.' },
+  { icon: <Code className="w-12 h-12" />, title: 'Error Codes', desc: 'Display showing error messages. We decode and fix the underlying issue.' },
+  { icon: <Hammer className="w-12 h-12" />, title: 'General Malfunctions', desc: 'Any other washing machine problem. Our experts can handle it all.' }
+];
 
   const faqs = [
     {
@@ -101,7 +102,7 @@ export default function WasherRepairWebsite() {
       e.preventDefault();
       reportConversion(`tel:${phoneNumber}`);
     }}
-    className="bg-white hover:bg-orange-600 px-7 py-2 rounded-lg font-semibold flex items-center gap-2 transition-all transform hover:scale-105 text-black"
+    className="bg-amber-500 hover:bg-orange-600 px-7 py-2 rounded-lg font-semibold flex items-center gap-2 transition-all transform hover:scale-105 text-black"
   >
     <Phone className="w-4 h-4" />
     <span>Call Now</span>
@@ -121,17 +122,23 @@ export default function WasherRepairWebsite() {
     <span>WhatsApp</span>
   </a>
 </div>
-    <header className="w-full bg-white text-black shadow-lg mt-16 sm:mt-14">
+    <header className="w-full bg-gray-800 text-white shadow-2xl mt-16 sm:mt-14">
   <div className="max-w-7xl mx-auto px-4 py-3">
     <div className="flex justify-between items-center gap-3">
-      <div className="flex items-center gap-3">
-        <Wrench className="w-8 h-8" />
-        <h1 className="text-xl md:text-2xl font-bold">Washertroubleshoot SG</h1>
-      </div>
+      {/* Logo */}
+            <div className="flex items-center space-x-3">
+              <div className="bg-blue-600 p-1 rounded-lg">
+                <img src="/logo101.webp" alt="" className='w-12'/>
+              </div>
+              <div>
+                <h1 className="text-2xl font-bold text-blue-400">WasherTroubleshoot SG</h1>
+                <p className="text-sm text-gray-300">Professional Washing Machine Service</p>
+              </div>
+            </div>
       <div className="flex gap-2 items-center">
         <button
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="bg-gray-700 hover:bg-blue-600 px-3 py-2 rounded-lg transition-colors sm:hidden"
+          className="bg-gray-800 hover:bg-blue-600 px-3 py-2 rounded-lg transition-colors sm:hidden"
         >
           {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
         </button>
@@ -182,9 +189,9 @@ export default function WasherRepairWebsite() {
           <h2 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">Affordable & Professional<br/>Washing Machine Repair in Singapore</h2>
           <p className="text-xl md:text-2xl mb-8 text-blue-100">Fast, Reliable, and Budget-Friendly – Prices from $50 to $160 only.</p>
           <div className="flex gap-4 justify-center flex-wrap">
-            <a href={`tel:${phoneNumber}`} className="bg-white hover:bg-orange-600 px-12 py-4 rounded-lg text-xl font-bold flex items-center gap-3 transition-all transform hover:scale-105 shadow-lg text-black">
+            <a href={`tel:${phoneNumber}`} className="bg-white hover:bg-orange-600 px-6 py-4 rounded-lg text-xl font-bold flex items-center gap-3 transition-all transform hover:scale-105 shadow-lg text-black">
               <Phone className="w-6 h-6" />
-              Call Now
+              +65 8413 0016
             </a>
             <a href={`https://wa.me/${phoneNumber.replace(/\+/g, '')}`}  onClick={(e) => {
           e.preventDefault();
@@ -244,20 +251,36 @@ export default function WasherRepairWebsite() {
       </section>
          {/* Services Section */}
       <section id="services" className="py-20 bg-gray-700">
-        <div className="max-w-7xl mx-auto px-4">
-          <h2 className="text-4xl font-bold text-center mb-4 text-white">Our Repair Services</h2>
-          <p className="text-center text-gray-300 mb-12 text-lg">We fix all types of washing machine problems quickly and professionally</p>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {services.map((service, idx) => (
-              <div key={idx} className="bg-gray-900 p-6 rounded-lg shadow-md hover:shadow-xl transition-all transform hover:-translate-y-1 border-t-4 border-white">
-                <div className="text-green-400 mb-4">{service.icon}</div>
-                <h3 className="text-xl font-bold mb-3 text-white">{service.title}</h3>
-                <p className="text-gray-300 leading-relaxed">{service.desc}</p>
-              </div>
-            ))}
-          </div>
+      <div className="max-w-7xl mx-auto px-4">
+        <h2 className="text-4xl font-bold text-center mb-4 text-white">Our Repair Services</h2>
+        <p className="text-center text-gray-300 mb-12 text-lg">
+          We fix all types of washing machine problems quickly and professionally
+        </p>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {services.map((service, idx) => (
+            <div
+              key={idx}
+              className="relative bg-gray-900 p-6 rounded-lg shadow-md hover:shadow-xl transition-all transform hover:-translate-y-1 border-t-4 border-white"
+            >
+              {/* WhatsApp Button */}
+              <a
+                href="https://wa.me/6584130016"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="absolute top-3 right-3 bg-green-500 text-white p-2 rounded-full hover:bg-green-600 transition"
+                aria-label="Chat on WhatsApp"
+              >
+                <FaWhatsapp className="w-5 h-5" />
+              </a>
+
+              <div className="text-green-400 mb-4">{service.icon}</div>
+              <h3 className="text-xl font-bold mb-3 text-white">{service.title}</h3>
+              <p className="text-gray-300 leading-relaxed">{service.desc}</p>
+            </div>
+          ))}
         </div>
-      </section>
+      </div>
+    </section>
 
       {/* About Section */}
       <section id="about" className="py-20 bg-gray-900">
