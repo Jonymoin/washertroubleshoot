@@ -2,6 +2,7 @@ import React, { useState , useEffect } from 'react';
 import { Phone, MessageCircle, Wrench, Droplets, AlertCircle, Volume2, DoorOpen, Zap, Wind, Power, Code, Hammer, CheckCircle, Clock, Award, DollarSign, MapPin, Mail, ChevronDown, ChevronUp, Menu, X } from 'lucide-react';
 import HeroIntro from './HeroIntro';
 import { FaWhatsapp } from 'react-icons/fa';
+import BrandMarquee from './Brands';
 
 export default function WasherRepairWebsite() {
   const [activeSection, setActiveSection] = useState('home');
@@ -95,14 +96,16 @@ export default function WasherRepairWebsite() {
     <div className="min-h-screen bg-gray-900">
       {/* Fixed Header */}
       {/* Fixed top buttons */}
-<div className="fixed top-0 w-full bg-gray-900 flex justify-around py-3 z-50 shadow-md">
-  <a
+<div className="fixed top-0 w-full bg-gray-900  py-2 z-50 shadow-md">
+    <div className='container mx-auto px-4'>
+       <div className='flex space-x-2'>
+          <a
     href={`tel:${phoneNumber}`}
     onClick={(e) => {
       e.preventDefault();
       reportConversion(`tel:${phoneNumber}`);
     }}
-    className="bg-amber-500 hover:bg-orange-600 px-7 py-2 rounded-lg font-semibold flex items-center gap-2 transition-all transform hover:scale-105 text-black"
+              className="flex-1 bg-amber-500 hover:bg-gray-600 py-3 rounded-lg flex items-center justify-center space-x-2 transition-colors text-white font-semibold"
   >
     <Phone className="w-4 h-4" />
     <span>Call Now</span>
@@ -116,18 +119,20 @@ export default function WasherRepairWebsite() {
     }}
     target="_blank"
     rel="noopener noreferrer"
-    className="bg-green-500 hover:bg-green-600 px-7  py-2 rounded-lg font-semibold flex items-center gap-2 transition-all transform hover:scale-105 text-white"
+              className="flex-1 bg-green-700 hover:bg-green-400 py-3 rounded-lg flex items-center justify-center space-x-2 transition-colors text-white font-semibold"
   >
     <MessageCircle className="w-4 h-4" />
     <span>WhatsApp</span>
   </a>
+       </div>
+    </div>
 </div>
     <header className="w-full bg-gray-800 text-white shadow-2xl mt-16 sm:mt-14">
   <div className="max-w-7xl mx-auto px-4 py-3">
     <div className="flex justify-between items-center gap-3">
       {/* Logo */}
             <div className="flex items-center space-x-3">
-              <div className="bg-blue-600 p-1 rounded-lg">
+              <div className=" p-1 rounded-lg bg-black">
                 <img src="/logo101.webp" alt="" className='w-12'/>
               </div>
               <div>
@@ -181,7 +186,7 @@ export default function WasherRepairWebsite() {
 </header>
 
       {/* Hero Section */}
-      <section id="home" className="pt-32 pb-20 text-white relative overflow-hidden">
+      <section id="home" className="pt-10 pb-20 text-white relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute inset-0" style={{backgroundImage: "url('data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')"}}></div>
         </div>
@@ -210,24 +215,8 @@ export default function WasherRepairWebsite() {
           <h2 className="text-4xl font-bold text-center mb-4 text-white">Transparent Pricing</h2>
           <p className="text-center text-gray-300 mb-12 text-lg">No hidden charges. Affordable service you can trust.</p>
           <div className="bg-gradient-to-br from-blue-900 to-blue-800 p-8 md:p-12 rounded-2xl shadow-lg border-2 border-blue-700">
-            <div className="text-center mb-8">
-              <div className="text-5xl md:text-6xl font-bold text-white mb-2">$50 - $160</div>
-              <div className="text-xl text-gray-300">Per Repair Service</div>
-            </div>
-            <div className="grid md:grid-cols-3 gap-6 mb-8">
-              <div className="bg-gray-900 p-6 rounded-lg shadow text-center">
-                <div className="text-3xl font-bold text-green-400 mb-2">$50-$80</div>
-                <div className="text-gray-300">Simple Repairs</div>
-              </div>
-              <div className="bg-gray-900 p-6 rounded-lg shadow text-center">
-                <div className="text-3xl font-bold text-blue-400 mb-2">$80-$120</div>
-                <div className="text-gray-300">Standard Repairs</div>
-              </div>
-              <div className="bg-gray-900 p-6 rounded-lg shadow text-center">
-                <div className="text-3xl font-bold text-orange-400 mb-2">$160</div>
-                <div className="text-gray-300">Complex Repairs</div>
-              </div>
-            </div>
+            
+           
             <div className="space-y-3">
               <div className="flex items-center gap-3 text-gray-300">
                 <CheckCircle className="w-6 h-6 text-green-400 flex-shrink-0" />
@@ -260,20 +249,22 @@ export default function WasherRepairWebsite() {
           {services.map((service, idx) => (
             <div
               key={idx}
-              className="relative bg-gray-900 p-6 rounded-lg shadow-md hover:shadow-xl transition-all transform hover:-translate-y-1 border-t-4 border-white"
+              className="relative bg-gray-900 p-6 rounded-lg shadow-md hover:shadow-xl transition-all transform hover:-translate-y-1 border-t-4 border-amber-500"
             >
               {/* WhatsApp Button */}
               <a
                 href="https://wa.me/6584130016"
+                
                 target="_blank"
                 rel="noopener noreferrer"
                 className="absolute top-3 right-3 bg-green-500 text-white p-2 rounded-full hover:bg-green-600 transition"
                 aria-label="Chat on WhatsApp"
+                
               >
                 <FaWhatsapp className="w-5 h-5" />
               </a>
 
-              <div className="text-green-400 mb-4">{service.icon}</div>
+              <div className="text-cyan-400 mb-4">{service.icon}</div>
               <h3 className="text-xl font-bold mb-3 text-white">{service.title}</h3>
               <p className="text-gray-300 leading-relaxed">{service.desc}</p>
             </div>
@@ -281,7 +272,10 @@ export default function WasherRepairWebsite() {
         </div>
       </div>
     </section>
-
+    {/* brands scroll */}
+    <section>
+      <BrandMarquee />
+    </section>
       {/* About Section */}
       <section id="about" className="py-20 bg-gray-900">
         <div className="max-w-6xl mx-auto px-4">
@@ -551,7 +545,7 @@ export default function WasherRepairWebsite() {
         className="fixed bottom-6 right-6 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-lg z-50 transition-all transform hover:scale-110 animate-pulse"
         aria-label="Contact us on WhatsApp"
       >
-        <MessageCircle className="w-6 h-6" />
+        <FaWhatsapp className="w-6 h-6" />
       </a>
     </div>
   );
