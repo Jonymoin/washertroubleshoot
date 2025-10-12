@@ -100,11 +100,10 @@ export default function WasherRepairWebsite() {
     <div className='container mx-auto px-4'>
        <div className='flex space-x-2'>
           <a
-    href={`tel:${phoneNumber}`}
-    onClick={(e) => {
-      e.preventDefault();
-      reportConversion(`tel:${phoneNumber}`);
-    }}
+           href={`tel:${phoneNumber}`}
+           onClick={(e) => {
+           e.preventDefault();
+           reportConversion(`tel:${phoneNumber}`);}}
               className="flex-1 bg-amber-500 hover:bg-gray-600 py-3 rounded-lg flex items-center justify-center space-x-2 transition-colors text-white font-semibold"
   >
     <Phone className="w-4 h-4" />
@@ -136,8 +135,8 @@ export default function WasherRepairWebsite() {
                 <img src="/logo101.webp" alt="" className='w-12'/>
               </div>
               <div>
-                <h1 className="text-2xl font-bold text-blue-400">WasherTroubleshoot SG</h1>
-                <p className="text-sm text-gray-300">Professional Washing Machine Service</p>
+                <h1 className="text-xl md:text-2xl font-bold text-red-500">WasherTroubleshoot <span className='text-blue-500 font-bold'>SG</span></h1>
+                <p className="text-sm text-gray-300">Washing Machine Service</p>
               </div>
             </div>
       <div className="flex gap-2 items-center">
@@ -192,9 +191,11 @@ export default function WasherRepairWebsite() {
         </div>
         <div className="max-w-6xl mx-auto px-4 text-center relative z-10">
           <h2 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">Affordable & Professional<br/>Washing Machine Repair in Singapore</h2>
-          <p className="text-xl md:text-2xl mb-8 text-blue-100">Fast, Reliable, and Budget-Friendly – Prices from $50 to $160 only.</p>
+          <p className="text-xl md:text-2xl mb-8 text-blue-100">Fast, Reliable, and Budget-Friendly – Prices</p>
           <div className="flex gap-4 justify-center flex-wrap">
-            <a href={`tel:${phoneNumber}`} className="bg-white hover:bg-orange-600 px-6 py-4 rounded-lg text-xl font-bold flex items-center gap-3 transition-all transform hover:scale-105 shadow-lg text-black">
+            <a href={`tel:${phoneNumber}`} onClick={(e) => {
+           e.preventDefault();
+           reportConversion(`tel:${phoneNumber}`);}} className="bg-white hover:bg-orange-600 px-6 py-4 rounded-lg text-xl font-bold flex items-center gap-3 transition-all transform hover:scale-105 shadow-lg text-black">
               <Phone className="w-6 h-6" />
               +65 8413 0016
             </a>
@@ -259,7 +260,10 @@ export default function WasherRepairWebsite() {
                 rel="noopener noreferrer"
                 className="absolute top-3 right-3 bg-green-500 text-white p-2 rounded-full hover:bg-green-600 transition"
                 aria-label="Chat on WhatsApp"
-                
+                onClick={(e) => {
+          e.preventDefault();
+          reportConversion(`https://wa.me/${phoneNumber.replace(/\+/g, "")}`);
+        }}
               >
                 <FaWhatsapp className="w-5 h-5" />
               </a>
@@ -424,7 +428,10 @@ export default function WasherRepairWebsite() {
                     <Phone className="w-4 h-4" />
                     Call
                   </a>
-                  <a href={`https://wa.me/${phoneNumber.replace(/\+/g, '')}`}  target="_blank" rel="noopener noreferrer" className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded font-semibold inline-flex items-center gap-2">
+                  <a href={`https://wa.me/${phoneNumber.replace(/\+/g, '')}`} onClick={(e) => {
+          e.preventDefault();
+          reportConversion(`https://wa.me/${phoneNumber.replace(/\+/g, "")}`);
+        }} target="_blank" rel="noopener noreferrer" className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded font-semibold inline-flex items-center gap-2">
                     <MessageCircle className="w-4 h-4" />
                     WhatsApp
                   </a>
@@ -518,7 +525,10 @@ export default function WasherRepairWebsite() {
                 </li>
                 <li className="flex items-center gap-2">
                   <MessageCircle className="w-4 h-4" />
-                  <a href={`https://wa.me/${phoneNumber.replace(/\+/g, '')}`} target="_blank" rel="noopener noreferrer" className="hover:text-white">WhatsApp Us</a>
+                  <a href={`https://wa.me/${phoneNumber.replace(/\+/g, '')}`} onClick={(e) => {
+          e.preventDefault();
+          reportConversion(`https://wa.me/${phoneNumber.replace(/\+/g, "")}`);
+        }} target="_blank" rel="noopener noreferrer" className="hover:text-white">WhatsApp Us</a>
                 </li>
                 <li className="flex items-center gap-2">
                   <Mail className="w-4 h-4" />
@@ -544,6 +554,10 @@ export default function WasherRepairWebsite() {
         rel="noopener noreferrer"
         className="fixed bottom-6 right-6 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-lg z-50 transition-all transform hover:scale-110 animate-pulse"
         aria-label="Contact us on WhatsApp"
+        onClick={(e) => {
+          e.preventDefault();
+          reportConversion(`https://wa.me/${phoneNumber.replace(/\+/g, "")}`);
+        }}
       >
         <FaWhatsapp className="w-6 h-6" />
       </a>
