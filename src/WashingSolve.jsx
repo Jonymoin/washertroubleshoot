@@ -559,7 +559,7 @@ export default function WasherRepairWebsite() {
           reportConversion(`https://wa.me/${phoneNumber.replace(/\+/g, "")}`);
         }}
       >
-        <FaWhatsapp className="w-6 h-6" />
+        <FaWhatsapp className="w-8 h-8" />
       </a>
     </div>
   );
