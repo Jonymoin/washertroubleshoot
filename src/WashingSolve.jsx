@@ -49,7 +49,7 @@ export default function WasherRepairWebsite() {
   const faqs = [
     {
       q: 'How much does washing machine repair cost in Singapore?',
-      a: 'Our repair services range from SGD $50 to $160 depending on the issue. We provide transparent pricing with no hidden charges. Simple fixes start at $50, while more complex repairs may cost up to $160.'
+      a: 'Our repair services range depending on the issue. We provide transparent pricing with no hidden charges. Simple fixes start at $50.'
     },
     {
       q: 'How long does a repair usually take?',
@@ -305,7 +305,7 @@ export default function WasherRepairWebsite() {
                 </li>
                 <li className="flex items-start gap-3">
                   <CheckCircle className="w-6 h-6 text-green-500 flex-shrink-0 mt-1" />
-                  <span className="text-gray-300">Affordable rates from $50 to $160</span>
+                  <span className="text-gray-300">Affordable rates</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <CheckCircle className="w-6 h-6 text-green-500 flex-shrink-0 mt-1" />
@@ -345,7 +345,7 @@ export default function WasherRepairWebsite() {
                 <DollarSign className="w-10 h-10" />
               </div>
               <h3 className="text-xl font-bold mb-3">Affordable Pricing</h3>
-              <p className="text-blue-100">Quality service at budget-friendly rates from $50 to $160 with no hidden charges.</p>
+              <p className="text-blue-100">Quality service at budget-friendly rates with no hidden charges.</p>
             </div>
             <div className="text-center">
               <div className="bg-white text-blue-900 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
