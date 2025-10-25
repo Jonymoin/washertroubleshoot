@@ -3,6 +3,7 @@ import { Phone, MessageCircle, Wrench, Droplets, AlertCircle, Volume2, DoorOpen,
 import HeroIntro from './HeroIntro';
 import { FaWhatsapp } from 'react-icons/fa';
 import BrandMarquee from './Brands';
+import AboutUs from './AboutUs';
 
 export default function WasherRepairWebsite() {
   const [activeSection, setActiveSection] = useState('home');
@@ -172,6 +173,7 @@ export default function WasherRepairWebsite() {
             <li key={section}>
               <button
                 onClick={() => scrollToSection(section)}
+                aria-label="Open menu"
                 className="hover:text-yellow-300 transition-colors capitalize font-medium w-full text-left py-2"
               >
                 {section === 'faqs' ? 'FAQs' : section.replace('-', ' ')}
@@ -544,6 +546,9 @@ export default function WasherRepairWebsite() {
           <div className="border-t border-gray-800 pt-8 text-center text-gray-400">
             <p>&copy; 2025 Washertroubleshoot SG. All rights reserved. | Professional Washing Machine Repair Service in Singapore</p>
           </div>
+        </div>
+        <div>
+          <AboutUs />
         </div>
       </footer>
 
