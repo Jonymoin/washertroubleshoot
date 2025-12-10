@@ -136,7 +136,7 @@ export default function WasherRepairWebsite() {
                 <img src="/logo101.webp" alt="" className='w-12'/>
               </div>
               <div>
-                <h1 className="text-xl md:text-2xl font-bold text-red-500">WasherTroubleshoot <span className='text-blue-500 font-bold'>SG</span></h1>
+                <h1 className="text-xl md:text-2xl font-bold text-white">WasherTroubleshoot <span className='text-blue-500 font-bold'>SG</span></h1>
                 <p className="text-sm text-gray-300">Washing Machine Service</p>
               </div>
             </div>
