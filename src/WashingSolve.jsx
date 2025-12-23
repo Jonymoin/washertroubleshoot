@@ -60,10 +60,7 @@ export default function WasherRepairWebsite() {
       q: 'Do you repair all brands of washing machines?',
       a: 'Yes! We repair all major brands including Samsung, LG, Electrolux, Bosch, Whirlpool, Panasonic, Midea, and more. Our technicians are trained to handle both front-load and top-load machines.'
     },
-    {
-      q: 'Is there any extra fee for inspection?',
-      a: 'No, inspection is included in our service call. We diagnose the problem and provide you with a clear quote before proceeding with any repairs. You only pay if you approve the repair.'
-    },
+    
     {
       q: 'Do you provide same-day service?',
       a: 'Yes, we offer same-day service across Singapore subject to availability. Call us at +65 8413 0016 or WhatsApp us to check our schedule and book an appointment.'
@@ -234,7 +231,8 @@ export default function WasherRepairWebsite() {
             <div className="text-center">
               <div className="bg-white text-blue-900 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Clock className="w-10 h-10" />
-              </div>
+              </div
+              >
               <h3 className="text-xl font-bold mb-3">Fast Response</h3>
               <p className="text-blue-100">Quick service across Singapore with same-day appointments available for your convenience.</p>
             </div>
