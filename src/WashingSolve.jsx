@@ -212,12 +212,49 @@ export default function WasherRepairWebsite() {
         </div>
       </section>
         <HeroIntro />
+        {/* Why Choose Us */}
+      <section className="py-20 text-white">
+        <div className="max-w-6xl mx-auto px-4">
+          <h2 className="text-4xl font-bold text-center mb-12">Why Choose Washertroubleshoot SG?</h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="text-center">
+              <div className="bg-white text-blue-900 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Award className="w-10 h-10" />
+              </div>
+              <h3 className="text-xl font-bold mb-3">Professional & Skilled</h3>
+              <p className="text-blue-100">Our certified technicians have years of experience and expertise in all washing machine repairs.</p>
+            </div>
+            <div className="text-center">
+              <div className="bg-white text-blue-900 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
+                <DollarSign className="w-10 h-10" />
+              </div>
+              <h3 className="text-xl font-bold mb-3">Affordable Pricing</h3>
+              <p className="text-blue-100">Quality service at budget-friendly rates with no hidden charges.</p>
+            </div>
+            <div className="text-center">
+              <div className="bg-white text-blue-900 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Clock className="w-10 h-10" />
+              </div>
+              <h3 className="text-xl font-bold mb-3">Fast Response</h3>
+              <p className="text-blue-100">Quick service across Singapore with same-day appointments available for your convenience.</p>
+            </div>
+            <div className="text-center">
+              <div className="bg-white text-blue-900 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Wrench className="w-10 h-10" />
+              </div>
+              <h3 className="text-xl font-bold mb-3">All Problems Solved</h3>
+              <p className="text-blue-100">We handle almost all types of washing machine issues, all brands, all models.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
          {/* Pricing Section */}
       <section id="pricing" className="py-20 bg-gray-900">
         <div className="max-w-4xl mx-auto px-4">
           <h2 className="text-4xl font-bold text-center mb-4 text-white">Transparent Pricing</h2>
           <p className="text-center text-gray-300 mb-12 text-lg">No hidden charges. Affordable service you can trust.</p>
-          <div className="bg-gradient-to-br from-blue-900 to-blue-800 p-8 md:p-12 rounded-2xl shadow-lg border-2 border-blue-700">
+          <div className="bg-gradient-to-br from-blue-900 to-blue-600 p-8 md:p-12 rounded-2xl shadow-lg border-2 border-blue-700">
             
            
             <div className="space-y-3">
@@ -252,7 +289,7 @@ export default function WasherRepairWebsite() {
           {services.map((service, idx) => (
             <div
               key={idx}
-              className="relative bg-gray-900 p-6 rounded-lg shadow-md hover:shadow-xl transition-all transform hover:-translate-y-1 border-t-4 border-amber-500"
+              className="relative bg-gray-900 p-6 rounded-lg shadow-md hover:shadow-xl transition-all transform hover:-translate-y-1 border-t-4 border-blue-400"
             >
               {/* WhatsApp Button */}
               <a
@@ -330,43 +367,7 @@ export default function WasherRepairWebsite() {
      
      
 
-      {/* Why Choose Us */}
-      <section className="py-20 text-white">
-        <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-4xl font-bold text-center mb-12">Why Choose Washertroubleshoot SG?</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="text-center">
-              <div className="bg-white text-blue-900 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Award className="w-10 h-10" />
-              </div>
-              <h3 className="text-xl font-bold mb-3">Professional & Skilled</h3>
-              <p className="text-blue-100">Our certified technicians have years of experience and expertise in all washing machine repairs.</p>
-            </div>
-            <div className="text-center">
-              <div className="bg-white text-blue-900 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
-                <DollarSign className="w-10 h-10" />
-              </div>
-              <h3 className="text-xl font-bold mb-3">Affordable Pricing</h3>
-              <p className="text-blue-100">Quality service at budget-friendly rates with no hidden charges.</p>
-            </div>
-            <div className="text-center">
-              <div className="bg-white text-blue-900 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Clock className="w-10 h-10" />
-              </div>
-              <h3 className="text-xl font-bold mb-3">Fast Response</h3>
-              <p className="text-blue-100">Quick service across Singapore with same-day appointments available for your convenience.</p>
-            </div>
-            <div className="text-center">
-              <div className="bg-white text-blue-900 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Wrench className="w-10 h-10" />
-              </div>
-              <h3 className="text-xl font-bold mb-3">All Problems Solved</h3>
-              <p className="text-blue-100">We handle almost all types of washing machine issues, all brands, all models.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
+      
       {/* FAQs Section */}
       <section id="faqs" className="py-20 bg-gray-900">
         <div className="max-w-4xl mx-auto px-4">
