@@ -4,6 +4,7 @@ import HeroIntro from './HeroIntro';
 import { FaWhatsapp } from 'react-icons/fa';
 import BrandMarquee from './Brands';
 import AboutUs from './AboutUs';
+import HeroSection from './HeroSection';
 
 export default function WasherRepairWebsite() {
   const [activeSection, setActiveSection] = useState('home');
@@ -184,29 +185,8 @@ export default function WasherRepairWebsite() {
 </header>
 
       {/* Hero Section */}
-      <section id="home" className="pt-10 pb-20 text-white relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute inset-0" style={{backgroundImage: "url('data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')"}}></div>
-        </div>
-        <div className="max-w-6xl mx-auto px-4 text-center relative z-10">
-          <h2 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">Affordable & Professional<br/>Washing Machine Repair in Singapore</h2>
-          <p className="text-xl md:text-2xl mb-8 text-blue-100">Fast, Reliable, and Budget-Friendly – Prices</p>
-          <div className="flex gap-4 justify-center flex-wrap">
-            <a href={`tel:${phoneNumber}`} onClick={(e) => {
-           e.preventDefault();
-           reportConversion(`tel:${phoneNumber}`);}} className="bg-white hover:bg-orange-600 px-6 py-4 rounded-lg text-xl font-bold flex items-center gap-3 transition-all transform hover:scale-105 shadow-lg text-black">
-              <Phone className="w-6 h-6" />
-              +65 8413 0016
-            </a>
-            <a href={`https://wa.me/${phoneNumber.replace(/\+/g, '')}`}  onClick={(e) => {
-          e.preventDefault();
-          reportConversion(`https://wa.me/${phoneNumber.replace(/\+/g, "")}`);
-        }} target="_blank" rel="noopener noreferrer" className="bg-green-500 hover:bg-green-600 px-8 py-4 rounded-lg text-xl font-bold flex items-center gap-3 transition-all transform hover:scale-105 shadow-lg">
-              <MessageCircle className="w-6 h-6" />
-              WhatsApp Us
-            </a>
-          </div>
-        </div>
+      <section id="home">
+        <HeroSection />
       </section>
         <HeroIntro />
         {/* Why Choose Us */}
