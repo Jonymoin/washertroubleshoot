@@ -5,6 +5,7 @@ import { FaWhatsapp } from 'react-icons/fa';
 import BrandMarquee from './Brands';
 import AboutUs from './AboutUs';
 import HeroSection from './HeroSection';
+import WasherTroubleshootBanner from './WasherBanner';
 
 export default function WasherRepairWebsite() {
   const [activeSection, setActiveSection] = useState('home');
@@ -187,6 +188,9 @@ export default function WasherRepairWebsite() {
       {/* Hero Section */}
       <section id="home">
         <HeroSection />
+      </section>
+      <section>
+        <WasherTroubleshootBanner />
       </section>
         <HeroIntro />
         {/* Why Choose Us */}
