@@ -1,110 +1,94 @@
-import { useState, useEffect } from 'react';
-import { Phone, MessageCircle } from 'lucide-react';
+import { useState, useEffect } from "react";
+import { Phone, MessageCircle } from "lucide-react";
 
 const HeroSection = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const slides = [
     {
-      image: '/wt10.webp',
-      title: 'Expert Washing Machine Repair',
-      subtitle: 'Professional technicians ready to fix all brands and models across Singapore'
+      image: "/wt10.webp",
+      title: "Expert Washing Machine Repair",
+      subtitle:
+        "Professional technicians ready to fix all brands and models across Singapore",
     },
     {
-      image: '/wt20.webp',
-      title: 'Same-Day Service Available',
-      subtitle: 'Quick response time with emergency repair service - We come to you!'
+      image: "/wt20.webp",
+      title: "Same-Day Service Available",
+      subtitle:
+        "Quick response time with emergency repair service - We come to you!",
     },
     {
-      image: '/wt30.webp',
-      title: 'Affordable & Transparent Pricing',
-      subtitle: 'No hidden charges. Free diagnosis with upfront quotation before any work'
+      image: "/wt30.webp",
+      title: "Affordable & Transparent Pricing",
+      subtitle:
+        "No hidden charges. Free diagnosis with upfront quotation before any work",
     },
     {
-      image: '/wt40.webp',
-      title: '100% Satisfaction Guaranteed',
-      subtitle: 'Quality repairs with warranty. Trusted by thousands of happy customers'
-    }
+      image: "/wt40.webp",
+      title: "100% Satisfaction Guaranteed",
+      subtitle:
+        "Quality repairs with warranty. Trusted by thousands of happy customers",
+    },
   ];
 
-  const handleClick = () => {
-    console.log('Button clicked');
-  };
-
-  const whatsappLink = `https://wa.me/6584130016?text=${encodeURIComponent('Hello! I need help with washing machine repair.')}`;
+  const whatsappLink = `https://wa.me/6584130016?text=${encodeURIComponent(
+    "Hello! I need help with washing machine repair."
+  )}`;
 
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length);
-    }, 5000); // 5 seconds per slide
+    }, 5000);
 
     return () => clearInterval(timer);
-  }, [slides.length]);
+  }, []);
 
   return (
     <section className="relative h-screen overflow-hidden">
-      {/* Slides */}
-      {slides.map((slide, index) => (
-        <div
-          key={index}
-          className={`absolute inset-0 transition-opacity duration-1000 ${
-            index === currentSlide ? 'opacity-100' : 'opacity-0'
-          }`}
-          style={{
-            backgroundImage: `url(${slide.image})`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center'
-          }}
-        >
-          {/* Light overlay for better text readability */}
-          <div className="absolute inset-0 bg-black/30"></div>
-        </div>
-      ))}
+
+      {/* Image */}
+      <img
+        src={slides[currentSlide].image}
+        alt="Washing machine repair Singapore"
+        className="absolute inset-0 w-full h-full object-cover"
+        loading="eager"
+      />
+
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-black/30"></div>
 
       {/* Content */}
       <div className="relative h-full flex items-center justify-center z-10">
         <div className="container mx-auto px-4 text-center text-white">
-          <h1 className="text-5xl md:text-6xl font-bold mb-6 drop-shadow-lg transition-all duration-500">
+
+          <h1 className="text-5xl md:text-6xl font-bold mb-6 drop-shadow-lg">
             {slides[currentSlide].title}
           </h1>
 
-          <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto drop-shadow-md transition-all duration-500">
+          <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">
             {slides[currentSlide].subtitle}
           </p>
 
-          <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+          <div className="flex flex-col sm:flex-row justify-center gap-4">
+
             <a
               href="tel:+6584130016"
-              onClick={handleClick}
-              className="bg-white text-gray-900 px-8 py-4 rounded-lg font-bold text-lg hover:bg-gray-100 transition-colors flex items-center justify-center space-x-2 shadow-lg"
+              className="bg-white text-gray-900 px-8 py-4 rounded-lg font-bold text-lg hover:bg-gray-100 flex items-center justify-center gap-2"
             >
               <Phone className="h-5 w-5" />
-              <span>+6584 13 0016</span>
+              +6584 13 0016
             </a>
 
             <a
               href={whatsappLink}
-              onClick={handleClick}
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-green-600 text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-green-700 transition-colors flex items-center justify-center space-x-2 shadow-lg"
+              className="bg-green-600 text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-green-700 flex items-center justify-center gap-2"
             >
               <MessageCircle className="h-5 w-5" />
-              <span>WhatsApp Us</span>
+              WhatsApp Us
             </a>
-          </div>
 
-          {/* Slide indicators */}
-          <div className="flex justify-center space-x-2 mt-8">
-            {slides.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => setCurrentSlide(index)}
-                className={`w-3 h-3 rounded-full transition-all ${
-                  index === currentSlide ? 'bg-white w-8' : 'bg-white/50'
-                }`}
-              />
-            ))}
           </div>
         </div>
       </div>
