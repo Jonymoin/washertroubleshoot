@@ -52,6 +52,7 @@ const HeroSection = () => {
         alt="Washing machine repair Singapore"
         className="absolute inset-0 w-full h-full object-cover"
         loading="eager"
+        fetchpriority="high"
       />
 
       {/* Overlay */}
@@ -76,7 +77,7 @@ const HeroSection = () => {
               className="bg-white text-gray-900 px-8 py-4 rounded-lg font-bold text-lg hover:bg-gray-100 flex items-center justify-center gap-2"
             >
               <Phone className="h-5 w-5" />
-              +6584 13 0016
+              +65 8413 0016
             </a>
 
             <a
