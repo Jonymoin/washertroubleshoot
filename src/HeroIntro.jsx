@@ -33,7 +33,7 @@ export default function HeroIntro() {
           </p>
         </div>
         <div className="md:hidden">
-            <img src="/wm1.webp" alt="" />
+            <img src="/wm1.webp" alt="washing machine repair singapore" loading="lazy" />
         </div>
         <div className="bg-gray-700 rounded-lg p-6 shadow-lg border-l-4 border-purple-500">
           <Star className="w-8 h-8 text-purple-400 mb-3 mx-auto" />

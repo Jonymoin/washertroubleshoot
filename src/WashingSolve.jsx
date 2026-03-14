@@ -1,11 +1,13 @@
 import React, { useState , useEffect } from 'react';
 import { Phone, MessageCircle, Wrench, Droplets, AlertCircle, Volume2, DoorOpen, Zap, Wind, Power, Code, Hammer, CheckCircle, Clock, Award, DollarSign, MapPin, Mail, ChevronDown, ChevronUp, Menu, X } from 'lucide-react';
 import HeroIntro from './HeroIntro';
+
 import { FaWhatsapp } from 'react-icons/fa';
 import BrandMarquee from './Brands';
 import AboutUs from './AboutUs';
-import HeroSection from './HeroSection';
+
 import WasherTroubleshootBanner from './WasherBanner';
+import HeroSection from './HeroSection';
 
 export default function WasherRepairWebsite() {
   const [activeSection, setActiveSection] = useState('home');
