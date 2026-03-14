@@ -64,11 +64,11 @@ const HeroSection = () => {
       {/* Content */}
       <div className="relative h-full flex items-center justify-center z-10">
         <div className="container mx-auto px-4 text-center text-white">
-          <h1 className="text-5xl md:text-6xl font-bold mb-6">
+          <h1 className="text-4xl md:text-6xl  mb-6 font-bungee">
             {slides[currentSlide].title}
           </h1>
 
-          <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">
+          <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto text-gray-200">
             {slides[currentSlide].subtitle}
           </p>
 
