@@ -6,22 +6,22 @@ const HeroSection = () => {
 
   const slides = [
     {
-      image: '/wt5.webp',
+      image: '/wt1.webp',
       title: 'Expert Washing Machine Repair',
       subtitle: 'Professional technicians ready to fix all brands and models across Singapore'
     },
     {
-      image: '/wt1.webp',
+      image: '/wt2.webp',
       title: 'Same-Day Service Available',
       subtitle: 'Quick response time with emergency repair service - We come to you!'
     },
     {
-      image: '/wt2.webp',
+      image: '/wt3.webp',
       title: 'Affordable & Transparent Pricing',
       subtitle: 'No hidden charges. Free diagnosis with upfront quotation before any work'
     },
     {
-      image: '/wt3.webp',
+      image: '/wt55.webp',
       title: '100% Satisfaction Guaranteed',
       subtitle: 'Quality repairs with warranty. Trusted by thousands of happy customers'
     }
@@ -74,12 +74,12 @@ const HeroSection = () => {
 
           <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
             <a
-              href="tel:+6585301773"
+              href="tel:+6584130016"
               onClick={handleClick}
               className="bg-white text-gray-900 px-8 py-4 rounded-lg font-bold text-lg hover:bg-gray-100 transition-colors flex items-center justify-center space-x-2 shadow-lg"
             >
               <Phone className="h-5 w-5" />
-              <span>+65 8530 1773</span>
+              <span>+6584 13 0016</span>
             </a>
 
             <a

@@ -491,7 +491,7 @@ export default function WasherTroubleshootBanner() {
             style={{ background: "rgba(163,230,53,0.3)" }}
           />
           <a
-            href="https://wa.me/6585301773"
+            href="https://wa.me/6584130016"
             target="_blank"
             rel="noopener noreferrer"
             className="wt-glow-btn relative flex items-center gap-2 text-white font-black uppercase"
@@ -518,7 +518,7 @@ export default function WasherTroubleshootBanner() {
         </div>
 
         <div style={{ fontSize: mobile ? 12 : 13, color: "rgba(255,255,255,0.65)", fontWeight: 700, letterSpacing: 1, fontFamily: "'DM Sans', sans-serif" }}>
-          Call: <span style={{ color: "#a3e635" }}>65 8530 1773</span>
+          Call: <span style={{ color: "#a3e635" }}>65 8413 0016</span>
         </div>
       </div>
     </div>
