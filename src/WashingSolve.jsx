@@ -106,7 +106,7 @@ export default function WasherRepairWebsite() {
            onClick={(e) => {
            e.preventDefault();
            reportConversion(`tel:${phoneNumber}`);}}
-              className="flex-1 bg-amber-500 hover:bg-gray-600 py-3 rounded-lg flex items-center justify-center space-x-2 transition-colors text-white font-semibold"
+              className="flex-1 bg-red-500 hover:bg-gray-600 py-3 rounded-lg flex items-center justify-center space-x-2 transition-colors text-white font-semibold"
   >
     <Phone className="w-4 h-4" />
     <span>Call Now</span>
@@ -143,6 +143,7 @@ export default function WasherRepairWebsite() {
             </div>
       <div className="flex gap-2 items-center">
         <button
+          aria-label="Open menu"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           className="bg-gray-800 hover:bg-blue-600 px-3 py-2 rounded-lg transition-colors sm:hidden"
         >
@@ -156,6 +157,7 @@ export default function WasherRepairWebsite() {
         {['home', 'about', 'services', 'pricing', 'faqs', 'contact'].map(section => (
           <li key={section}>
             <button
+            aria-label="Open menu"
               onClick={() => scrollToSection(section)}
               className="hover:text-yellow-300 transition-colors capitalize font-medium"
             >

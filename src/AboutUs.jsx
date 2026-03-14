@@ -2,12 +2,12 @@ import React from "react";
 
 const AboutUs = () => {
   return (
-    <section className="bg-lime-600 py-12 px-6 md:px-16 lg:px-24">
+    <section className="bg-black py-12 px-6 md:px-16 lg:px-24">
       <div className="max-w-5xl mx-auto text-center">
-        <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-6">
+        <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
           About Us
         </h2>
-        <p className="text-gray-600 mb-4 leading-relaxed">
+        <p className="text-white mb-4 leading-relaxed">
           <strong>LSH ENGINEERING PRIVATE LIMITED</strong> is an{" "}
           <span className="font-medium">Exempt Private Company Limited by Shares</span>,
           registered under the{" "}
@@ -21,7 +21,7 @@ const AboutUs = () => {
           high-quality engineering solutions.
         </p>
 
-        <p className="text-gray-600 mb-4 leading-relaxed">
+        <p className="text-white mb-4 leading-relaxed">
           Our <strong>primary activity</strong> focuses on the{" "}
           <span className="font-medium">
             installation of doors, gates, grilles, and windows
@@ -32,7 +32,7 @@ const AboutUs = () => {
           exceptional workmanship and lasting quality.
         </p>
 
-        <p className="text-gray-600 mb-6 leading-relaxed">
+        <p className="text-white mb-6 leading-relaxed">
           At <strong>LSH ENGINEERING PRIVATE LIMITED</strong>, we are dedicated
           to maintaining professionalism, safety, and customer satisfaction in
           every project we undertake. Our commitment to excellence has earned us
