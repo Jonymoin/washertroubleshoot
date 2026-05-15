@@ -39,18 +39,18 @@ const AboutUs = () => {
           the trust of homeowners, builders, and businesses across Singapore.
         </p>
 
-        <div className="bg-white shadow-md rounded-2xl p-6 mt-8 inline-block text-left">
-          <p className="text-gray-700 mb-2">
+        <div className="bg-gray-900 shadow-md rounded-2xl p-6 mt-8 inline-block text-left">
+          <p className=" mb-2">
             <strong>Company Name:</strong> LSH ENGINEERING PRIVATE LIMITED
           </p>
-          <p className="text-gray-700 mb-2">
+          <p className="mb-2">
             <strong>Registration No. / UEN:</strong> 201916839E
           </p>
-          <p className="text-gray-700 mb-2">
+          <p className=" mb-2">
             <strong>Registered Office:</strong> 707 JURONG WEST STREET 71,
             #06-48, SINGAPORE (640707)
           </p>
-          <p className="text-gray-700">
+          <p className="">
             <strong>Operating Status:</strong> Live (6 Years)
           </p>
         </div>
