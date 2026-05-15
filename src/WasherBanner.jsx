@@ -43,7 +43,7 @@ export default function WasherBanner() {
 
           <h1 className="text-5xl sm:text-7xl font-black tracking-tighter leading-none">
             <span className="text-white drop-shadow-md">Washer</span>
-            <span className="block bg-gradient-to-r from-violet-400 via-fuchsia-400 to-pink-400 bg-clip-text text-transparent">
+            <span className="block bg-gradient-to-r from-emerald-400 via-emerald-600 to-emerald-800 bg-clip-text text-transparent">
               Troubleshoot
             </span>
           </h1>
@@ -64,7 +64,7 @@ export default function WasherBanner() {
               href="https://wa.me/6584130016"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full sm:w-auto bg-gradient-to-r from-violet-500 to-fuchsia-500 text-white font-black uppercase px-8 py-3.5 rounded-full text-sm tracking-widest shadow-lg shadow-violet-500/30 hover:scale-105 transition-transform text-center no-underline"
+              className="w-full sm:w-auto bg-gradient-to-r from-emerald-500 to-emerald-800 text-white font-black uppercase px-8 py-3.5 rounded-full text-sm tracking-widest shadow-lg shadow-violet-500/30 hover:scale-105 transition-transform text-center no-underline"
             >
               Book a Repair
             </a>
@@ -82,14 +82,14 @@ export default function WasherBanner() {
           <div className="w-52 h-60 bg-gradient-to-br from-violet-100 via-fuchsia-50 to-purple-100 rounded-[2.5rem] border-4 border-fuchsia-300/60 shadow-2xl relative overflow-hidden">
 
             {/* Top */}
-            <div className="h-10 bg-gradient-to-r from-violet-800 to-fuchsia-700 flex items-center justify-end gap-1.5 px-4">
+            <div className="h-10 bg-gradient-to-r from-violet-800 to-emerald-700 flex items-center justify-end gap-1.5 px-4">
               <div className="w-2 h-2 bg-red-400 rounded-full" />
               <div className="w-2 h-2 bg-yellow-400 rounded-full animate-pulse" />
               <div className="w-2 h-2 bg-emerald-400 rounded-full" />
             </div>
 
             {/* Door */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 rounded-full border-[6px] border-fuchsia-400 bg-gradient-to-tr from-violet-700 via-fuchsia-500 to-pink-300 shadow-inner flex items-center justify-center">
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 rounded-full border-[6px] border-gray-400 bg-gradient-to-tr from-emerald-700 via-slate-500 to-pink-300 shadow-inner flex items-center justify-center">
               <div className="w-full h-full rounded-full opacity-20 relative animate-spin [animation-duration:3s]">
                 <div className="absolute top-0 left-1/2 w-1 h-full bg-white/60" />
                 <div className="absolute left-0 top-1/2 w-full h-1 bg-white/60" />
@@ -101,7 +101,7 @@ export default function WasherBanner() {
               {[1, 2, 3].map((i) => (
                 <div
                   key={i}
-                  className="w-6 h-6 rounded-full bg-gradient-to-br from-violet-500 to-fuchsia-700 border-2 border-white/30 shadow-md"
+                  className="w-6 h-6 rounded-full bg-gradient-to-br from-violet-500 to-emerald-700 border-2 border-white/30 shadow-md"
                 />
               ))}
             </div>
@@ -115,7 +115,7 @@ export default function WasherBanner() {
 
           {/* Drip */}
           <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 flex gap-4">
-            <div className="w-1.5 h-3 bg-fuchsia-400 rounded-full animate-bounce [animation-delay:.1s]" />
+            <div className="w-1.5 h-3 bg-emerald-400 rounded-full animate-bounce [animation-delay:.1s]" />
             <div className="w-1.5 h-3 bg-violet-400 rounded-full animate-bounce [animation-delay:.3s]" />
             <div className="w-1.5 h-3 bg-pink-300 rounded-full animate-bounce [animation-delay:.5s]" />
           </div>
