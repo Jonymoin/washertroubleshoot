@@ -8,6 +8,7 @@ import AboutUs from './AboutUs';
 
 import WasherTroubleshootBanner from './WasherBanner';
 import HeroSection from './HeroSection';
+import Problems from './Problems';
 
 export default function WasherRepairWebsite() {
   const [activeSection, setActiveSection] = useState('home');
@@ -195,6 +196,9 @@ export default function WasherRepairWebsite() {
       </section>
       <section>
         <WasherTroubleshootBanner />
+      </section>
+      <section>
+        <Problems />
       </section>
         <HeroIntro />
         {/* Why Choose Us */}
