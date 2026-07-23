@@ -7,10 +7,13 @@ export function Footer() {
     <footer className="mt-24 border-t border-border/60 bg-black text-white">
       <div className="mx-auto grid max-w-7xl gap-10 px-4 py-14 lg:grid-cols-4 lg:px-8">
         <div>
-          <div className="flex items-center gap-2 font-display text-lg font-bold">
-            <span className="grid h-9 w-9 place-items-center rounded-lg bg-brand text-brand-foreground">W</span>
-            <span>WasherTroubleShootSG</span>
-          </div>
+          <div className="grid h-9 w-9 place-items-center rounded-lg bg-brand p-1">
+  <img
+    src="/images/logo101.webp"
+    alt="WasherTroubleShootSG Logo"
+    className="h-full w-full object-contain"
+  />
+</div>
           <p className="mt-4 text-sm text-white/70">
             Singapore's trusted washing machine repair specialists. Fast, affordable, same-day service — 7 days a week.
           </p>

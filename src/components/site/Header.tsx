@@ -20,12 +20,19 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/60 bg-background/80 backdrop-blur-md">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 lg:px-8">
-        <Link to="/" className="flex items-center gap-2 font-display text-lg font-bold">
-          <span className="grid h-9 w-9 place-items-center rounded-lg bg-brand text-brand-foreground">W</span>
-          <span>
-            Washer<span className="text-gradient-green">TroubleShoot</span>SG
-          </span>
-        </Link>
+       <Link to="/" className="flex items-center gap-2 font-display text-lg font-bold">
+  <div className="grid h-9 w-9 place-items-center overflow-hidden rounded-lg">
+    <img
+      src="/images/logo101.webp"
+      alt="WasherTroubleShootSG Logo"
+      className="h-full w-full object-contain"
+    />
+  </div>
+
+  <span>
+    Washer<span className="text-gradient-green">TroubleShoot</span>SG
+  </span>
+</Link>
 
         <nav className="hidden items-center gap-1 lg:flex">
           {NAV.map((n) => (
