@@ -2,42 +2,42 @@ export const SERVICES = [
   {
     title: "Front Load Washer Repair",
     desc: "Full diagnosis and repair for all front-loading washing machines — door seals, drums, bearings and electronics.",
-    image: "/images/ws1.jpg",
+    image: "/images/ws9.webp",
   },
   {
     title: "Top Load Washer Repair",
     desc: "Agitator, motor coupling, transmission and lid-switch repairs for top-loading washers.",
-    image: "/images/ws2.jpg",
+    image: "/images/ws2.webp",
   },
   {
     title: "Drainage Issue Solution",
     desc: "Drainage issue got your washer acting up! No worries",
-    image: "/images/ws3.jpg",
+    image: "/images/ws3.webp",
   },
   {
     title: "Semi-Automatic Repair",
     desc: "Timers, wash motors, spin motors and plumbing for semi-automatic machines.",
-    image: "/images/ws4.jpg",
+    image: "/images/ws4.webp",
   },
   {
     title: "Water Leak Diagnosis",
     desc: "Fast leak source identification — hoses, pumps, tubs and door boots.",
-    image: "/images/ws5.jpg",
+    image: "/images/ws5.webp",
   },
   {
     title: "Not Spinning / Draining",
     desc: "Drain pump, belt, motor and control board repairs to get your machine spinning again.",
-    image: "/images/ws6.jpg",
+    image: "/images/ws6.webp",
   },
   {
     title: "Error Code on Machine Repair",
     desc: "Showing error code on display, we solve it all",
-    image: "/images/ws7.jpg",
+    image: "/images/ws7.webp",
   },
   {
     title: "Electrical / PCB Repair",
     desc: "Control board diagnostics, sensor replacement and wiring repair by certified technicians.",
-    image: "/images/ws8.jpg",
+    image: "/images/ws8.webp",
   },
 ];
 

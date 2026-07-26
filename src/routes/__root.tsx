@@ -105,7 +105,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "@context": "https://schema.org",
           "@type": "LocalBusiness",
           name: "WasherTroubleShootSG",
-          image: "/images/ws1.jpg",
+          image: "/images/ws1.webp",
           telephone: "+6584130016",
           email: "washertroubleshootsg@gmail.com",
           areaServed: "Singapore",
