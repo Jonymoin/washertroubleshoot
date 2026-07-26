@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/site/Layout";
 import { trackConversion } from "@/lib/track";
 import {
-  Phone, MessageCircle, ShieldCheck, Clock, Wrench, Star, MapPin, ArrowRight, CheckCircle2,
+  Phone,Mail, MessageCircle, ShieldCheck, Clock, Wrench, Star, MapPin, ArrowRight, CheckCircle2,
 } from "lucide-react";
 import { SERVICES, WHY_US, BRANDS, REVIEWS, AREAS, FAQS } from "@/components/site/data";
 
@@ -128,13 +128,17 @@ function WhyUs() {
       <SectionHead eyebrow="Why Choose Us" title="Repairs done right — the first time" gradientWord="right" sub="We're specialists, not generalists. Every technician is trained specifically on washing machine electronics and mechanics." />
       <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {WHY_US.map((w) => (
-          <div key={w.title} className="group relative overflow-hidden rounded-2xl border border-border bg-card p-6 transition hover:border-brand/50 hover:shadow-xl hover:shadow-brand/10">
-            <div className="mb-4 grid h-11 w-11 place-items-center rounded-xl bg-brand/10 text-brand">
-              <CheckCircle2 className="h-5 w-5" />
-            </div>
-            <h3 className="font-display text-lg font-semibold">{w.title}</h3>
-            <p className="mt-2 text-sm text-muted-foreground">{w.desc}</p>
-          </div>
+         <div
+  key={w.title}
+  className="group relative overflow-hidden rounded-2xl border border-border bg-card p-6 shadow-[0_0_30px_rgba(34,197,94,0.65)] transition hover:border-brand/50 hover:shadow-xl hover:shadow-brand/10"
+>
+  <div className="mb-4 grid h-11 w-11 place-items-center rounded-xl bg-brand/10 text-brand">
+    <CheckCircle2 className="h-5 w-5" />
+  </div>
+
+  <h3 className="font-display text-lg font-semibold">{w.title}</h3>
+  <p className="mt-2 text-sm text-muted-foreground">{w.desc}</p>
+</div>
         ))}
       </div>
     </section>
@@ -179,7 +183,7 @@ function BrandsStrip() {
       <SectionHead eyebrow="Brands We Repair" title="Every major washing machine brand" gradientWord="major" />
       <div className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
         {BRANDS.slice(0, 12).map((b) => (
-          <div key={b} className="rounded-xl border border-border bg-card px-4 py-5 text-center text-sm font-semibold transition hover:border-brand/50 hover:text-brand">
+          <div key={b} className="rounded-xl border border-border bg-green-500 px-4 py-5 text-center text-sm font-semibold transition hover:border-brand/50 hover:text-brand shadow-2xl shadow-blue-700">
             {b}
           </div>
         ))}
@@ -316,7 +320,7 @@ function ContactBlock() {
           <div className="mt-1 text-sm text-muted-foreground">+65 8413 0016</div>
         </a>
         <a href="mailto:washertroubleshootsg@gmail.com" onClick={() => trackConversion("contact_block_email")} className="group rounded-2xl border border-border bg-card p-6 text-center transition hover:border-brand/50 hover:shadow-xl">
-          <MapPin className="mx-auto h-6 w-6 text-brand" />
+          <Mail className="mx-auto h-6 w-6 text-brand" />
           <div className="mt-3 font-semibold">Email</div>
           <div className="mt-1 break-all text-sm text-muted-foreground">washertroubleshootsg@gmail.com</div>
         </a>

@@ -28,7 +28,7 @@ function Page() {
       <section className="mx-auto max-w-7xl px-4 py-16 lg:px-8">
         <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4">
           {BRANDS.map((b) => (
-            <div key={b} className="rounded-2xl border border-border bg-card p-6 text-center font-display text-lg font-semibold transition hover:border-brand/50 hover:text-brand">
+            <div key={b} className="rounded-2xl border border-border p-6 text-center font-display text-lg font-semibold transitio bg-green-500 hover:border-brand/50 hover:text-white">
               {b}
             </div>
           ))}

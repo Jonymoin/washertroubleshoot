@@ -10,8 +10,8 @@ export const SERVICES = [
     image: "/images/ws2.jpg",
   },
   {
-    title: "Washer Dryer Combo Repair",
-    desc: "Combo units diagnosed and fixed — heating elements, thermostats, vents and motors.",
+    title: "Drainage Issue Solution",
+    desc: "Drainage issue got your washer acting up! No worries",
     image: "/images/ws3.jpg",
   },
   {
@@ -30,8 +30,8 @@ export const SERVICES = [
     image: "/images/ws6.jpg",
   },
   {
-    title: "Noisy Machine Repair",
-    desc: "Bearing replacements, drum spider fixes and suspension repairs for smoother, quieter cycles.",
+    title: "Error Code on Machine Repair",
+    desc: "Showing error code on display, we solve it all",
     image: "/images/ws7.jpg",
   },
   {
