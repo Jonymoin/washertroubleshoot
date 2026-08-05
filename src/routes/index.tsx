@@ -82,7 +82,8 @@ function Hero() {
         </div>
         <div className="relative">
           <div className="relative aspect-[4/3] overflow-hidden rounded-3xl border border-border shadow-2xl">
-            <img src="/images/ws1.webp" alt="Washing machine repair technician in Singapore" className="h-full w-full object-cover" loading="eager" />
+            <img src="/images/ws1.webp" alt="Washing machine repair technician in Singapore" className="h-full w-full object-cover" loading="eager" fetchPriority="high"
+  decoding="async" />
             <div className="absolute inset-0 bg-gradient-to-tr from-black/40 via-transparent to-transparent" />
             <div className="glass-dark absolute bottom-4 left-4 right-4 flex items-center gap-3 rounded-2xl p-4 text-white">
               <div className="grid h-12 w-12 place-items-center rounded-full bg-brand text-brand-foreground">

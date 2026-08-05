@@ -84,6 +84,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [
+      {
+    rel: "preload",
+    as: "image",
+    href: "/images/ws1.webp",
+    fetchPriority: "high",
+  },
       { rel: "stylesheet", href: appCss },
       { rel: "icon", href: "/favicon1.png", type: "image/x-icon" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
