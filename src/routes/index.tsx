@@ -85,15 +85,20 @@ function Hero() {
             <img src="/images/ws1.webp" alt="Washing machine repair technician in Singapore" className="h-full w-full object-cover" loading="eager" fetchPriority="high"
                     decoding="async"  width="800" height="600" />
             <div className="absolute inset-0 bg-gradient-to-tr from-black/40 via-transparent to-transparent" />
-            <div className="absolute bottom-4 left-4 right-4 rounded-2xl bg-black/70 p-4 text-white">
-              <div className="grid h-12 w-12 place-items-center rounded-full bg-brand text-brand-foreground">
-                <Clock className="h-5 w-5" />
-              </div>
-              <div>
-                <div className="text-sm font-semibold">Same-Day Response</div>
-                <div className="text-xs text-white/80">Most repairs completed on the first visit</div>
-              </div>
-            </div>
+            <div className="absolute bottom-4 left-4 right-4 min-h-[88px] rounded-2xl bg-black/70 p-4 text-white">
+  <div className="flex items-center gap-3">
+    <div className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-brand text-brand-foreground">
+      <Clock className="h-5 w-5" />
+    </div>
+
+    <div>
+      <div className="text-sm font-semibold">Same-Day Response</div>
+      <div className="text-xs text-white/80">
+        Most repairs completed on the first visit
+      </div>
+    </div>
+  </div>
+</div>
           </div>
           <div className="animate-float glass absolute -bottom-6 -left-6 hidden rounded-2xl p-4 sm:block glow-ring">
             <div className="flex items-center gap-2 text-sm font-semibold">
