@@ -90,6 +90,27 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     href: "/images/ws1.webp",
     fetchPriority: "high",
   },
+  {
+  rel: "preload",
+  href: "/fonts/inter-v20-latin-400.woff2",
+  as: "font",
+  type: "font/woff2",
+  crossOrigin: "anonymous",
+},
+{
+  rel: "preload",
+  href: "/fonts/inter-v20-latin-600.woff2",
+  as: "font",
+  type: "font/woff2",
+  crossOrigin: "anonymous",
+},
+{
+  rel: "preload",
+  href: "/fonts/space-grotesk-v22-latin-700.woff2",
+  as: "font",
+  type: "font/woff2",
+  crossOrigin: "anonymous",
+},
       { rel: "stylesheet", href: appCss },
       { rel: "icon", href: "/favicon1.png", type: "image/x-icon" },
      
