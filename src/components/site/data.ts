@@ -35,23 +35,29 @@ export const SERVICES = [
     image: "/images/ws7.webp",
   },
   {
-    title: "Electrical / PCB Repair",
-    desc: "Control board diagnostics, sensor replacement and wiring repair by certified technicians.",
+    title: "Door Lock Repair",
+    desc: "Faulty door lock, latch or PCB — safely unlocked and replaced.",
     image: "/images/ws8.webp",
   },
 ];
 
 export const PROBLEMS = [
-  { title: "Washer Won't Turn On", desc: "Power supply, door interlock, thermal fuse and main control board diagnostics." },
-  { title: "Not Draining Water", desc: "Blocked drain pump, clogged filter or faulty pressure switch — we clear and replace." },
-  { title: "Not Spinning", desc: "Broken belt, worn motor coupling, faulty lid switch or control board issues." },
-  { title: "Leaking Water", desc: "Damaged hoses, door seal, tub gasket or pump — full leak-source diagnosis." },
+    { title: "Not Draining Water", desc: "Blocked drain pump, clogged filter or faulty pressure switch — we clear and replace." },
+    { title: "Door Won't Open", desc: "Faulty door lock, latch or PCB — safely unlocked and replaced." },
+    { title: "Error Code on Display", desc: "We decode error codes from all major brands and fix the underlying fault." },
+    { title: "Not Filling With Water", desc: "Water inlet valve, water pressure, hoses and electronic timer troubleshooting." },
+    { title: "Leaking Water", desc: "Damaged hoses, door seal, tub gasket or pump — full leak-source diagnosis." },
+    { title: "Not Spinning", desc: "Broken belt, worn motor coupling, faulty lid switch or control board issues." },
+
+ {
+    title: "Machine Stops Mid-Cycle",desc: "Interrupted wash cycles caused by faulty sensors, overheating, PCB faults or power supply issues."
+ },  
   { title: "Making Loud Noise", desc: "Worn drum bearings, loose drum spider or foreign objects lodged in the tub." },
-  { title: "Not Filling With Water", desc: "Water inlet valve, water pressure, hoses and electronic timer troubleshooting." },
-  { title: "Error Code on Display", desc: "We decode error codes from all major brands and fix the underlying fault." },
   { title: "Vibrating / Shaking", desc: "Shock absorbers, springs, drum balance and level adjustment." },
-  { title: "Bad Smell From Drum", desc: "Deep clean, mold removal and door boot treatment for fresh laundry." },
-  { title: "Door Won't Open", desc: "Faulty door lock, latch or PCB — safely unlocked and replaced." },
+  {
+    title: "Excessive Foam / Overflow",
+    desc: "Overflowing water or excessive suds caused by faulty pressure sensors, inlet valves or incorrect detergent use."
+  },
 ];
 
 export const BRANDS = [
