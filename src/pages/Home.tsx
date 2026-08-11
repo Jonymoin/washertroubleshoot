@@ -34,7 +34,7 @@ export default function Home() {
       <section className="relative pt-12 pb-20 md:pt-20 md:pb-32 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img 
-            src="/hero-laundry.png" 
+            src="/hero-laundry.webp" 
             alt="Clean laundry room" 
             className="w-full h-full object-cover"
           />
