@@ -2,6 +2,8 @@ import { motion } from "framer-motion";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { trackConversion } from "@/lib/track";
+
 import { 
   Wrench, 
   Clock, 
@@ -261,7 +263,8 @@ export default function Home() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button size="lg" className="text-lg px-8 py-6 rounded-full bg-accent hover:bg-accent/90 text-accent-foreground shadow-xl border-none" asChild>
-              <a href="https://wa.me/6584130016" target="_blank" rel="noopener noreferrer">
+              <a href="https://wa.me/6584130016"   onClick={() => trackConversion("whatsapp_click")}
+ target="_blank" rel="noopener noreferrer">
                 WhatsApp +65 8413 0016
               </a>
             </Button>

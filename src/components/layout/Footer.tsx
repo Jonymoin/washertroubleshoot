@@ -1,5 +1,6 @@
 import { Link } from "wouter";
 import { Wrench, PhoneCall, Mail, MapPin, MessageCircle, Clock } from "lucide-react";
+import { trackConversion } from "@/lib/track";
 
 export default function Footer() {
   return (
@@ -64,7 +65,8 @@ export default function Footer() {
                 <MessageCircle className="w-5 h-5 text-accent shrink-0 mt-0.5" />
                 <div>
                   <span className="block text-white">WhatsApp</span>
-                  <a href="https://wa.me/6584130016" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors">+65 8413 0016</a>
+                  <a href="https://wa.me/6584130016" target="_blank" rel="noopener noreferrer"   onClick={() => trackConversion("whatsapp_click")}
+                    className="hover:text-accent transition-colors">+65 8413 0016</a>
                 </div>
               </li>
               <li className="flex items-start gap-3">

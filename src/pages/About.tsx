@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Shield, Award, Users, HeartHandshake } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
+import { trackConversion } from "@/lib/track";
 
 export default function About() {
   return (
@@ -144,7 +145,8 @@ export default function About() {
             Don't let laundry pile up. Contact our friendly team today and we'll have your machine running smoothly in no time.
           </p>
           <Button size="lg" className="rounded-full px-8 py-6 text-lg" asChild>
-            <Link href="/contact">Contact Us Today</Link>
+            <Link href="/contact"   onClick={() => trackConversion("contact_click")}
+>Contact Us Today</Link>
           </Button>
         </div>
       </section>
