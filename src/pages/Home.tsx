@@ -33,11 +33,15 @@ export default function Home() {
       {/* Hero Section */}
       <section className="relative pt-12 pb-20 md:pt-20 md:pb-32 overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <img 
-            src="/hero-laundry.webp" 
-            alt="Clean laundry room" 
-            className="w-full h-full object-cover"
-          />
+          <img
+  src="/hero-laundry.webp"
+  alt="Clean laundry room"
+  width="1200"
+  height="800"
+  fetchPriority="high"
+  decoding="async"
+  className="w-full h-full object-cover"
+/>
           <div className="absolute inset-0 bg-gradient-to-r from-slate-900/90 via-slate-900/70 to-slate-900/20"></div>
         </div>
         
@@ -261,7 +265,7 @@ export default function Home() {
                 WhatsApp +65 8413 0016
               </a>
             </Button>
-            <Button size="lg" variant="outline" className="text-lg px-8 py-6 rounded-full bg-transparent hover:bg-white/10 text-white border-white border-2" asChild>
+            <Button size="lg" variant="outline" className="text-lg px-8 py-6 rounded-full bg-red-500 hover:bg-white/10 text-white border-white border-2" asChild>
               <Link href="/contact">View Service Areas</Link>
             </Button>
           </div>
