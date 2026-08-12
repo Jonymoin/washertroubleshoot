@@ -1,48 +1,25 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Wrench, Droplets, AlertTriangle, Disc, DoorOpen, Settings, CheckCircle2 } from "lucide-react";
+import { Wrench, Droplets, AlertTriangle, Disc, DoorOpen, Settings } from "lucide-react";
 import { Link } from "wouter";
 import { trackConversion } from "@/lib/track";
+import { brands, problems } from "./repair-data";
 
-
-const problems = [
-  {
-    icon: <Droplets className="w-8 h-8 text-primary" />,
-    title: "Not Draining or Leaking",
-    desc: "Water left in the drum after a cycle or leaking onto the floor. Often caused by clogged pump filters, faulty drain pumps, or broken door seals."
-  },
-  {
-    icon: <Disc className="w-8 h-8 text-primary" />,
-    title: "Not Spinning",
-    desc: "Clothes come out soaking wet. This could be due to a broken drive belt, worn-out motor carbon brushes, or an unbalanced load sensor issue."
-  },
-  {
-    icon: <AlertTriangle className="w-8 h-8 text-primary" />,
-    title: "Strange Noises",
-    desc: "Loud banging, grinding, or screeching sounds during the wash or spin cycle. Usually indicates worn drum bearings or foreign objects trapped in the drum."
-  },
-  {
-    icon: <Settings className="w-8 h-8 text-primary" />,
-    title: "Error Codes",
-    desc: "Flashing lights or error codes on the display panel. We can decipher what these codes mean for all major brands and fix the underlying issue."
-  },
-  {
-    icon: <DoorOpen className="w-8 h-8 text-primary" />,
-    title: "Door Won't Open",
-    desc: "The cycle has finished but the door remains locked. This is typically a faulty door interlock mechanism or a control board issue."
-  },
-  {
-    icon: <Wrench className="w-8 h-8 text-primary" />,
-    title: "No Power / Won't Start",
-    desc: "The machine is completely dead or refuses to start a cycle. Could be an issue with the main control module, power cable, or door switch."
-  }
+const problemIcons = [Droplets, Disc, AlertTriangle, Settings, DoorOpen, Wrench];
+const problemStyles = [
+  "from-cyan-50 to-white border-cyan-100",
+  "from-blue-50 to-white border-blue-100",
+  "from-violet-50 to-white border-violet-100",
+  "from-amber-50 to-white border-amber-100",
+  "from-rose-50 to-white border-rose-100",
+  "from-emerald-50 to-white border-emerald-100",
 ];
-
-const brands = [
-  "Samsung", "LG", "Bosch", "Panasonic", "Toshiba", 
-  "Electrolux", "Hitachi", "Whirlpool", "Sharp", "Mitsubishi",
-  "Miele", "Fisher & Paykel"
+const brandStyles = [
+  "bg-cyan-50 border-cyan-100 hover:border-cyan-400 hover:text-cyan-700",
+  "bg-blue-50 border-blue-100 hover:border-blue-400 hover:text-blue-700",
+  "bg-violet-50 border-violet-100 hover:border-violet-400 hover:text-violet-700",
+  "bg-amber-50 border-amber-100 hover:border-amber-400 hover:text-amber-700",
 ];
 
 export default function Services() {
@@ -75,30 +52,36 @@ export default function Services() {
           <div className="text-center mb-16">
             <h2 className="text-3xl font-bold text-slate-900 mb-4">Common Problems We Fix</h2>
             <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-              If your washing machine is exhibiting any of these symptoms, it's time to call in the experts before the problem gets worse.
+              Choose the symptom that matches your washer and get practical guidance from our repair team.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {problems.map((prob, idx) => (
+            {problems.map((prob, idx) => {
+              const Icon = problemIcons[idx % problemIcons.length];
+              return (
               <motion.div
-                key={idx}
+                key={prob.slug}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.1 }}
               >
-                <Card className="h-full border-none shadow-md hover:shadow-lg transition-shadow bg-white">
-                  <CardContent className="p-8">
-                    <div className="mb-6 bg-slate-50 w-16 h-16 rounded-full flex items-center justify-center">
-                      {prob.icon}
-                    </div>
-                    <h3 className="text-xl font-bold text-slate-900 mb-3">{prob.title}</h3>
-                    <p className="text-slate-600 leading-relaxed">{prob.desc}</p>
-                  </CardContent>
-                </Card>
+                <Link href={`/problems/${prob.slug}`} className="group block h-full">
+                  <Card className={`h-full border bg-gradient-to-br ${problemStyles[idx % problemStyles.length]} shadow-sm hover:-translate-y-1 hover:shadow-lg transition-all`}>
+                    <CardContent className="p-8">
+                      <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-white shadow-sm ring-1 ring-slate-100">
+                        <Icon className="h-8 w-8 text-primary transition-transform group-hover:scale-110" />
+                      </div>
+                      <h3 className="mb-3 text-xl font-bold text-slate-900 group-hover:text-primary">{prob.name}</h3>
+                      <p className="leading-relaxed text-slate-600">{prob.intro}</p>
+                      <span className="mt-5 inline-flex items-center text-sm font-bold text-primary">View repair guide <span className="ml-2 transition-transform group-hover:translate-x-1">→</span></span>
+                    </CardContent>
+                  </Card>
+                </Link>
               </motion.div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
@@ -119,15 +102,21 @@ export default function Services() {
             
             <div className="lg:w-2/3 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 w-full">
               {brands.map((brand, idx) => (
-                <motion.div 
-                  key={idx}
+                <motion.div
+                  key={brand.slug}
                   initial={{ opacity: 0, scale: 0.9 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
                   transition={{ delay: idx * 0.05 }}
-                  className="bg-slate-50 border border-slate-100 rounded-xl p-4 text-center font-semibold text-slate-700 flex items-center justify-center h-20"
+                  
                 >
-                  {brand}
+                  <Link
+                    href={`/brands/${brand.slug}`}
+                    className={`group flex h-20 items-center justify-center rounded-xl border p-4 text-center font-semibold text-slate-700 transition-all hover:-translate-y-0.5 hover:shadow-md ${brandStyles[idx % brandStyles.length]}`}
+                  >
+                    {brand.name}
+                    <span className="ml-2 text-primary opacity-0 transition-opacity group-hover:opacity-100">→</span>
+                  </Link>
                 </motion.div>
               ))}
             </div>
@@ -156,21 +145,21 @@ export default function Services() {
                 { step: "3", title: "Diagnosis", desc: "We'll inspect the machine and provide a transparent quote." },
                 { step: "4", title: "Repair", desc: "Once approved, we fix the issue right then and there." }
               ].map((item, idx) => (
-                <div key={idx} className="flex flex-col items-center text-center bg-white md:bg-transparent p-6 md:p-0 rounded-xl md:rounded-none shadow-sm md:shadow-none relative">
-                  <div className="w-16 h-16 rounded-full bg-primary text-white flex items-center justify-center text-2xl font-bold mb-4 shadow-lg ring-4 ring-white border-2 border-primary-foreground">
+                <div key={idx} className="flex flex-col items-center text-center bg-yellow-500 md:bg-transparent p-6 md:p-0 rounded-xl md:rounded-none shadow-sm md:shadow-none relative">
+                  <div className="w-16 h-16 rounded-full bg-green-500 text-white flex items-center justify-center text-2xl font-bold mb-4 shadow-lg ring-4 ring-white border-2 border-primary-foreground">
                     {item.step}
                   </div>
                   <h3 className="text-xl font-bold text-slate-900 mb-2">{item.title}</h3>
                   <p className="text-slate-600 text-sm">{item.desc}</p>
                 </div>
-              ))}
+              ))}  
             </div>
           </div>
           
           <div className="mt-16 text-center">
             <Button size="lg" className="rounded-full px-8 py-6 text-lg bg-accent hover:bg-accent/90 text-accent-foreground" asChild>
               <a href="https://wa.me/6584130016"   onClick={() => trackConversion("whatsapp_click")}
- target="_blank" rel="noopener noreferrer">
+               target="_blank" rel="noopener noreferrer">
                 Book a Repair Now
               </a>
             </Button>

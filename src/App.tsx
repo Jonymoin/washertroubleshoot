@@ -13,6 +13,8 @@ import Blog from "./pages/Blog";
 import NotFound from "@/pages/not-found";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsAndCondition from "./pages/TermsAndCondition";
+import RepairDetail from "./pages/RepairDetail";
+import { brands, problems } from "./pages/repair-data";
 
 const queryClient = new QueryClient();
 
@@ -43,6 +45,16 @@ function Router() {
         <Route path="/blog" component={Blog} />
         <Route path="/privacy-policy" component={PrivacyPolicy} />
         <Route path="/terms&condition" component={TermsAndCondition} />
+        {brands.map((brand) => (
+          <Route key={brand.slug} path={`/brands/${brand.slug}`}>
+            <RepairDetail entry={brand} kind="brand" />
+          </Route>
+        ))}
+        {problems.map((problem) => (
+          <Route key={problem.slug} path={`/problems/${problem.slug}`}>
+            <RepairDetail entry={problem} kind="problem" />
+          </Route>
+        ))}
         <Route component={NotFound} />
       </Switch>
     </>

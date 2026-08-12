@@ -234,7 +234,7 @@ export default function Contact() {
                         )}
                       />
 
-                      <Button type="submit" size="lg" className="w-full text-base py-6">
+                      <Button type="submit" size="lg" className="w-full text-base bg-green-500 py-6">
                         Submit Inquiry
                       </Button>
                     </form>

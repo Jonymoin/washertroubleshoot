@@ -5,14 +5,16 @@ import { Card, CardContent } from "@/components/ui/card";
 import { trackConversion } from "@/lib/track";
 
 import { 
-  Wrench, 
+   
   Clock, 
   ShieldCheck, 
   ThumbsUp, 
   CheckCircle2, 
   PhoneCall, 
-  Star 
+  Star,
+  MapPin
 } from "lucide-react";
+import { brands, problems } from "./repair-data";
 
 const fadeIn = {
   hidden: { opacity: 0, y: 20 },
@@ -68,12 +70,12 @@ export default function Home() {
               
               <motion.div variants={fadeIn} className="flex flex-col sm:flex-row gap-4">
                 <Button size="lg" className="text-lg px-8 py-6 rounded-full hover:bg-accent/90 text-accent-foreground shadow-lg bg-[#00ff04e0]" asChild>
-                  <a href="https://wa.me/6584130016" target="_blank" rel="noopener noreferrer">
+                  <a href="https://wa.me/6584130016" target="_blank" rel="noopener noreferrer" onClick={() => trackConversion("whatsapp_click")}>
                     WhatsApp Us Now
                   </a>
                 </Button>
                 <Button size="lg" variant="outline" className="text-lg px-8 py-6 rounded-full bg-white/10 hover:bg-white/20 text-white border-white/30 backdrop-blur-sm" asChild>
-                  <a href="tel:+6584130016">
+                  <a href="tel:+6584130016" onClick={() => trackConversion("call_click")}>
                     <PhoneCall className="mr-2 h-5 w-5" />
                     +65 8413 0016
                   </a>
@@ -169,34 +171,69 @@ export default function Home() {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">We Fix All Common Washer Problems</h2>
+              <p className="text-sm font-bold uppercase tracking-[0.15em] text-primary mb-3">Islandwide coverage</p>
+              <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">Washing Machine Repair Across Singapore</h2>
               <p className="text-lg text-slate-600 mb-8">
-                From strange noises to mysterious leaks, our experts have seen it all. Don't replace an expensive machine when a simple repair will make it run like new.
+                Our technicians provide convenient in-home washing machine repair across Singapore. Tell us your location and washer problem, and we will arrange a suitable visit.
               </p>
               
-              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-8">
                 {[
-                  "Washer not draining water",
-                  "Drum not spinning",
-                  "Loud banging or vibrating",
-                  "Leaking from bottom or door",
-                  "Machine won't turn on",
-                  "Error codes on display"
-                ].map((item, i) => (
-                  <li key={i} className="flex items-center gap-3 text-slate-700 font-medium">
-                    <div className="bg-green-100 p-1 rounded-full">
-                      <CheckCircle2 className="w-4 h-4 text-green-600" />
-                    </div>
-                    {item}
-                  </li>
+                  "Tampines", "Bedok", "Pasir Ris", "Punggol", "Sengkang", "Hougang",
+                  "Ang Mo Kio", "Bishan", "Toa Payoh", "Serangoon", "Yishun", "Woodlands",
+                  "Bukit Batok", "Jurong East", "Clementi", "Queenstown", "Bukit Merah", "Orchard"
+                ].map((area) => (
+                  <div key={area} className="flex items-center gap-2 rounded-lg border border-primary/10 bg-primary/5 px-3 py-2.5 text-sm font-semibold text-slate-700">
+                    <MapPin className="h-4 w-4 shrink-0 text-primary" />
+                    {area}
+                  </div>
                 ))}
-              </ul>
+              </div>
               
               <Button size="lg" className="rounded-full" asChild>
-                <Link href="/services">View All Our Services</Link>
+                <Link href="/contact">Book Service in Your Area</Link>
               </Button>
             </motion.div>
           </div>
+        </div>
+      </section>
+
+      <section className="py-20 bg-slate-50 border-y border-slate-200">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5 mb-10">
+            <div>
+              <p className="text-sm font-bold uppercase tracking-[0.15em] text-primary mb-3">Brands we know</p>
+              <h2 className="text-3xl md:text-4xl font-bold text-slate-900">Brands We Service</h2>
+              <p className="text-lg text-slate-600 mt-3 max-w-2xl">From everyday front-loaders to premium models, our technicians repair the brands found in Singapore homes.</p>
+            </div>
+            <Link href="/services" className="inline-flex items-center gap-2 text-primary font-semibold hover:underline">View all services <span aria-hidden="true">→</span></Link>
+          </div>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
+            {brands.map((brand) => (
+              <Link key={brand.slug} href={`/brands/${brand.slug}`} className="bg-gradient-to-br from-[#071521] to-[#1769E0] border border-slate-200 rounded-xl px-4 py-5 text-center font-bold text-white hover:border-primary hover:text-primary hover:shadow-2xl hover:bg-black transition-all">
+                {brand.name}
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="text-center max-w-3xl mx-auto mb-12">
+            <p className="text-sm font-bold uppercase tracking-[0.15em] text-primary mb-3">Need a quick answer?</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Problems We Solve</h2>
+            <p className="text-lg text-slate-600">Find practical next steps for the symptom you are seeing, then book a technician if it is not safe or simple to resolve.</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-5xl mx-auto">
+            {problems.slice(0, 10).map((problem) => (
+              <Link key={problem.slug} href={`/problems/${problem.slug}`} className="group flex items-center justify-between gap-4 rounded-xl border border-slate-200 bg-slate-50 p-5 hover:border-primary hover:bg-primary/5 transition-colors">
+                <span className="font-semibold text-slate-800 group-hover:text-primary">{problem.name}</span>
+                <span aria-hidden="true" className="text-primary text-xl">→</span>
+              </Link>
+            ))}
+          </div>
+          <div className="text-center mt-8"><Link href="/services" className="text-primary font-semibold hover:underline">See every problem we repair</Link></div>
         </div>
       </section>
 

@@ -1,6 +1,7 @@
 import { Link } from "wouter";
 import { Wrench, PhoneCall, Mail, MapPin, MessageCircle, Clock } from "lucide-react";
 import { trackConversion } from "@/lib/track";
+import { problems } from "@/pages/repair-data";
 
 export default function Footer() {
   return (
@@ -42,12 +43,14 @@ export default function Footer() {
           
           <div>
             <h3 className="text-white font-semibold text-lg mb-6">Services</h3>
-            <ul className="space-y-3">
-              <li className="text-slate-400">Not Draining / Spinning</li>
-              <li className="text-slate-400">Strange Noises</li>
-              <li className="text-slate-400">Water Leaks</li>
-              <li className="text-slate-400">Error Codes</li>
-              <li className="text-slate-400">Drum Replacements</li>
+            <ul className="grid grid-cols-1 gap-3">
+              {problems.map((problem) => (
+                <li key={problem.slug}>
+                  <Link href={`/problems/${problem.slug}`} className="text-slate-400 hover:text-primary transition-colors">
+                    {problem.name}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
           
@@ -58,7 +61,7 @@ export default function Footer() {
                 <PhoneCall className="w-5 h-5 text-primary shrink-0 mt-0.5" />
                 <div>
                   <span className="block text-white">Call Us</span>
-                  <a href="tel:+6584130016" className="hover:text-primary transition-colors">+65 8413 0016</a>
+                   <a href="tel:+6584130016" onClick={() => trackConversion("call_click")} className="hover:text-primary transition-colors">+65 8413 0016</a>
                 </div>
               </li>
               <li className="flex items-start gap-3">
