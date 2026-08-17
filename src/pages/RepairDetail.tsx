@@ -48,10 +48,10 @@ Message: ${form.message}` : ""}`;
             <h1 className="mb-6 text-4xl font-bold leading-tight md:text-5xl">{entry.title}</h1>
             <p className="text-lg leading-relaxed text-slate-300 md:text-xl">{entry.intro}</p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <Button size="lg" className="rounded-full bg-accent px-7 text-accent-foreground hover:bg-accent/90" asChild>
+              <Button size="lg" className="rounded-full bg-green-500 px-7 text-accent-foreground hover:bg-accent/90" asChild>
                 <a href={`https://wa.me/${waNumber}`} target="_blank" rel="noopener noreferrer" onClick={() => trackConversion("whatsapp_click")}><MessageCircle className="mr-2 h-5 w-5" /> WhatsApp for a quote</a>
               </Button>
-              <Button size="lg" variant="outline" className="rounded-full border-white/30 bg-white/10 px-7 text-white hover:bg-white/20" asChild>
+              <Button size="lg" variant="outline" className="rounded-full border-white/30 bg-red-500 px-7 text-white hover:bg-white/20" asChild>
                 <a href="tel:+6584130016" onClick={() => trackConversion("call_click")}><PhoneCall className="mr-2 h-5 w-5" /> Call {phone}</a>
               </Button>
             </div>
