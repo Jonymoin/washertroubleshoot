@@ -184,7 +184,7 @@ export default function Home() {
                   "Bukit Batok", "Jurong East", "Clementi", "Queenstown", "Bukit Merah", "Orchard"
                 ].map((area) => (
                   <div key={area} className="flex items-center gap-2 rounded-lg border border-primary/10 bg-primary/5 px-3 py-2.5 text-sm font-semibold text-slate-700">
-                    <MapPin className="h-4 w-4 shrink-0 text-primary" />
+                    <MapPin className="h-4 w-4 shrink-0 text-[#00ff04e0]" />
                     {area}
                   </div>
                 ))}
@@ -210,8 +210,9 @@ export default function Home() {
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
             {brands.map((brand) => (
-              <Link key={brand.slug} href={`/brands/${brand.slug}`} className="bg-gradient-to-br from-[#071521] to-[#1769E0] border border-slate-200 rounded-xl px-4 py-5 text-center font-bold text-white hover:border-primary hover:text-primary hover:shadow-2xl hover:bg-black transition-all">
+              <Link key={brand.slug} href={`/brands/${brand.slug}`} className="bg-[#00ff04e0] border border-slate-200 rounded-xl px-4 py-5 text-center font-bold text-white hover:border-primary hover:text-primary hover:shadow-2xl hover:bg-black transition-all">
                 {brand.name}
+                <p className="text-black text-[10px]">Know more</p>
               </Link>
             ))}
           </div>
@@ -227,8 +228,8 @@ export default function Home() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-5xl mx-auto">
             {problems.slice(0, 10).map((problem) => (
-              <Link key={problem.slug} href={`/problems/${problem.slug}`} className="group flex items-center justify-between gap-4 rounded-xl border border-slate-200 bg-slate-50 p-5 hover:border-primary hover:bg-primary/5 transition-colors">
-                <span className="font-semibold text-slate-800 group-hover:text-primary">{problem.name}</span>
+              <Link key={problem.slug} href={`/problems/${problem.slug}`} className="group flex items-center justify-between gap-4 rounded-xl border border-slate-200 bg-[black] text-white p-5 hover:border-primary hover:bg-[#00ff04e0] transition-colors">
+                <span className="font-semibold text-white group-hover:text-primary">{problem.name}</span>
                 <span aria-hidden="true" className="text-primary text-xl">→</span>
               </Link>
             ))}
@@ -299,13 +300,13 @@ export default function Home() {
             Contact us now for a quick diagnosis and transparent quote. We cover all areas in Singapore.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="text-lg px-8 py-6 rounded-full bg-accent hover:bg-accent/90 text-accent-foreground shadow-xl border-none" asChild>
+            <Button size="lg" className="text-lg px-8 py-6 rounded-full bg-black hover:bg-[#00ff04e0] text-white shadow-xl border-none" asChild>
               <a href="https://wa.me/6584130016"   onClick={() => trackConversion("whatsapp_click")}
  target="_blank" rel="noopener noreferrer">
                 WhatsApp +65 8413 0016
               </a>
             </Button>
-            <Button size="lg" variant="outline" className="text-lg px-8 py-6 rounded-full bg-red-500 hover:bg-white/10 text-white border-white border-2" asChild>
+            <Button size="lg" variant="outline" className="text-lg px-8 py-6 rounded-full bg-[#00ff04e0] hover:bg-black text-white border-white border-2" asChild>
               <Link href="/contact">View Service Areas</Link>
             </Button>
           </div>
