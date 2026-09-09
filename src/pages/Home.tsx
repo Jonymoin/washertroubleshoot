@@ -210,9 +210,9 @@ export default function Home() {
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
             {brands.map((brand) => (
-              <Link key={brand.slug} href={`/brands/${brand.slug}`} className="bg-[#00ff04e0] border border-slate-200 rounded-xl px-4 py-5 text-center font-bold text-white hover:border-primary hover:text-primary hover:shadow-2xl hover:bg-black transition-all">
+              <Link key={brand.slug} href={`/brands/${brand.slug}`} className="bg-[#E9FF00] border border-slate-200 rounded-xl px-4 py-5 text-center font-bold text-slate-500 hover:border-primary hover:text-primary hover:shadow-2xl hover:bg-black transition-all">
                 {brand.name}
-                <p className="text-black text-[10px]">Know more</p>
+                <p className="text-black hover:text-white text-[10px]">Know more</p>
               </Link>
             ))}
           </div>
@@ -228,7 +228,7 @@ export default function Home() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-5xl mx-auto">
             {problems.slice(0, 10).map((problem) => (
-              <Link key={problem.slug} href={`/problems/${problem.slug}`} className="group flex items-center justify-between gap-4 rounded-xl border border-slate-200 bg-[black] text-white p-5 hover:border-primary hover:bg-[#00ff04e0] transition-colors">
+              <Link key={problem.slug} href={`/problems/${problem.slug}`} className="group flex items-center justify-between gap-4 rounded-xl border border-slate-200 bg-[#494747] text-white p-5 hover:border-primary hover:bg-[#00ff04e0] transition-colors">
                 <span className="font-semibold text-white group-hover:text-primary">{problem.name}</span>
                 <span aria-hidden="true" className="text-primary text-xl">→</span>
               </Link>
