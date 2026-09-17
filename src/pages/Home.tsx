@@ -39,7 +39,7 @@ export default function Home() {
         <div className="absolute inset-0 z-0">
           <img
   src="/hero-laundry.webp"
-  alt="Clean laundry room"
+  alt="washing machine repair"
   width="1200"
   height="800"
   fetchPriority="high"
@@ -69,7 +69,7 @@ export default function Home() {
               </motion.p>
               
               <motion.div variants={fadeIn} className="flex flex-col sm:flex-row gap-4">
-                <Button size="lg" className="text-lg px-8 py-6 rounded-full hover:bg-accent/90 text-accent-foreground shadow-lg bg-[#00ff04e0]" asChild>
+                <Button size="lg" className="text-lg px-8 py-6 rounded-full hover:bg-accent/90 text-[#00182e] shadow-lg bg-[#e9ff00]" asChild>
                   <a href="https://wa.me/6584130016" target="_blank" rel="noopener noreferrer" onClick={() => trackConversion("whatsapp_click")}>
                     WhatsApp Us Now
                   </a>
@@ -210,9 +210,9 @@ export default function Home() {
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
             {brands.map((brand) => (
-              <Link key={brand.slug} href={`/brands/${brand.slug}`} className="bg-[#acec00] border border-slate-200 shadow-2xl rounded-xl px-4 py-5 text-center font-bold text-[#00182e] hover:border-primary hover:text-white hover:shadow-2xl hover:bg-black transition-all">
+              <Link key={brand.slug} href={`/brands/${brand.slug}`} className="bg-[#00182e] border border-slate-200 shadow-2xl rounded-xl px-4 py-5 text-center font-bold text-[#e9ff00] hover:border-primary hover:text-white hover:shadow-2xl hover:bg-black transition-all">
                 {brand.name}
-                <p className="text-black hover:text-white text-[10px]">Know more</p>
+                <p className="text-white hover:text-red-500 text-[10px]">Know more</p>
               </Link>
             ))}
           </div>
@@ -228,8 +228,8 @@ export default function Home() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-5xl mx-auto">
             {problems.slice(0, 10).map((problem) => (
-              <Link key={problem.slug} href={`/problems/${problem.slug}`} className="group flex items-center justify-between gap-4 rounded-xl border border-slate-200 bg-[#acec00] text-[#00182e] p-5 hover:border-primary hover:bg-[#00ff04e0] transition-colors">
-                <span className="font-semibold text-[#00182e] group-hover:text-primary">{problem.name}</span>
+              <Link key={problem.slug} href={`/problems/${problem.slug}`} className="group flex items-center justify-between gap-4 rounded-xl border border-slate-200 bg-[#00182e] text-[#e9ff00] p-5 hover:border-primary hover:bg-[#00ff04e0] transition-colors">
+                <span className="font-semibold text-[#e9ff00] group-hover:text-primary">{problem.name}</span>
                 <span aria-hidden="true" className="text-primary text-xl">→</span>
               </Link>
             ))}
@@ -306,7 +306,7 @@ export default function Home() {
                 WhatsApp +65 8413 0016
               </a>
             </Button>
-            <Button size="lg" variant="outline" className="text-lg px-8 py-6 rounded-full bg-[#00ff04e0] hover:bg-black text-white border-white border-2" asChild>
+            <Button size="lg" variant="outline" className="text-lg px-8 py-6 rounded-full bg-[#e9ff00] hover:bg-black text-white border-white border-2" asChild>
               <Link href="/contact">View Service Areas</Link>
             </Button>
           </div>
