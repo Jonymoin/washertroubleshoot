@@ -1,6 +1,6 @@
 import { Link } from "wouter";
 import { Wrench, PhoneCall, Mail, MapPin, MessageCircle, Clock } from "lucide-react";
-import { trackConversion } from "@/lib/track";
+import { trackGoogleAdsConversion } from "@/lib/googleAds";
 import { problems } from "@/pages/repair-data";
 
 export default function Footer() {
@@ -61,14 +61,14 @@ export default function Footer() {
                 <PhoneCall className="w-5 h-5 text-primary shrink-0 mt-0.5" />
                 <div>
                   <span className="block text-white">Call Us</span>
-                   <a href="tel:+6584130016" onClick={() => trackConversion("call_click")} className="hover:text-primary transition-colors">+65 8413 0016</a>
+                   <a href="tel:+6584130016" onClick={trackGoogleAdsConversion} className="hover:text-primary transition-colors">+65 8413 0016</a>
                 </div>
               </li>
               <li className="flex items-start gap-3">
                 <MessageCircle className="w-5 h-5 text-accent shrink-0 mt-0.5" />
                 <div>
                   <span className="block text-white">WhatsApp</span>
-                  <a href="https://wa.me/6584130016" target="_blank" rel="noopener noreferrer"   onClick={() => trackConversion("whatsapp_click")}
+                  <a href="https://wa.me/6584130016" target="_blank" rel="noopener noreferrer"   onClick={trackGoogleAdsConversion}
                     className="hover:text-accent transition-colors">+65 8413 0016</a>
                 </div>
               </li>

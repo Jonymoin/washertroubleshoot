@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { trackConversion } from "@/lib/track";
+import { trackGoogleAdsConversion } from "@/lib/googleAds";
 
 import { 
    
@@ -70,12 +70,12 @@ export default function Home() {
               
               <motion.div variants={fadeIn} className="flex flex-col sm:flex-row gap-4">
                 <Button size="lg" className="text-lg px-8 py-6 rounded-full hover:bg-accent/90 text-[#00182e] shadow-lg bg-[#e9ff00]" asChild>
-                  <a href="https://wa.me/6584130016" target="_blank" rel="noopener noreferrer" onClick={() => trackConversion("whatsapp_click")}>
+                  <a href="https://wa.me/6584130016" target="_blank" rel="noopener noreferrer" onClick={trackGoogleAdsConversion}>
                     WhatsApp Us Now
                   </a>
                 </Button>
                 <Button size="lg" variant="outline" className="text-lg px-8 py-6 rounded-full bg-white/10 hover:bg-white/20 text-white border-white/30 backdrop-blur-sm" asChild>
-                  <a href="tel:+6584130016" onClick={() => trackConversion("call_click")}>
+                  <a href="tel:+6584130016" onClick={trackGoogleAdsConversion}>
                     <PhoneCall className="mr-2 h-5 w-5" />
                     +65 8413 0016
                   </a>
@@ -301,7 +301,7 @@ export default function Home() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button size="lg" className="text-lg px-8 py-6 rounded-full bg-black hover:bg-[#00ff04e0] text-white shadow-xl border-none" asChild>
-              <a href="https://wa.me/6584130016"   onClick={() => trackConversion("whatsapp_click")}
+              <a href="https://wa.me/6584130016"   onClick={trackGoogleAdsConversion}
  target="_blank" rel="noopener noreferrer">
                 WhatsApp +65 8413 0016
               </a>

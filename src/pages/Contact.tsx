@@ -7,8 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { trackConversion } from "@/lib/track";
-
+import { trackGoogleAdsConversion } from "@/lib/googleAds";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import {
   Form,
@@ -94,7 +93,7 @@ export default function Contact() {
                     <div>
                       <h3 className="font-bold text-slate-900 mb-1">WhatsApp</h3>
                       <p className="text-slate-600 text-sm mb-2">Fastest response time</p>
-                      <a href="https://wa.me/6584130016"   onClick={() => trackConversion("whatsapp_click")}
+                      <a href="https://wa.me/6584130016"   onClick={trackGoogleAdsConversion}
                             target="_blank" rel="noopener noreferrer" className="text-primary font-medium hover:underline">
                         +65 8413 0016
                       </a>
@@ -110,7 +109,7 @@ export default function Contact() {
                     <div>
                       <h3 className="font-bold text-slate-900 mb-1">Call Us</h3>
                       <p className="text-slate-600 text-sm mb-2">Speak directly to a technician</p>
-                      <a href="tel:+6584130016"   onClick={() => trackConversion("call_click")}
+                      <a href="tel:+6584130016"   onClick={trackGoogleAdsConversion}
  className="text-primary font-medium hover:underline">
                         +65 8413 0016
                       </a>

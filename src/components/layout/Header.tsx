@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import {  PhoneCall, Menu, X, MessageCircle } from "lucide-react";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { trackConversion } from "@/lib/track";
+import { trackGoogleAdsConversion } from "@/lib/googleAds";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -81,7 +81,7 @@ export default function Header() {
               className="bg-accent hover:bg-accent/90 text-accent-foreground rounded-full px-6 shadow-md hover:shadow-lg transition-all"
               asChild
             >
-              <a href="https://wa.me/6584130016" target="_blank" rel="noopener noreferrer" onClick={() => trackConversion("whatsapp_click")}>
+              <a href="https://wa.me/6584130016" target="_blank" rel="noopener noreferrer" onClick={trackGoogleAdsConversion}>
                 <MessageCircle className="mr-2 h-4 w-4" />
                 WhatsApp Us
               </a>
@@ -145,13 +145,13 @@ export default function Header() {
               
               <div className="p-6 border-t border-slate-100 flex flex-col gap-3">
                 <Button className="w-full bg-accent hover:bg-accent/90" size="lg" asChild>
-                  <a href="https://wa.me/6584130016" target="_blank" rel="noopener noreferrer" onClick={() => trackConversion("whatsapp_click")}>
+                  <a href="https://wa.me/6584130016" target="_blank" rel="noopener noreferrer" onClick={trackGoogleAdsConversion}>
                     <MessageCircle className="mr-2 h-5 w-5" />
                     WhatsApp
                   </a>
                 </Button>
                 <Button variant="outline" className="w-full" size="lg" asChild>
-                  <a href="tel:+6584130016" onClick={() => trackConversion("call_click")}>
+                  <a href="tel:+6584130016" onClick={trackGoogleAdsConversion}>
                     <PhoneCall className="mr-2 h-5 w-5" />
                     Call +65 8413 0016
                   </a>

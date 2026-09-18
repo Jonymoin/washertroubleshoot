@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Wrench, Droplets, AlertTriangle, Disc, DoorOpen, Settings } from "lucide-react";
 import { Link } from "wouter";
-import { trackConversion } from "@/lib/track";
+import { trackGoogleAdsConversion } from "@/lib/googleAds";
 import { brands, problems } from "./repair-data";
 
 const problemIcons = [Droplets, Disc, AlertTriangle, Settings, DoorOpen, Wrench];
@@ -158,7 +158,7 @@ export default function Services() {
           
           <div className="mt-16 text-center">
             <Button size="lg" className="rounded-full px-8 py-6 text-lg bg-accent hover:bg-accent/90 text-accent-foreground" asChild>
-              <a href="https://wa.me/6584130016"   onClick={() => trackConversion("whatsapp_click")}
+              <a href="https://wa.me/6584130016"   onClick={trackGoogleAdsConversion}
                target="_blank" rel="noopener noreferrer">
                 Book a Repair Now
               </a>

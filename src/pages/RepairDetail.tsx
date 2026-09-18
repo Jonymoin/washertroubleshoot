@@ -4,7 +4,7 @@ import { ArrowRight, CheckCircle2, MessageCircle, PhoneCall, ShieldCheck, Wrench
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Textarea } from "@/components/ui/textarea";
-import { trackConversion } from "@/lib/track";
+import { trackGoogleAdsConversion } from "@/lib/googleAds";
 import { commonErrorCodes, type RepairEntry } from "./repair-data";
 
 const phone = "+65 8413 0016";
@@ -24,8 +24,8 @@ export default function RepairDetail({ entry, kind }: { entry: RepairEntry; kind
   }, [entry]);
 
   const update = (field: keyof typeof form, value: string) => setForm((current) => ({ ...current, [field]: value }));
-  const openWhatsApp = (label: string, text: string) => {
-    trackConversion(label);
+  const openWhatsApp = ( text: string) => {
+    trackGoogleAdsConversion();
     window.open(`https://wa.me/${waNumber}?text=${encodeURIComponent(text)}`, "_blank", "noopener,noreferrer");
   };
   const submit = (event: FormEvent<HTMLFormElement>) => {
@@ -36,7 +36,7 @@ Phone: ${form.phone}
 Brand: ${form.brand || "Not sure"}
 Problem: ${form.problem}${form.message ? `
 Message: ${form.message}` : ""}`;
-    openWhatsApp("service_form_whatsapp", text);
+    openWhatsApp(text);
   };
 
   return (
@@ -49,10 +49,10 @@ Message: ${form.message}` : ""}`;
             <p className="text-lg leading-relaxed text-slate-300 md:text-xl">{entry.intro}</p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Button size="lg" className="rounded-full bg-green-500 px-7 text-accent-foreground hover:bg-accent/90" asChild>
-                <a href={`https://wa.me/${waNumber}`} target="_blank" rel="noopener noreferrer" onClick={() => trackConversion("whatsapp_click")}><MessageCircle className="mr-2 h-5 w-5" /> WhatsApp for a quote</a>
+                <a href={`https://wa.me/${waNumber}`} target="_blank" rel="noopener noreferrer" onClick={trackGoogleAdsConversion}><MessageCircle className="mr-2 h-5 w-5" /> WhatsApp for a quote</a>
               </Button>
               <Button size="lg" variant="outline" className="rounded-full border-white/30 bg-red-500 px-7 text-white hover:bg-white/20" asChild>
-                <a href="tel:+6584130016" onClick={() => trackConversion("call_click")}><PhoneCall className="mr-2 h-5 w-5" /> Call {phone}</a>
+                <a href="tel:+6584130016" onClick={trackGoogleAdsConversion}><PhoneCall className="mr-2 h-5 w-5" /> Call {phone}</a>
               </Button>
             </div>
           </div>
