@@ -4,7 +4,7 @@ import { trackGoogleAdsConversion } from "@/lib/googleAds";
 
 export default function WhatsAppFab() {
   return (
-    <div className="fixed bottom-0 left-1/2 -translate-x-1/2 z-50 flex w-[calc(100%-24px)] max-w-md gap-3">
+    <div className="fixed bottom-2 left-1/2 -translate-x-1/2 z-50 flex w-[calc(100%-24px)] max-w-md gap-3">
       
       {/* Call Now Button */}
       <a

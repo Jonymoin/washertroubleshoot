@@ -61,7 +61,7 @@ export default function Home() {
               </motion.div>
               
               <motion.h1 variants={fadeIn} className="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-6">
-                Fast, Reliable Washing Machine Repair.
+                Washing Machine Repair Service
               </motion.h1>
               
               <motion.p variants={fadeIn} className="text-lg md:text-xl text-slate-200 mb-8 max-w-xl">
@@ -145,12 +145,11 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      {/* Services Teaser */}
-      <section className="py-20 bg-white">
+       
+        <section className="py-20 bg-slate-50 border-y border-slate-200">
         <div className="container mx-auto px-4 md:px-6">
-          <div className="flex flex-col lg:flex-row gap-12 items-center">
-            <motion.div 
+          <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5 mb-10">
+             <motion.div 
               className="lg:w-1/2"
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -163,44 +162,6 @@ export default function Home() {
                 className="rounded-2xl shadow-xl w-full object-cover aspect-[4/3]"
               />
             </motion.div>
-            
-            <motion.div 
-              className="lg:w-1/2"
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-            >
-              <p className="text-sm font-bold uppercase tracking-[0.15em] text-primary mb-3">Islandwide coverage</p>
-              <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">Washing Machine Repair Across Singapore</h2>
-              <p className="text-lg text-slate-600 mb-8">
-                Our technicians provide convenient in-home washing machine repair across Singapore. Tell us your location and washer problem, and we will arrange a suitable visit.
-              </p>
-              
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-8">
-                {[
-                  "Tampines", "Bedok", "Pasir Ris", "Punggol", "Sengkang", "Hougang",
-                  "Ang Mo Kio", "Bishan", "Toa Payoh", "Serangoon", "Yishun", "Woodlands",
-                  "Bukit Batok", "Jurong East", "Clementi", "Queenstown", "Bukit Merah", "Orchard"
-                ].map((area) => (
-                  <div key={area} className="flex items-center gap-2 rounded-lg border border-primary/10 bg-primary/5 px-3 py-2.5 text-sm font-semibold text-slate-700">
-                    <MapPin className="h-4 w-4 shrink-0 text-[#00ff04e0]" />
-                    {area}
-                  </div>
-                ))}
-              </div>
-              
-              <Button size="lg" className="rounded-full" asChild>
-                <Link href="/contact">Book Service in Your Area</Link>
-              </Button>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-20 bg-slate-50 border-y border-slate-200">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5 mb-10">
             <div>
               <p className="text-sm font-bold uppercase tracking-[0.15em] text-primary mb-3">Brands we know</p>
               <h2 className="text-3xl md:text-4xl font-bold text-slate-900">Brands We Service</h2>
@@ -237,6 +198,59 @@ export default function Home() {
           <div className="text-center mt-8"><Link href="/services" className="text-primary font-semibold hover:underline">See every problem we repair</Link></div>
         </div>
       </section>
+      {/* Services Teaser */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="flex flex-col lg:flex-row gap-12 items-center">
+           
+            <motion.div 
+              className="lg:w-1/2"
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <img 
+                src="/technician1.webp"
+                alt="Washing machine technician" 
+                className="rounded-2xl shadow-xl w-full object-cover aspect-[4/3]"
+              />
+            </motion.div>
+            <motion.div 
+              className="lg:w-1/2"
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <p className="text-sm font-bold uppercase tracking-[0.15em] text-primary mb-3">Islandwide coverage</p>
+              <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">Washing Machine Repair Across Singapore</h2>
+              <p className="text-lg text-slate-600 mb-8">
+                Our technicians provide convenient in-home washing machine repair across Singapore. Tell us your location and washer problem, and we will arrange a suitable visit.
+              </p>
+              
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-8">
+                {[
+                  "Tampines", "Bedok", "Pasir Ris", "Punggol", "Sengkang", "Hougang",
+                  "Ang Mo Kio", "Bishan", "Toa Payoh", "Serangoon", "Yishun", "Woodlands",
+                  "Bukit Batok", "Jurong East", "Clementi", "Queenstown", "Bukit Merah", "Orchard"
+                ].map((area) => (
+                  <div key={area} className="flex items-center gap-2 rounded-lg border border-primary/10 bg-primary/5 px-3 py-2.5 text-sm font-semibold text-slate-700">
+                    <MapPin className="h-4 w-4 shrink-0 text-[#00ff04e0]" />
+                    {area}
+                  </div>
+                ))}
+              </div>
+              
+              <Button size="lg" className="rounded-full" asChild>
+                <Link href="/contact">Book Service in Your Area</Link>
+              </Button>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+     
 
       {/* Testimonials */}
       <section className="py-20 bg-slate-900 text-white">
