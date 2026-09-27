@@ -69,11 +69,72 @@ export default function Home() {
               </motion.p>
               
               <motion.div variants={fadeIn} className="flex flex-col sm:flex-row gap-4">
-                <Button size="lg" className="text-lg px-8 py-6 rounded-full hover:bg-accent/90 text-[#00182e] shadow-lg bg-[#e9ff00]" asChild>
-                  <a href="https://wa.me/6584130016" target="_blank" rel="noopener noreferrer" onClick={trackGoogleAdsConversion}>
-                    WhatsApp Us Now
-                  </a>
-                </Button>
+                <Button
+  size="lg"
+  className="
+    group
+    relative
+    z-0
+    overflow-hidden
+    rounded-[99rem]
+    border-2
+    border-[#00182e]
+    bg-[#e9ff00]
+    px-8
+    py-6
+    text-lg
+    font-black
+    uppercase
+    text-[#00182e]
+    shadow-lg
+    hover:bg-[#e9ff00]
+    hover:text-[#00182e]
+    before:absolute
+    before:left-[calc(-50%-50%*0.2)]
+    before:top-[-104%]
+    before:z-[-1]
+    before:h-[102%]
+    before:w-full
+    before:pointer-events-none
+    before:bg-white
+    before:content-['']
+    before:skew-[30deg]
+    before:transition-transform
+    before:duration-200
+    before:ease-in-out
+    before:[transform:skew(30deg)_translateY(0)]
+    before:group-hover:[transform:skew(30deg)_translateY(100%)]
+    after:absolute
+    after:left-[calc(50%+50%*0.2)]
+    after:top-[102%]
+    after:z-[-1]
+    after:h-[102%]
+    after:w-full
+    after:pointer-events-none
+    after:bg-white
+    after:content-['']
+    after:skew-[30deg]
+    after:transition-transform
+    after:duration-200
+    after:ease-in-out
+    after:[transform:skew(30deg)_translateY(0)]
+    after:group-hover:[transform:skew(30deg)_translateY(-102%)]
+  "
+  asChild
+>
+  <a
+    href="https://wa.me/6584130016"
+    target="_blank"
+    rel="noopener noreferrer"
+    onClick={trackGoogleAdsConversion}
+  >
+    <span className="relative block overflow-hidden">
+      <span className="relative block group-hover:animate-[move-up-alternate_0.3s_forwards]">
+        WhatsApp Us Now
+      </span>
+    </span>
+  </a>
+</Button>
                 <Button size="lg" variant="outline" className="text-lg px-8 py-6 rounded-full bg-white/10 hover:bg-white/20 text-white border-white/30 backdrop-blur-sm" asChild>
                   <a href="tel:+6584130016" onClick={trackGoogleAdsConversion}>
                     <PhoneCall className="mr-2 h-5 w-5" />
@@ -242,9 +303,53 @@ export default function Home() {
                 ))}
               </div>
               
-              <Button size="lg" className="rounded-full" asChild>
-                <Link href="/contact">Book Service in Your Area</Link>
-              </Button>
+             <Button
+  size="lg"
+  className="
+    group
+    h-[65px]
+    w-full
+    max-w-[445px]
+    rounded-full
+    border-[2px]
+    border-[#17e4c6]
+    bg-[#103d36]
+    p-[6px]
+    text-[#252525]
+    shadow-[0_0_30px_rgba(0,230,195,0.45)]
+    transition-all
+    duration-300
+    hover:scale-[1.02]
+    hover:bg-[#00e6c3]
+    hover:shadow-[0_0_40px_rgba(0,230,195,0.65)]
+    active:scale-[0.99]
+  "
+  asChild
+>
+  <Link href="/contact">
+    <span
+      className="
+        flex
+        h-full
+        w-full
+        items-center
+        justify-center
+        rounded-full
+        border-[2px]
+        border-white/80
+        bg-gradient-to-r
+        from-[#2dd2c2]
+        to-[#090f7a]
+        text-[18px]
+        font-bold
+        
+        text-[#fff]
+      "
+    >
+      Book Service in Your Area
+    </span>
+  </Link>
+</Button>
             </motion.div>
           </div>
         </div>
@@ -320,7 +425,7 @@ export default function Home() {
                 WhatsApp +65 8413 0016
               </a>
             </Button>
-            <Button size="lg" variant="outline" className="text-lg px-8 py-6 rounded-full bg-[#e9ff00] hover:bg-black text-white border-white border-2" asChild>
+            <Button size="lg" variant="outline" className="text-lg px-8 py-6 rounded-full bg-[#8cf807b9] hover:bg-black text-white border-white border-2" asChild>
               <Link href="/contact">View Service Areas</Link>
             </Button>
           </div>
