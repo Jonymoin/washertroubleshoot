@@ -5,6 +5,8 @@ import { Wrench, Droplets, AlertTriangle, Disc, DoorOpen, Settings } from "lucid
 import { Link } from "wouter";
 import { trackGoogleAdsConversion } from "@/lib/googleAds";
 import { brands, problems } from "./repair-data";
+import { useSEO } from "@/hooks/useSEO";
+import { breadcrumbListJsonLd } from "@/lib/seo";
 
 const problemIcons = [Droplets, Disc, AlertTriangle, Settings, DoorOpen, Wrench];
 const problemStyles = [
@@ -23,6 +25,17 @@ const brandStyles = [
 ];
 
 export default function Services() {
+  useSEO({
+    title: "Washing Machine Repair Services in Singapore | Washertroubleshoot SG",
+    description:
+      "Browse washing machine repair services in Singapore by brand or problem — not draining, not spinning, leaking, noise, error codes and more. Book a technician today.",
+    path: "/services",
+    jsonLd: breadcrumbListJsonLd([
+      { name: "Home", path: "/" },
+      { name: "Services", path: "/services" },
+    ]),
+  });
+
   return (
     <div className="flex flex-col min-h-screen bg-slate-50">
       {/* Page Header */}
@@ -33,7 +46,7 @@ export default function Services() {
             animate={{ opacity: 1, y: 0 }}
             className="text-4xl md:text-5xl font-bold mb-6"
           >
-            Our Repair Services
+            Washing Machine Repair Services in Singapore
           </motion.h1>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
@@ -163,6 +176,9 @@ export default function Services() {
                 Book a Repair Now
               </a>
             </Button>
+            <p className="mt-4 text-sm text-slate-500">
+              Want to try a quick check first? Read our <Link href="/blog" className="font-semibold text-primary hover:underline">washing machine troubleshooting tips</Link>.
+            </p>
           </div>
         </div>
       </section>

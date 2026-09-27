@@ -37,7 +37,7 @@ export default function Footer() {
               <li><Link href="/blog" className="hover:text-primary transition-colors">Tips & Blog</Link></li>
               <li><Link href="/contact" className="hover:text-primary transition-colors">Contact</Link></li>
               <li><Link href="/privacy-policy" className="hover:text-primary transition-colors">Privacy-policy</Link></li>
-              <li><Link href="/terms&condition" className="hover:text-primary transition-colors">Terms&Condition</Link></li>
+              <li><Link href="/terms-and-conditions" className="hover:text-primary transition-colors">Terms & Conditions</Link></li>
             </ul>
           </div>
           
@@ -103,8 +103,8 @@ export default function Footer() {
             &copy; {new Date().getFullYear()} Washertroubleshoot SG. All rights reserved.
           </p>
           <div className="flex gap-4 text-sm text-slate-500">
-            <Link href="#" className="hover:text-white transition-colors">Privacy Policy</Link>
-            <Link href="#" className="hover:text-white transition-colors">Terms of Service</Link>
+            <Link href="/privacy-policy" className="hover:text-white transition-colors">Privacy Policy</Link>
+            <Link href="/terms-and-conditions" className="hover:text-white transition-colors">Terms of Service</Link>
           </div>
         </div>
       </div>

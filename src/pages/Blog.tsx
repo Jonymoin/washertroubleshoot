@@ -1,41 +1,24 @@
 import { motion } from "framer-motion";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Wrench } from "lucide-react";
-
-const articles = [
-  {
-    title: "Why is my washing machine not draining?",
-    summary: "A common issue that can often be fixed without professional help. Learn how to check your pump filter and drain hose.",
-    date: "Oct 12, 2023",
-    readTime: "4 min read",
-    content: "If your washing machine is full of water at the end of a cycle, the most likely culprit is a blocked pump filter. This filter catches coins, hairpins, and lint before they reach the pump. Locate the small door at the bottom front of your machine, place a towel and shallow dish underneath, and carefully unscrew the filter. Clean out any debris and replace it tightly. If this doesn't solve the issue, your drain hose might be kinked, or the pump itself may have failed, which usually requires a technician."
-  },
-  {
-    title: "How to maintain your washing machine",
-    summary: "Simple monthly maintenance tips to extend the life of your washer and prevent foul odors.",
-    date: "Nov 05, 2023",
-    readTime: "3 min read",
-    content: "To keep your washing machine smelling fresh and running smoothly, run a hot maintenance wash (90°C) empty once a month with a specialized cleaner or white vinegar. After every wash, leave the door slightly ajar to let the drum dry out and prevent mold growth on the rubber door seal. Regularly wipe down the door seal with a damp cloth to remove detergent residue and lint. Also, occasionally remove the detergent drawer and clean it thoroughly under warm water."
-  },
-  {
-    title: "Common washing machine error codes explained",
-    summary: "What those flashing lights and numbers mean on Samsung, LG, and Bosch washing machines.",
-    date: "Dec 18, 2023",
-    readTime: "5 min read",
-    content: "Error codes are your machine's way of telling you what's wrong. For Samsung, '4E' or '5E' usually means a draining issue, while 'UE' means an unbalanced load. On LG machines, 'OE' indicates it can't drain, and 'LE' points to a motor lock error. For Bosch, 'E18' is a pump block, and 'E21' is a motor issue. Always check your specific manual, but knowing these basics can help you decide if it's a simple fix (like rebalancing the load) or if you need to call a professional."
-  },
-  {
-    title: "When to repair vs replace your washing machine",
-    summary: "Is it worth fixing that 8-year-old washer? A guide to making the most economical decision.",
-    date: "Jan 22, 2024",
-    readTime: "4 min read",
-    content: "A good rule of thumb is the 50% rule: if the repair costs more than 50% of the price of a new, comparable machine, and the washer is more than half through its expected lifespan (usually 10-12 years), it might be time to replace. Minor issues like blocked pumps, worn carbon brushes, or broken belts are almost always worth repairing. However, if the main control board dies on an old machine, or if the drum spider/bearings have failed (which requires a complete teardown), replacement is often the smarter financial choice."
-  }
-];
+import { articles } from "./blog-data";
+import { findEntry, problems } from "./repair-data";
+import { useSEO } from "@/hooks/useSEO";
+import { breadcrumbListJsonLd } from "@/lib/seo";
 
 export default function Blog() {
+  useSEO({
+    title: "Washing Machine Troubleshooting Tips & Advice | Washertroubleshoot SG",
+    description:
+      "Practical washing machine troubleshooting and maintenance tips from Washertroubleshoot SG — drainage issues, error codes, cleaning, and repair-vs-replace advice.",
+    path: "/blog",
+    jsonLd: breadcrumbListJsonLd([
+      { name: "Home", path: "/" },
+      { name: "Blog", path: "/blog" },
+    ]),
+  });
+
   return (
     <div className="flex flex-col min-h-screen bg-slate-50">
       {/* Page Header */}
@@ -62,9 +45,14 @@ export default function Blog() {
       <section className="py-20">
         <div className="container mx-auto px-4 md:px-6 max-w-4xl">
           <div className="space-y-12">
-            {articles.map((article, idx) => (
+            {articles.map((article, idx) => {
+              const relatedProblem = article.relatedProblemSlug
+                ? findEntry(problems, article.relatedProblemSlug)
+                : undefined;
+
+              return (
               <motion.article 
-                key={idx}
+                key={article.slug}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -78,7 +66,9 @@ export default function Blog() {
                 </div>
                 
                 <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-4">
-                  {article.title}
+                  <Link href={`/blog/${article.slug}`} className="hover:text-primary transition-colors">
+                    {article.title}
+                  </Link>
                 </h2>
                 
                 <p className="text-lg text-slate-600 font-medium mb-6">
@@ -88,18 +78,30 @@ export default function Blog() {
                 <div className="prose prose-slate max-w-none text-slate-600">
                   <p>{article.content}</p>
                 </div>
+
+                {relatedProblem && (
+                  <p className="mt-6 text-sm text-slate-500">
+                    Related guide: <Link href={`/problems/${relatedProblem.slug}`} className="font-semibold text-primary hover:underline">{relatedProblem.name}</Link>
+                  </p>
+                )}
                 
-                <div className="mt-8 pt-8 border-t border-slate-100 flex items-center justify-between">
+                <div className="mt-8 pt-8 border-t border-slate-100 flex flex-wrap items-center justify-between gap-4">
                   <div className="flex items-center gap-2 text-primary font-medium">
                     <Wrench className="w-5 h-5" />
                     <span>Need help with this?</span>
                   </div>
-                  <Button variant="outline" size="sm" asChild>
-                    <Link href="/contact">Contact Technician</Link>
-                  </Button>
+                  <div className="flex items-center gap-3">
+                    <Link href={`/blog/${article.slug}`} className="text-sm font-semibold text-primary hover:underline">
+                      Read full article
+                    </Link>
+                    <Button variant="outline" size="sm" asChild>
+                      <Link href="/contact">Contact Technician</Link>
+                    </Button>
+                  </div>
                 </div>
               </motion.article>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>

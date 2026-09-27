@@ -3,6 +3,7 @@ import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { trackGoogleAdsConversion } from "@/lib/googleAds";
+import { useSEO } from "@/hooks/useSEO";
 
 import { 
    
@@ -32,6 +33,13 @@ const staggerContainer = {
 };
 
 export default function Home() {
+  useSEO({
+    title: "Washing Machine Repair Singapore | Washertroubleshoot SG",
+    description:
+      "Fast, reliable washing machine repair across Singapore. Washertroubleshoot SG repairs all major brands at home with transparent pricing — WhatsApp or call for same-day service.",
+    path: "/",
+  });
+
   return (
     <div className="flex flex-col min-h-screen">
       {/* Hero Section */}
@@ -159,6 +167,29 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Problems */}
+       <section className="py-20 bg-white">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="text-center max-w-3xl mx-auto mb-12">
+            <p className="text-sm font-bold uppercase tracking-[0.15em] text-primary mb-3">Need a quick answer?</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Problems We Solve</h2>
+            <p className="text-lg text-slate-600">Find practical next steps for the symptom you are seeing, then book a technician if it is not safe or simple to resolve.</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-5xl mx-auto">
+            {problems.slice(0, 10).map((problem) => (
+              <Link key={problem.slug} href={`/problems/${problem.slug}`} className="group flex items-center justify-between gap-4 rounded-xl border border-slate-200 bg-[#00182e] text-[#e9ff00] p-5 hover:border-primary hover:bg-[#e9ff00] hover:text-[#00182e] transition-colors">
+                <span className="font-semibold text-[#e9ff00] group-hover:text-[#00182e]">{problem.name}</span>
+                <span aria-hidden="true" className="text-primary text-xl">→</span>
+              </Link>
+            ))}
+          </div>
+          <div className="text-center mt-8">
+            <button className="bg-lime-500 px-8 py-4 rounded-3xl text-xl text-white">
+                <Link href="/services" className="text-primary font-semibold hover:underline">See every problem we repair</Link>
+            </button>
+           </div>
+        </div>
+      </section>
       {/* Why Choose Us */}
       <section className="py-20 bg-slate-50">
         <div className="container mx-auto px-4 md:px-6">
@@ -241,24 +272,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="text-center max-w-3xl mx-auto mb-12">
-            <p className="text-sm font-bold uppercase tracking-[0.15em] text-primary mb-3">Need a quick answer?</p>
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Problems We Solve</h2>
-            <p className="text-lg text-slate-600">Find practical next steps for the symptom you are seeing, then book a technician if it is not safe or simple to resolve.</p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-5xl mx-auto">
-            {problems.slice(0, 10).map((problem) => (
-              <Link key={problem.slug} href={`/problems/${problem.slug}`} className="group flex items-center justify-between gap-4 rounded-xl border border-slate-200 bg-[#00182e] text-[#e9ff00] p-5 hover:border-primary hover:bg-[#00ff04e0] transition-colors">
-                <span className="font-semibold text-[#e9ff00] group-hover:text-primary">{problem.name}</span>
-                <span aria-hidden="true" className="text-primary text-xl">→</span>
-              </Link>
-            ))}
-          </div>
-          <div className="text-center mt-8"><Link href="/services" className="text-primary font-semibold hover:underline">See every problem we repair</Link></div>
-        </div>
-      </section>
+      
       {/* Services Teaser */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4 md:px-6">
@@ -357,59 +371,98 @@ export default function Home() {
 
      
 
-      {/* Testimonials */}
-      <section className="py-20 bg-slate-900 text-white">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">What Our Customers Say</h2>
-            <p className="text-slate-400 text-lg">Real reviews from homeowners across Singapore.</p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              {
-                name: "Sarah L.",
-                area: "Tampines",
-                text: "My Samsung washer suddenly stopped spinning right before a long weekend. Washertroubleshoot came the very next morning, found the broken belt, and fixed it within an hour. Excellent service!"
-              },
-              {
-                name: "David T.",
-                area: "Clementi",
-                text: "Very professional and honest. I thought my machine's motor was dead and was ready to buy a new one, but the technician found it was just a clogged pump filter. Saved me hundreds of dollars."
-              },
-              {
-                name: "Michelle W.",
-                area: "Sengkang",
-                text: "Booking via WhatsApp was so easy. The technician was polite, wore a mask, and even cleaned up the floor after fixing the leak. Highly recommend them to anyone needing appliance repair."
-              }
-            ].map((review, idx) => (
-              <motion.div 
-                key={idx}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.1, duration: 0.5 }}
-              >
-                <Card className="bg-slate-800 border-slate-700 h-full">
-                  <CardContent className="p-8">
-                    <div className="flex text-accent mb-4">
-                      {[1, 2, 3, 4, 5].map(star => (
-                        <Star key={star} className="w-5 h-5 fill-current" />
-                      ))}
-                    </div>
-                    <p className="text-slate-300 mb-6 italic">"{review.text}"</p>
-                    <div>
-                      <p className="font-bold text-white">{review.name}</p>
-                      <p className="text-sm text-slate-500">{review.area}</p>
-                    </div>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+    
+     {/* Our Working Process */}
+<section className="py-20 bg-slate-900 text-white">
+  <div className="container mx-auto px-4 md:px-6">
+    <div className="text-center max-w-3xl mx-auto mb-16">
+      <h2 className="text-3xl md:text-4xl font-bold mb-4">
+        Our Washing Machine Repair Process in Singapore
+      </h2>
+      <p className="text-slate-400 text-lg">
+        We provide fast, reliable, and professional washing machine repair
+        services across Singapore. From diagnosis to final testing, our
+        experienced technicians follow a proven process to ensure your washer
+        is repaired correctly and efficiently.
+      </p>
+    </div>
 
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+
+      {[
+        {
+          image: "/working1.webp",
+          title: "1. Service Request",
+          alt: "Washing machine repair service request Singapore",
+          text: "Contact us via phone or WhatsApp to describe your washing machine issue. We assist customers throughout Singapore with all major washer brands."
+        },
+        {
+          image: "/working2.webp",
+          title: "2. Inspection & Diagnosis",
+          alt: "Technician inspecting washing machine in Singapore",
+          text: "Our technician performs a detailed inspection to identify faults such as drainage issues, spinning problems, leaks, unusual noises, or electrical faults."
+        },
+        {
+          image: "/working3.webp",
+          title: "3. Transparent Quotation",
+          alt: "Washing machine repair quotation Singapore",
+          text: "After diagnosing the problem, we provide a clear repair quotation with no hidden charges, allowing you to make an informed decision."
+        },
+        {
+          image: "/working4.webp",
+          title: "4. Professional Repair",
+          alt: "Professional washing machine repair service Singapore",
+          text: "Using quality replacement parts and industry best practices, our technicians repair your washing machine quickly and safely."
+        },
+        {
+          image: "/working5.webp",
+          title: "5. Testing & Completion",
+          alt: "Testing repaired washing machine Singapore",
+          text: "We thoroughly test the machine to ensure everything works perfectly before completing the service and providing maintenance recommendations."
+        }
+      ].map((step, idx) => (
+        <motion.div
+          key={idx}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: idx * 0.1, duration: 0.5 }}
+          className="bg-slate-800 rounded-xl overflow-hidden border border-slate-700 hover:border-accent transition-all duration-300"
+        >
+          <img
+            src={step.image}
+            alt={step.alt}
+            loading="lazy"
+            className="w-full h-48 object-cover"
+          />
+
+          <div className="p-6">
+            <h3 className="text-xl font-bold mb-3 text-white">
+              {step.title}
+            </h3>
+
+            <p className="text-slate-300 text-sm leading-relaxed">
+              {step.text}
+            </p>
+          </div>
+        </motion.div>
+      ))}
+    </div>
+
+    <div className="mt-16 max-w-4xl mx-auto text-center">
+      <p className="text-slate-400 leading-relaxed">
+        Whether your washing machine is not spinning, leaking water, making
+        unusual noises, failing to drain, or displaying error codes, our
+        experienced technicians are ready to help. We repair front-load,
+        top-load, and washer-dryer units from leading brands including Samsung,
+        LG, Bosch, Electrolux, Panasonic, Toshiba, Sharp, Hitachi, Midea, and
+        more. Our goal is to provide affordable and dependable washing machine
+        repair services throughout Singapore with fast response times and
+        customer satisfaction guaranteed.
+      </p>
+    </div>
+  </div>
+</section>
       {/* CTA Section */}
       <section className="py-24 bg-primary text-primary-foreground text-center relative overflow-hidden">
         <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ backgroundImage: "radial-gradient(#ffffff 2px, transparent 2px)", backgroundSize: "30px 30px" }}></div>
@@ -419,13 +472,13 @@ export default function Home() {
             Contact us now for a quick diagnosis and transparent quote. We cover all areas in Singapore.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="text-lg px-8 py-6 rounded-full bg-black hover:bg-[#00ff04e0] text-white shadow-xl border-none" asChild>
+            <Button size="lg" className="text-lg px-8 py-6 rounded-full bg-black hover:bg-[#0ccaf0e0] text-white shadow-xl border-none" asChild>
               <a href="https://wa.me/6584130016"   onClick={trackGoogleAdsConversion}
  target="_blank" rel="noopener noreferrer">
                 WhatsApp +65 8413 0016
               </a>
             </Button>
-            <Button size="lg" variant="outline" className="text-lg px-8 py-6 rounded-full bg-[#8cf807b9] hover:bg-black text-white border-white border-2" asChild>
+            <Button size="lg" variant="outline" className="text-lg px-12 py-6 rounded-full bg-[#0b07f8fd] hover:bg-black text-white border-white border-2" asChild>
               <Link href="/contact">View Service Areas</Link>
             </Button>
           </div>

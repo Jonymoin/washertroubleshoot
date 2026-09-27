@@ -1,4 +1,4 @@
-import { Switch, Route, Router as WouterRouter, useLocation } from "wouter";
+import { Switch, Route, Redirect, Router as WouterRouter, useLocation } from "wouter";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -10,6 +10,7 @@ import Services from "./pages/Services";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Blog from "./pages/Blog";
+import BlogPost from "./pages/BlogPost";
 import NotFound from "@/pages/not-found";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsAndCondition from "./pages/TermsAndCondition";
@@ -43,8 +44,13 @@ function Router() {
         <Route path="/about" component={About} />
         <Route path="/contact" component={Contact} />
         <Route path="/blog" component={Blog} />
+        <Route path="/blog/:slug">{(params) => <BlogPost slug={params.slug} />}</Route>
         <Route path="/privacy-policy" component={PrivacyPolicy} />
-        <Route path="/terms&condition" component={TermsAndCondition} />
+        <Route path="/terms-and-conditions" component={TermsAndCondition} />
+        {/* Old malformed URL kept as a redirect so existing links/bookmarks still work. */}
+        <Route path="/terms&condition">
+          <Redirect to="/terms-and-conditions" />
+        </Route>
         {brands.map((brand) => (
           <Route key={brand.slug} path={`/brands/${brand.slug}`}>
             <RepairDetail entry={brand} kind="brand" />

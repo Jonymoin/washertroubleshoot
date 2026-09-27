@@ -18,6 +18,8 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { toast } from "sonner";
+import { useSEO } from "@/hooks/useSEO";
+import { breadcrumbListJsonLd } from "@/lib/seo";
 
 const formSchema = z.object({
   name: z.string().min(2, { message: "Name is required" }),
@@ -28,6 +30,17 @@ const formSchema = z.object({
 });
 
 export default function Contact() {
+  useSEO({
+    title: "Contact Us | Book Washing Machine Repair in Singapore",
+    description:
+      "Get in touch with Washertroubleshoot SG for washing machine repair in Singapore. WhatsApp or call +65 8413 0016 for a fast quote and same-day visits.",
+    path: "/contact",
+    jsonLd: breadcrumbListJsonLd([
+      { name: "Home", path: "/" },
+      { name: "Contact", path: "/contact" },
+    ]),
+  });
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -58,7 +71,7 @@ export default function Contact() {
             animate={{ opacity: 1, y: 0 }}
             className="text-4xl md:text-5xl font-bold mb-6"
           >
-            Contact Us
+            Contact Us for Washing Machine Repair in Singapore
           </motion.h1>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}

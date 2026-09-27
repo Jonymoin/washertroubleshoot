@@ -3,8 +3,21 @@ import { Shield, Award, Users, HeartHandshake } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 import { trackGoogleAdsConversion } from "@/lib/googleAds";
+import { useSEO } from "@/hooks/useSEO";
+import { breadcrumbListJsonLd } from "@/lib/seo";
 
 export default function About() {
+  useSEO({
+    title: "About Us | Washing Machine Repair Company in Singapore",
+    description:
+      "Meet Washertroubleshoot SG, a trusted washing machine repair and servicing team helping homes across Singapore with honest diagnostics and quality workmanship.",
+    path: "/about",
+    jsonLd: breadcrumbListJsonLd([
+      { name: "Home", path: "/" },
+      { name: "About", path: "/about" },
+    ]),
+  });
+
   return (
     <div className="flex flex-col min-h-screen bg-white">
       {/* Page Header */}

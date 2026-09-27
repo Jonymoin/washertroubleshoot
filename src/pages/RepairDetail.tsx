@@ -1,27 +1,44 @@
-import { useEffect, useState, type FormEvent } from "react";
+import { useState, type FormEvent } from "react";
 import { Link } from "wouter";
 import { ArrowRight, CheckCircle2, MessageCircle, PhoneCall, ShieldCheck, Wrench } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Textarea } from "@/components/ui/textarea";
 import { trackGoogleAdsConversion } from "@/lib/googleAds";
-import { commonErrorCodes, type RepairEntry } from "./repair-data";
+import { commonErrorCodes, findEntry, problems, type RepairEntry } from "./repair-data";
+import { findArticleByProblemSlug } from "./blog-data";
+import { useSEO } from "@/hooks/useSEO";
+import { breadcrumbListJsonLd, serviceJsonLd } from "@/lib/seo";
 
 const phone = "+65 8413 0016";
 const waNumber = "6584130016";
 
+// A small, fixed set of problem pages commonly relevant regardless of brand,
+// used for contextual internal linking from brand pages.
+const commonProblemSlugsForBrands = ["not-draining", "not-spinning", "leaking-water", "showing-an-error-code"];
+
 export default function RepairDetail({ entry, kind }: { entry: RepairEntry; kind: "brand" | "problem" }) {
   const [form, setForm] = useState({ name: "", phone: "", brand: kind === "brand" ? entry.name : "", problem: kind === "problem" ? entry.name : "", message: "" });
-  useEffect(() => {
-    document.title = `${entry.title} | Washertroubleshoot SG`;
-    let description = document.querySelector('meta[name="description"]');
-    if (!description) {
-      description = document.createElement("meta");
-      description.setAttribute("name", "description");
-      document.head.appendChild(description);
-    }
-    description.setAttribute("content", `${entry.intro} Call ${phone} for in-home washing machine repair across Singapore.`);
-  }, [entry]);
+
+  const basePath = kind === "brand" ? `/brands/${entry.slug}` : `/problems/${entry.slug}`;
+  const relatedArticle = kind === "problem" ? findArticleByProblemSlug(entry.slug) : undefined;
+  const relatedProblems = kind === "brand"
+    ? commonProblemSlugsForBrands.map((slug) => findEntry(problems, slug)).filter((p): p is RepairEntry => Boolean(p))
+    : [];
+
+  useSEO({
+    title: `${entry.title} | Washertroubleshoot SG`,
+    description: `${entry.intro} Call ${phone} for in-home washing machine repair across Singapore.`,
+    path: basePath,
+    jsonLd: [
+      serviceJsonLd({ name: entry.title, description: entry.intro, path: basePath }),
+      breadcrumbListJsonLd([
+        { name: "Home", path: "/" },
+        { name: "Services", path: "/services" },
+        { name: entry.title, path: basePath },
+      ]),
+    ],
+  });
 
   const update = (field: keyof typeof form, value: string) => setForm((current) => ({ ...current, [field]: value }));
   const openWhatsApp = ( text: string) => {
@@ -137,9 +154,35 @@ Message: ${form.message}` : ""}`;
         </section>
       )}
 
+      {kind === "brand" && relatedProblems.length > 0 && (
+        <section className="bg-slate-50 py-16">
+          <div className="container mx-auto max-w-6xl px-4 md:px-6">
+            <p className="mb-3 text-sm font-bold uppercase tracking-[0.15em] text-primary">Common issues</p>
+            <h2 className="mb-6 text-2xl font-bold text-slate-900">Common {entry.name} washing machine problems we fix</h2>
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+              {relatedProblems.map((problem) => (
+                <Link key={problem.slug} href={`/problems/${problem.slug}`} className="group flex items-center justify-between gap-3 rounded-xl border border-slate-200 bg-white p-4 font-semibold text-slate-700 shadow-sm hover:border-primary hover:text-primary transition-colors">
+                  {problem.name}
+                  <ArrowRight className="h-4 w-4 shrink-0 text-primary opacity-0 transition-opacity group-hover:opacity-100" />
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {relatedArticle && (
+        <section className="py-14 text-center">
+          <p className="mb-2 text-sm font-bold uppercase tracking-[0.15em] text-primary">Related read</p>
+          <Link href={`/blog/${relatedArticle.slug}`} className="text-xl font-semibold text-slate-900 hover:text-primary transition-colors">
+            {relatedArticle.title}
+          </Link>
+        </section>
+      )}
+
       <section className="py-14 text-center">
         <h2 className="mb-4 text-2xl font-bold text-slate-900">Need help with another washer issue?</h2>
-        <Link href={kind === "brand" ? "/services" : "/services"} className="inline-flex items-center font-semibold text-primary hover:underline">See all repair services <ArrowRight className="ml-2 h-4 w-4" /></Link>
+        <Link href="/services" className="inline-flex items-center font-semibold text-primary hover:underline">See all repair services <ArrowRight className="ml-2 h-4 w-4" /></Link>
       </section>
     </div>
   );
