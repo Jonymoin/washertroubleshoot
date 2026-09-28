@@ -10,7 +10,11 @@ const __dirname = dirname(__filename);
 
 export default defineConfig({
   base: process.env.BASE_PATH || "/",
-  plugins: [react(), tailwindcss()],
+
+  plugins: [
+    react(),
+    tailwindcss(),
+  ],
 
   resolve: {
     alias: {

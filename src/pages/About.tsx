@@ -56,11 +56,15 @@ export default function About() {
                   src="/technician.webp" 
                   alt="Technician at work" 
                   className="rounded-2xl w-full h-64 object-cover shadow-lg"
+                  loading="lazy"
+                  decoding="async"
                 />
                 <img 
                   src="/hero-laundry.webp" 
                   alt="Clean washing machine" 
                   className="rounded-2xl w-full h-64 object-cover shadow-lg mt-8"
+                  loading="lazy"
+                  decoding="async"
                 />
               </div>
             </motion.div>

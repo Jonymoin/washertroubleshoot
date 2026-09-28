@@ -12,7 +12,7 @@ import {
   ThumbsUp, 
   CheckCircle2, 
   PhoneCall, 
-  Star,
+  
   MapPin
 } from "lucide-react";
 import { brands, problems } from "./repair-data";
@@ -31,7 +31,58 @@ const staggerContainer = {
     }
   }
 };
+  
 
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { useForm } from "react-hook-form";
+
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+
+import { toast } from "sonner";
+
+import { zodResolver } from "@hookform/resolvers/zod";
+import * as z from "zod"
+const formSchema = z.object({
+  name: z.string().min(2, {
+    message: "Name is required",
+  }),
+
+  phone: z.string().min(8, {
+    message: "Valid phone number is required",
+  }),
+
+  email: z
+    .string()
+    .email({
+      message: "Valid email is required",
+    })
+    .optional()
+    .or(z.literal("")),
+
+  brand: z.string().min(1, {
+    message: "Please select a brand",
+  }),
+
+  problem: z.string().min(10, {
+    message: "Please describe the problem briefly",
+  }),
+});
 export default function Home() {
   useSEO({
     title: "Washing Machine Repair Singapore | Washertroubleshoot SG",
@@ -39,6 +90,89 @@ export default function Home() {
       "Fast, reliable washing machine repair across Singapore. Washertroubleshoot SG repairs all major brands at home with transparent pricing — WhatsApp or call for same-day service.",
     path: "/",
   });
+  const form = useForm<z.infer<typeof formSchema>>({
+  resolver: zodResolver(formSchema),
+
+  defaultValues: {
+    name: "",
+    phone: "",
+    email: "",
+    brand: "",
+    problem: "",
+  },
+});
+
+async function onSubmit(values: z.infer<typeof formSchema>) {
+  const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY;
+
+  if (!accessKey) {
+    toast.error("Form configuration error", {
+      description:
+        "The form is not configured correctly. Please contact us directly by phone or WhatsApp.",
+    });
+
+    return;
+  }
+
+  try {
+    const response = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+
+      body: JSON.stringify({
+        access_key: accessKey,
+
+        subject: "New Washing Machine Repair Inquiry",
+
+        from_name: "WasherTroubleshoot SG Website",
+
+        name: values.name,
+
+        phone: values.phone,
+
+        email: values.email || "",
+
+        brand: values.brand,
+
+        problem: values.problem,
+
+        ...(values.email
+          ? {
+              replyto: values.email,
+            }
+          : {}),
+      }),
+    });
+
+    const result = await response.json();
+
+    if (result.success) {
+      toast.success("Inquiry sent successfully!", {
+        description:
+          "Thank you. Our technician will contact you shortly.",
+      });
+
+      form.reset();
+    } else {
+      throw new Error(
+        result.message || "Unable to submit the form."
+      );
+    }
+  } catch (error) {
+    console.error("Contact form error:", error);
+
+    toast.error("Unable to send your inquiry", {
+      description:
+        "Please try again or contact us directly by WhatsApp or phone.",
+    });
+  }
+}
+
+const isSubmitting = form.formState.isSubmitting;
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -252,6 +386,8 @@ export default function Home() {
                 src="/technician.webp" 
                 alt="Washing machine technician" 
                 className="rounded-2xl shadow-xl w-full object-cover aspect-[4/3]"
+                loading="lazy"
+               decoding="async"
               />
             </motion.div>
             <div>
@@ -289,6 +425,8 @@ export default function Home() {
                 src="/technician1.webp"
                 alt="Washing machine technician" 
                 className="rounded-2xl shadow-xl w-full object-cover aspect-[4/3]"
+                loading="lazy"
+                decoding="async"
               />
             </motion.div>
             <motion.div 
@@ -433,6 +571,8 @@ export default function Home() {
             src={step.image}
             alt={step.alt}
             loading="lazy"
+            decoding="async"
+
             className="w-full h-48 object-cover"
           />
 
@@ -484,6 +624,245 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <section
+           className="relative overflow-hidden bg-cover bg-center bg-no-repeat py-20 md:py-24"
+  style={{ backgroundImage: "url('/navy.jpg')" }}
+>
+  {/* Dark overlay */}
+  <div className="absolute inset-0 bg-[#00182e]/80" />
+
+  <div className="container relative z-10 mx-auto px-4 md:px-6">
+    <motion.div
+      initial={{ opacity: 0, x: 30 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6 }}
+      className="mx-auto max-w-3xl"
+    >
+
+      {/* তোমার পুরো Card + Form এখানে থাকবে */}
+      <Card className="overflow-hidden border border-white/20 bg-white/10 shadow-2xl backdrop-blur-2xl">
+                {/* Form Header */}
+                <div className="border-b border-white/15 bg-white/10 p-6 md:p-8">
+                  <h2 className="text-2xl font-bold text-white">
+                    Book a Repair
+                  </h2>
+
+                  <p className="mt-2 text-sm leading-6 text-white/65">
+                    Fill in the details below and our technician will
+                    contact you shortly.
+                  </p>
+                </div>
+
+                <CardContent className="p-6 md:p-8">
+                  <Form {...form}>
+                    <form
+                      onSubmit={form.handleSubmit(onSubmit)}
+                      className="space-y-6"
+                    >
+                      {/* Name + Phone */}
+                      <div className="grid gap-5 md:grid-cols-2">
+                        <FormField
+                          control={form.control}
+                          name="name"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel className="text-white">
+                                Name
+                              </FormLabel>
+
+                              <FormControl>
+                                <Input
+                                  {...field}
+                                  placeholder="Your name"
+                                  className="h-12 border-white/20 bg-white/10 text-white placeholder:text-white/40 backdrop-blur-sm focus:border-white/40 focus:bg-white/15"
+                                />
+                              </FormControl>
+
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+
+                        <FormField
+                          control={form.control}
+                          name="phone"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel className="text-white">
+                                Phone Number
+                              </FormLabel>
+
+                              <FormControl>
+                                <Input
+                                  {...field}
+                                  type="tel"
+                                  placeholder="+65 XXXX XXXX"
+                                  className="h-12 border-white/20 bg-white/10 text-white placeholder:text-white/40 backdrop-blur-sm focus:border-white/40 focus:bg-white/15"
+                                />
+                              </FormControl>
+
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                      </div>
+
+                      {/* Email */}
+                      <FormField
+                        control={form.control}
+                        name="email"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel className="text-white">
+                              Email
+                              <span className="ml-1 text-white/40">
+                                (Optional)
+                              </span>
+                            </FormLabel>
+
+                            <FormControl>
+                              <Input
+                                {...field}
+                                type="email"
+                                placeholder="your@email.com"
+                                className="h-12 border-white/20 bg-white/10 text-white placeholder:text-white/40 backdrop-blur-sm focus:border-white/40 focus:bg-white/15"
+                              />
+                            </FormControl>
+
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+
+                      {/* Brand */}
+                      <FormField
+                        control={form.control}
+                        name="brand"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel className="text-white">
+                              Washing Machine Brand
+                            </FormLabel>
+
+                            <Select
+                              value={field.value}
+                              onValueChange={field.onChange}
+                            >
+                              <FormControl>
+                                <SelectTrigger className="h-12 border-white/20 bg-white/10 text-white backdrop-blur-sm focus:border-white/40">
+                                  <SelectValue placeholder="Select your machine brand" />
+                                </SelectTrigger>
+                              </FormControl>
+
+                              <SelectContent>
+                                <SelectItem value="Samsung">
+                                  Samsung
+                                </SelectItem>
+
+                                <SelectItem value="LG">
+                                  LG
+                                </SelectItem>
+
+                                <SelectItem value="Bosch">
+                                  Bosch
+                                </SelectItem>
+
+                                <SelectItem value="Electrolux">
+                                  Electrolux
+                                </SelectItem>
+
+                                <SelectItem value="Panasonic">
+                                  Panasonic
+                                </SelectItem>
+
+                                <SelectItem value="Hitachi">
+                                  Hitachi
+                                </SelectItem>
+
+                                <SelectItem value="Whirlpool">
+                                  Whirlpool
+                                </SelectItem>
+
+                                <SelectItem value="Fisher & Paykel">
+                                  Fisher & Paykel
+                                </SelectItem>
+
+                                <SelectItem value="Miele">
+                                  Miele
+                                </SelectItem>
+
+                                <SelectItem value="Sharp">
+                                  Sharp
+                                </SelectItem>
+
+                                <SelectItem value="Toshiba">
+                                  Toshiba
+                                </SelectItem>
+
+                                <SelectItem value="Other">
+                                  Other
+                                </SelectItem>
+                              </SelectContent>
+                            </Select>
+
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+
+                      {/* Problem */}
+                      <FormField
+                        control={form.control}
+                        name="problem"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel className="text-white">
+                              Washing Machine Problem
+                            </FormLabel>
+
+                            <FormControl>
+                              <Textarea
+                                {...field}
+                                placeholder="Please describe the problem. For example: machine not spinning, not draining, leaking water, making noise..."
+                                className="min-h-[140px] resize-none border-white/20 bg-white/10 text-white placeholder:text-white/40 backdrop-blur-sm focus:border-white/40 focus:bg-white/15"
+                              />
+                            </FormControl>
+
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+
+                      {/* Submit */}
+                      <Button
+                        type="submit"
+                        disabled={isSubmitting}
+                        className="h-12 w-full bg-slate-900 text-base font-semibold text-white shadow-lg border-0 transition-all hover:bg-blue-600 disabled:cursor-not-allowed disabled:opacity-60"
+                      >
+                        {isSubmitting
+                          ? "Sending..."
+                          : "Send Repair Inquiry"}
+                      </Button>
+
+                      <p className="text-center text-xs leading-5 text-white/50">
+                        Your information will only be used to contact you
+                        regarding your washing machine repair request.
+                      </p>
+                    </form>
+                  </Form>
+                </CardContent>
+              </Card>
+
+    </motion.div>
+  </div>
+</section>
+    
+        
+            <div/>
+            <div/>
+      
     </div>
   );
 }
