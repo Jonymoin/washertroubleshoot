@@ -193,7 +193,7 @@ export default function Contact() {
      <section
   className="relative min-h-[700px] bg-cover bg-center bg-no-repeat py-16 md:py-24"
   style={{
-    backgroundImage: `url("/navy.jpg")`,
+    backgroundImage: `url("/gm.webp")`,
   }}
 >
   <div className="absolute inset-0 bg-black/30" />
@@ -455,80 +455,29 @@ export default function Contact() {
                       />
 
                       {/* Brand */}
-                      <FormField
-                        control={form.control}
-                        name="brand"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormLabel className="text-white">
-                              Washing Machine Brand
-                            </FormLabel>
+                     {/* Brand */}
+<FormField
+control={form.control}
+name="brand"
+render={({ field }) => ( <FormItem> <FormLabel className="text-white">
+Washing Machine Brand </FormLabel>
 
-                            <Select
-                              value={field.value}
-                              onValueChange={field.onChange}
-                            >
-                              <FormControl>
-                                <SelectTrigger className="h-12 border-white/20 bg-white/10 text-white backdrop-blur-sm focus:border-white/40">
-                                  <SelectValue placeholder="Select your machine brand" />
-                                </SelectTrigger>
-                              </FormControl>
+```
+  <FormControl>
+    <Input
+      {...field}
+      placeholder="Enter your machine brand"
+      className="h-12 border-white/20 bg-white/10 text-white placeholder:text-white/40 backdrop-blur-sm focus:border-white/40 focus:bg-white/15"
+    />
+  </FormControl>
 
-                              <SelectContent>
-                                <SelectItem value="Samsung">
-                                  Samsung
-                                </SelectItem>
+  <FormMessage />
+</FormItem>
 
-                                <SelectItem value="LG">
-                                  LG
-                                </SelectItem>
 
-                                <SelectItem value="Bosch">
-                                  Bosch
-                                </SelectItem>
+)}
+/>
 
-                                <SelectItem value="Electrolux">
-                                  Electrolux
-                                </SelectItem>
-
-                                <SelectItem value="Panasonic">
-                                  Panasonic
-                                </SelectItem>
-
-                                <SelectItem value="Hitachi">
-                                  Hitachi
-                                </SelectItem>
-
-                                <SelectItem value="Whirlpool">
-                                  Whirlpool
-                                </SelectItem>
-
-                                <SelectItem value="Fisher & Paykel">
-                                  Fisher & Paykel
-                                </SelectItem>
-
-                                <SelectItem value="Miele">
-                                  Miele
-                                </SelectItem>
-
-                                <SelectItem value="Sharp">
-                                  Sharp
-                                </SelectItem>
-
-                                <SelectItem value="Toshiba">
-                                  Toshiba
-                                </SelectItem>
-
-                                <SelectItem value="Other">
-                                  Other
-                                </SelectItem>
-                              </SelectContent>
-                            </Select>
-
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
 
                       {/* Problem */}
                       <FormField
@@ -557,7 +506,7 @@ export default function Contact() {
                       <Button
                         type="submit"
                         disabled={isSubmitting}
-                        className="h-12 w-full bg-slate-900 text-base font-semibold text-white shadow-lg border-0 transition-all hover:bg-blue-600 disabled:cursor-not-allowed disabled:opacity-60"
+                        className="h-12 w-full bg-lime-600 text-base font-semibold text-white shadow-lg border-0 transition-all hover:bg-blue-600 disabled:cursor-not-allowed disabled:opacity-60"
                       >
                         {isSubmitting
                           ? "Sending..."
@@ -572,6 +521,7 @@ export default function Contact() {
                   </Form>
                 </CardContent>
               </Card>
+
             </motion.div>
           </div>
         </div>

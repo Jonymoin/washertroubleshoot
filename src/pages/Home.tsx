@@ -12,7 +12,8 @@ import {
   ThumbsUp, 
   CheckCircle2, 
   PhoneCall, 
-  
+  Mail,
+  MessageCircle,
   MapPin
 } from "lucide-react";
 import { brands, problems } from "./repair-data";
@@ -193,77 +194,23 @@ const isSubmitting = form.formState.isSubmitting;
         
         <div className="container mx-auto px-4 md:px-6 relative z-10">
           <div className="max-w-2xl text-white">
-            <motion.div
-              initial="hidden"
-              animate="visible"
-              variants={staggerContainer}
-            >
-              <motion.div variants={fadeIn} className="inline-block bg-primary/20 backdrop-blur-md border border-primary/30 text-primary-foreground px-4 py-1.5 rounded-full text-sm font-semibold mb-6">
-                #1 Rated Washing Machine Repair in Singapore
-              </motion.div>
+            <div>
+              <div className="inline-block bg-primary/20 backdrop-blur-md border border-primary/30 text-primary-foreground px-4 py-1.5 rounded-full text-sm font-semibold mb-6">
+                Top Rated Washing Machine Repair in Singapore
+              </div>
               
-              <motion.h1 variants={fadeIn} className="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-6">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-6">
                 Washing Machine Repair Service
-              </motion.h1>
-              
-              <motion.p variants={fadeIn} className="text-lg md:text-xl text-slate-200 mb-8 max-w-xl">
-                Is your washer leaking, not draining, or refusing to spin? Don't let laundry pile up. Our expert technicians fix all major brands right in your home.
-              </motion.p>
+              </h1>
+              <h3 className="text-2xl font-semibold mb-6 text-lime-400">Give Your Washing Machine a Second Life.</h3>
+              <p className="text-lg md:text-xl text-slate-200 mb-8 max-w-xl">
+                Don't buy a new washing machine just because yours has a problem. With expert diagnosis and professional repair, your existing washer can get back to performing like new. Save money, extend your machine's lifespan, and get back to hassle-free laundry.
+              </p>
               
               <motion.div variants={fadeIn} className="flex flex-col sm:flex-row gap-4">
                 <Button
   size="lg"
-  className="
-    group
-    relative
-    z-0
-    overflow-hidden
-    rounded-[99rem]
-    border-2
-    border-[#00182e]
-    bg-[#e9ff00]
-    px-8
-    py-6
-    text-lg
-    font-black
-    uppercase
-    text-[#00182e]
-    shadow-lg
-    hover:bg-[#e9ff00]
-    hover:text-[#00182e]
-    before:absolute
-    before:left-[calc(-50%-50%*0.2)]
-    before:top-[-104%]
-    before:z-[-1]
-    before:h-[102%]
-    before:w-full
-    before:pointer-events-none
-    before:bg-white
-    before:content-['']
-    before:skew-[30deg]
-    before:transition-transform
-    before:duration-200
-    before:ease-in-out
-    before:[transform:skew(30deg)_translateY(0)]
-    before:group-hover:[transform:skew(30deg)_translateY(100%)]
-    after:absolute
-    after:left-[calc(50%+50%*0.2)]
-    after:top-[102%]
-    after:z-[-1]
-    after:h-[102%]
-    after:w-full
-    after:pointer-events-none
-    after:bg-white
-    after:content-['']
-    after:skew-[30deg]
-    after:transition-transform
-    after:duration-200
-    after:ease-in-out
-    after:[transform:skew(30deg)_translateY(0)]
-    after:group-hover:[transform:skew(30deg)_translateY(-102%)]
-  "
-  asChild
->
+  className="text-lg px-8 py-6 rounded-full bg-slate-900 text-lime-400 hover:bg-amber-400 hover:text-black">
   <a
     href="https://wa.me/6584130016"
     target="_blank"
@@ -271,13 +218,13 @@ const isSubmitting = form.formState.isSubmitting;
     onClick={trackGoogleAdsConversion}
   >
     <span className="relative block overflow-hidden">
-      <span className="relative block group-hover:animate-[move-up-alternate_0.3s_forwards]">
+      <span className="relative block ">
         WhatsApp Us Now
       </span>
     </span>
   </a>
 </Button>
-                <Button size="lg" variant="outline" className="text-lg px-8 py-6 rounded-full bg-white/10 hover:bg-white/20 text-white border-white/30 backdrop-blur-sm" asChild>
+                <Button size="lg" variant="outline" className="text-lg px-8 py-6 rounded-full bg-white/10 hover:bg-white/50 text-white border-white/30 backdrop-blur-sm" asChild>
                   <a href="tel:+6584130016" onClick={trackGoogleAdsConversion}>
                     <PhoneCall className="mr-2 h-5 w-5" />
                     +65 8413 0016
@@ -296,7 +243,7 @@ const isSubmitting = form.formState.isSubmitting;
                   <CheckCircle2 className="text-green-400 w-5 h-5" /> Transparent Pricing
                 </div>
               </motion.div>
-            </motion.div>
+            </div>
           </div>
         </div>
       </section>
@@ -318,7 +265,7 @@ const isSubmitting = form.formState.isSubmitting;
             ))}
           </div>
           <div className="text-center mt-8">
-            <button className="bg-lime-500 px-8 py-4 rounded-3xl text-xl text-white">
+            <button className="bg-[#e9ff00] px-8 py-4 rounded-3xl text-xl text-black">
                 <Link href="/services" className="text-primary font-semibold hover:underline">See every problem we repair</Link>
             </button>
            </div>
@@ -455,48 +402,12 @@ const isSubmitting = form.formState.isSubmitting;
                 ))}
               </div>
               
-             <Button
-  size="lg"
-  className="
-    group
-    h-[65px]
-    w-full
-    max-w-[445px]
-    rounded-full
-    border-[2px]
-    border-[#17e4c6]
-    bg-[#103d36]
-    p-[6px]
-    text-[#252525]
-    shadow-[0_0_30px_rgba(0,230,195,0.45)]
-    transition-all
-    duration-300
-    hover:scale-[1.02]
-    hover:bg-[#00e6c3]
-    hover:shadow-[0_0_40px_rgba(0,230,195,0.65)]
-    active:scale-[0.99]
-  "
-  asChild
+             <Button size="lg"
+  className="bg-blue-600 text-white hover:bg-black"
 >
   <Link href="/contact">
     <span
-      className="
-        flex
-        h-full
-        w-full
-        items-center
-        justify-center
-        rounded-full
-        border-[2px]
-        border-white/80
-        bg-gradient-to-r
-        from-[#2dd2c2]
-        to-[#090f7a]
-        text-[18px]
-        font-bold
-        
-        text-[#fff]
-      "
+      className=""
     >
       Book Service in Your Area
     </span>
@@ -561,10 +472,7 @@ const isSubmitting = form.formState.isSubmitting;
       ].map((step, idx) => (
         <motion.div
           key={idx}
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: idx * 0.1, duration: 0.5 }}
+          
           className="bg-slate-800 rounded-xl overflow-hidden border border-slate-700 hover:border-accent transition-all duration-300"
         >
           <img
@@ -618,7 +526,7 @@ const isSubmitting = form.formState.isSubmitting;
                 WhatsApp +65 8413 0016
               </a>
             </Button>
-            <Button size="lg" variant="outline" className="text-lg px-12 py-6 rounded-full bg-[#0b07f8fd] hover:bg-black text-white border-white border-2" asChild>
+            <Button size="lg" variant="outline" className="text-lg px-12 py-6 rounded-full bg-[#05044cfd] hover:bg-black text-white border-white border-2" asChild>
               <Link href="/contact">View Service Areas</Link>
             </Button>
           </div>
@@ -627,7 +535,7 @@ const isSubmitting = form.formState.isSubmitting;
 
       <section
            className="relative overflow-hidden bg-cover bg-center bg-no-repeat py-20 md:py-24"
-  style={{ backgroundImage: "url('/navy.jpg')" }}
+  style={{ backgroundImage: "url('/gm.webp')" }}
 >
   {/* Dark overlay */}
   <div className="absolute inset-0 bg-[#00182e]/80" />
@@ -737,80 +645,29 @@ const isSubmitting = form.formState.isSubmitting;
                       />
 
                       {/* Brand */}
-                      <FormField
-                        control={form.control}
-                        name="brand"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormLabel className="text-white">
-                              Washing Machine Brand
-                            </FormLabel>
+                     {/* Brand */}
+<FormField
+control={form.control}
+name="brand"
+render={({ field }) => ( <FormItem> <FormLabel className="text-white">
+Washing Machine Brand </FormLabel>
 
-                            <Select
-                              value={field.value}
-                              onValueChange={field.onChange}
-                            >
-                              <FormControl>
-                                <SelectTrigger className="h-12 border-white/20 bg-white/10 text-white backdrop-blur-sm focus:border-white/40">
-                                  <SelectValue placeholder="Select your machine brand" />
-                                </SelectTrigger>
-                              </FormControl>
+```
+  <FormControl>
+    <Input
+      {...field}
+      placeholder="Enter your machine brand"
+      className="h-12 border-white/20 bg-white/10 text-white placeholder:text-white/40 backdrop-blur-sm focus:border-white/40 focus:bg-white/15"
+    />
+  </FormControl>
 
-                              <SelectContent>
-                                <SelectItem value="Samsung">
-                                  Samsung
-                                </SelectItem>
+  <FormMessage />
+</FormItem>
 
-                                <SelectItem value="LG">
-                                  LG
-                                </SelectItem>
 
-                                <SelectItem value="Bosch">
-                                  Bosch
-                                </SelectItem>
+)}
+/>
 
-                                <SelectItem value="Electrolux">
-                                  Electrolux
-                                </SelectItem>
-
-                                <SelectItem value="Panasonic">
-                                  Panasonic
-                                </SelectItem>
-
-                                <SelectItem value="Hitachi">
-                                  Hitachi
-                                </SelectItem>
-
-                                <SelectItem value="Whirlpool">
-                                  Whirlpool
-                                </SelectItem>
-
-                                <SelectItem value="Fisher & Paykel">
-                                  Fisher & Paykel
-                                </SelectItem>
-
-                                <SelectItem value="Miele">
-                                  Miele
-                                </SelectItem>
-
-                                <SelectItem value="Sharp">
-                                  Sharp
-                                </SelectItem>
-
-                                <SelectItem value="Toshiba">
-                                  Toshiba
-                                </SelectItem>
-
-                                <SelectItem value="Other">
-                                  Other
-                                </SelectItem>
-                              </SelectContent>
-                            </Select>
-
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
 
                       {/* Problem */}
                       <FormField
@@ -839,7 +696,7 @@ const isSubmitting = form.formState.isSubmitting;
                       <Button
                         type="submit"
                         disabled={isSubmitting}
-                        className="h-12 w-full bg-slate-900 text-base font-semibold text-white shadow-lg border-0 transition-all hover:bg-blue-600 disabled:cursor-not-allowed disabled:opacity-60"
+                        className="h-12 w-full bg-lime-600 text-base font-semibold text-white shadow-lg border-0 transition-all hover:bg-blue-600 disabled:cursor-not-allowed disabled:opacity-60"
                       >
                         {isSubmitting
                           ? "Sending..."
@@ -858,8 +715,159 @@ const isSubmitting = form.formState.isSubmitting;
     </motion.div>
   </div>
 </section>
-    
-        
+              <section className="relative overflow-hidden bg-cover bg-center bg-no-repeat py-10 md:py-24"
+  style={{ backgroundImage: "url('/gm1.webp')" }}>
+                  <motion.div
+                              initial={{ opacity: 0, x: -30 }}
+                              whileInView={{ opacity: 1, x: 0 }}
+                              viewport={{ once: true }}
+                              transition={{ duration: 0.6 }}
+                              className="space-y-5 lg:col-span-2"
+                            >
+                              <div className="mb-7">
+                                <h2 className="text-3xl text-center font-bold text-white">
+                                  Get in Touch
+                                </h2>
+                
+                                <p className="mt-3 leading-7 text-white/70">
+                                  Have a washing machine problem? Contact our team and
+                                  tell us what is happening. We will get back to you
+                                  as soon as possible.
+                                </p>
+                              </div>
+                
+                              {/* WhatsApp */}
+                              <a
+                                href="https://wa.me/6584130016"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                onClick={trackGoogleAdsConversion}
+                                className="group block"
+                              >
+                                <Card className="border border-white/15 bg-white/10 shadow-xl backdrop-blur-xl transition-all duration-300 hover:bg-white/15">
+                                  <CardContent className="flex items-center gap-4 p-5">
+                                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-green-500/20 text-green-400">
+                                      <MessageCircle className="h-6 w-6" />
+                                    </div>
+                
+                                    <div>
+                                      <p className="text-sm text-white/60">
+                                        WhatsApp
+                                      </p>
+                
+                                      <p className="font-semibold text-white">
+                                        +65 8413 0016
+                                      </p>
+                
+                                      <p className="text-sm text-green-400">
+                                        Chat with us
+                                      </p>
+                                    </div>
+                                  </CardContent>
+                                </Card>
+                              </a>
+                
+                              {/* Phone */}
+                              <a
+                                href="tel:+6584130016"
+                                onClick={trackGoogleAdsConversion}
+                                className="group block"
+                              >
+                                <Card className="border border-white/15 bg-white/10 shadow-xl backdrop-blur-xl transition-all duration-300 hover:bg-white/15">
+                                  <CardContent className="flex items-center gap-4 p-5">
+                                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-red-500/20 text-red-400">
+                                      <PhoneCall className="h-6 w-6" />
+                                    </div>
+                
+                                    <div>
+                                      <p className="text-sm text-white/60">
+                                        Call Us
+                                      </p>
+                
+                                      <p className="font-semibold text-white">
+                                        +65 8413 0016
+                                      </p>
+                
+                                      <p className="text-sm text-red-400">
+                                        Call now
+                                      </p>
+                                    </div>
+                                  </CardContent>
+                                </Card>
+                              </a>
+                
+                              {/* Email */}
+                              <a
+                                href="mailto:washertroubleshootsg@gmail.com"
+                                className="group block"
+                              >
+                                <Card className="border border-white/15 bg-white/10 shadow-xl backdrop-blur-xl transition-all duration-300 hover:bg-white/15">
+                                  <CardContent className="flex items-center gap-4 p-5">
+                                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-blue-500/20 text-blue-400">
+                                      <Mail className="h-6 w-6" />
+                                    </div>
+                
+                                    <div className="min-w-0">
+                                      <p className="text-sm text-white/60">
+                                        Email
+                                      </p>
+                
+                                      <p className="break-all font-semibold text-white">
+                                        washertroubleshootsg@gmail.com
+                                      </p>
+                                    </div>
+                                  </CardContent>
+                                </Card>
+                              </a>
+                
+                              {/* Service Hours */}
+                              <Card className="border border-white/15 bg-white/10 shadow-xl backdrop-blur-xl">
+                                <CardContent className="flex items-center gap-4 p-5">
+                                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-amber-500/20 text-amber-400">
+                                    <Clock className="h-6 w-6" />
+                                  </div>
+                
+                                  <div>
+                                    <p className="text-sm text-white/60">
+                                      Service Hours
+                                    </p>
+                
+                                    <p className="font-semibold text-white">
+                                      Mon - Sun
+                                    </p>
+                
+                                    <p className="text-sm text-white/70">
+                                      Contact us for availability
+                                    </p>
+                                  </div>
+                                </CardContent>
+                              </Card>
+                
+                              {/* Location */}
+                              <Card className="border border-white/15 bg-white/10 shadow-xl backdrop-blur-xl">
+                                <CardContent className="flex items-center gap-4 p-5">
+                                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-purple-500/20 text-purple-400">
+                                    <MapPin className="h-6 w-6" />
+                                  </div>
+                
+                                  <div>
+                                    <p className="text-sm text-white/60">
+                                      Service Area
+                                    </p>
+                
+                                    <p className="font-semibold text-white">
+                                      Singapore
+                                    </p>
+                
+                                    <p className="text-sm text-white/70">
+                                      Islandwide service
+                                    </p>
+                                  </div>
+                                </CardContent>
+                              </Card>
+                            </motion.div>
+              </section>
+              
             <div/>
             <div/>
       
