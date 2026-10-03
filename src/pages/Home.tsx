@@ -535,7 +535,7 @@ const isSubmitting = form.formState.isSubmitting;
 
       <section
            className="relative overflow-hidden bg-cover bg-center bg-no-repeat py-20 md:py-24"
-  style={{ backgroundImage: "url('/gm.webp')" }}
+  style={{ backgroundImage: "url('/gm2.webp')" }}
 >
   {/* Dark overlay */}
   <div className="absolute inset-0 bg-[#00182e]/80" />
@@ -729,7 +729,7 @@ Washing Machine Brand </FormLabel>
                                   Get in Touch
                                 </h2>
                 
-                                <p className="mt-3 leading-7 text-white/70">
+                                <p className="mt-3 text-center leading-7 text-white/70">
                                   Have a washing machine problem? Contact our team and
                                   tell us what is happening. We will get back to you
                                   as soon as possible.

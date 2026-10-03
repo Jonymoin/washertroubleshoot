@@ -173,7 +173,7 @@ export default function Contact() {
             transition={{ duration: 0.6 }}
             className="mx-auto max-w-3xl text-center"
           >
-            <p className="mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-red-400">
+            <p className="mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-lime-400">
               WasherTroubleshoot SG
             </p>
 
@@ -193,7 +193,7 @@ export default function Contact() {
      <section
   className="relative min-h-[700px] bg-cover bg-center bg-no-repeat py-16 md:py-24"
   style={{
-    backgroundImage: `url("/gm.webp")`,
+    backgroundImage: `url("/gm3.webp")`,
   }}
 >
   <div className="absolute inset-0 bg-black/30" />
