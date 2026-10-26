@@ -17,7 +17,23 @@ import {
   MapPin
 } from "lucide-react";
 import { brands, problems } from "./repair-data";
-
+const problemMeta: Record<string, { icon: string; tag: string }> = {
+  "not-draining": { icon: "💧", tag: "Most Common" },
+  "not-spinning": { icon: "🌀", tag: "Quick Fix" },
+  "deep-cleaning-service": { icon: "✨", tag: "Popular" },
+  "not-filling-with-water": { icon: "🚿", tag: "Quick Fix" },
+  "leaking-water": { icon: "🛠️", tag: "Urgent" },
+  "making-loud-noise": { icon: "🔊", tag: "Diagnosis" },
+  "vibrating-excessively": { icon: "📳", tag: "On-site" },
+  "door-not-opening": { icon: "🔒", tag: "Urgent" },
+  "not-starting": { icon: "⚡", tag: "Urgent" },
+  "stuck-on-one-cycle": { icon: "🔁", tag: "Quick Fix" },
+  "showing-an-error-code": { icon: "⚠️", tag: "Diagnosis" },
+  "not-heating-water": { icon: "🔥", tag: "Quick Fix" },
+  "bad-smell": { icon: "🌫️", tag: "Popular" },
+  "taking-too-long": { icon: "⏱️", tag: "Diagnosis" },
+  "clothes-still-wet": { icon: "👕", tag: "Common" },
+};
 const fadeIn = {
   hidden: { opacity: 0, y: 20 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
@@ -248,29 +264,83 @@ const isSubmitting = form.formState.isSubmitting;
         </div>
       </section>
 
-      {/* Problems */}
-       <section className="py-20 bg-white">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="text-center max-w-3xl mx-auto mb-12">
-            <p className="text-sm font-bold uppercase tracking-[0.15em] text-primary mb-3">Need a quick answer?</p>
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Problems We Solve</h2>
-            <p className="text-lg text-slate-600">Find practical next steps for the symptom you are seeing, then book a technician if it is not safe or simple to resolve.</p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-5xl mx-auto">
-            {problems.slice(0, 10).map((problem) => (
-              <Link key={problem.slug} href={`/problems/${problem.slug}`} className="group flex items-center justify-between gap-4 rounded-xl border border-slate-200 bg-[#00182e] text-[#e9ff00] p-5 hover:border-primary hover:bg-[#e9ff00] hover:text-[#00182e] transition-colors">
-                <span className="font-semibold text-[#e9ff00] group-hover:text-[#00182e]">{problem.name}</span>
-                <span aria-hidden="true" className="text-primary text-xl">→</span>
-              </Link>
-            ))}
-          </div>
-          <div className="text-center mt-8">
-            <button className="bg-[#e9ff00] px-8 py-4 rounded-3xl text-xl text-black">
-                <Link href="/services" className="text-primary font-semibold hover:underline">See every problem we repair</Link>
-            </button>
-           </div>
-        </div>
-      </section>
+    
+
+
+{/* Problems */}
+<section className="bg-[#00182e] py-20">
+  <div className="container mx-auto px-4 md:px-6">
+    <div className="mx-auto mb-12 max-w-3xl text-center">
+      <p className="mb-3 text-sm font-bold uppercase tracking-[0.15em] text-[#e9ff00]">
+        Need a quick answer?
+      </p>
+      <h2 className="mb-4 text-3xl font-bold text-white md:text-4xl">
+        Problems We Solve
+      </h2>
+      <p className="text-lg text-slate-300">
+        Find practical next steps for the symptom you are seeing, then book a
+        technician if it is not safe or simple to resolve.
+      </p>
+    </div>
+
+    <div className="mx-auto grid max-w-6xl grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
+      {problems.slice(0, 10).map((problem, index) => {
+        const meta = problemMeta[problem.slug] ?? { icon: "🔧", tag: "Repair" };
+
+        return (
+          <Link
+            key={problem.slug}
+            href={`/problems/${problem.slug}`}
+            className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-[#002a4d] to-[#001f3a] p-6 ring-1 ring-white/10 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-[#e9ff00]/20 hover:ring-2 hover:ring-[#e9ff00]"
+          >
+            {/* glow */}
+            <div className="pointer-events-none absolute -right-10 -top-10 h-32 w-32 rounded-full bg-[#e9ff00]/10 blur-2xl transition-all duration-500 group-hover:bg-[#e9ff00]/30" />
+
+            {/* number */}
+            <span className="absolute right-5 top-4 text-5xl font-black text-white/5">
+              {String(index + 1).padStart(2, "0")}
+            </span>
+
+            <div className="relative flex h-full flex-col gap-4">
+              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#e9ff00] text-2xl shadow-lg">
+                {meta.icon}
+              </div>
+
+              <h3 className="text-lg font-bold leading-snug text-white">
+                {problem.name}
+              </h3>
+
+              <p className="line-clamp-3 text-sm leading-relaxed text-slate-300">
+                {problem.intro}
+              </p>
+
+              <div className="mt-auto flex items-center justify-between border-t border-white/10 pt-4">
+                <span className="text-xs font-medium uppercase tracking-wider text-[#e9ff00]">
+                  {meta.tag}
+                </span>
+                <span
+                  aria-hidden="true"
+                  className="flex h-8 w-8 items-center justify-center rounded-full bg-[#e9ff00] font-bold text-[#00182e] transition-transform duration-300 group-hover:translate-x-1"
+                >
+                  →
+                </span>
+              </div>
+            </div>
+          </Link>
+        );
+      })}
+    </div>
+
+    <div className="mt-10 text-center">
+      <Link
+        href="/services"
+        className="inline-block rounded-3xl bg-[#e9ff00] px-8 py-4 text-xl font-semibold text-[#00182e] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-[#e9ff00]/30"
+      >
+        See every problem we repair
+      </Link>
+    </div>
+  </div>
+</section>
       {/* Why Choose Us */}
       <section className="py-20 bg-slate-50">
         <div className="container mx-auto px-4 md:px-6">
@@ -549,7 +619,7 @@ const isSubmitting = form.formState.isSubmitting;
       className="mx-auto max-w-3xl"
     >
 
-      {/* তোমার পুরো Card + Form এখানে থাকবে */}
+    
       <Card className="overflow-hidden border border-white/20 bg-white/10 shadow-2xl backdrop-blur-2xl">
                 {/* Form Header */}
                 <div className="border-b border-white/15 bg-white/10 p-6 md:p-8">
