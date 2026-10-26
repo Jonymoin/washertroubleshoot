@@ -144,54 +144,75 @@ export default function Services() {
       </section>
 
       {/* Repair Process */}
-      <section className="py-20">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-slate-900 mb-4">Our Simple Repair Process</h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-              Getting your washing machine fixed shouldn't be a hassle. Here is how we work.
-            </p>
+      {/* Repair Process */}
+<section className="py-20">
+  <div className="container mx-auto px-4 md:px-6">
+    <div className="text-center mb-16">
+      <h2 className="text-3xl font-bold text-slate-900 mb-4">Our Simple Repair Process</h2>
+      <p className="text-lg text-slate-600 max-w-2xl mx-auto">
+        Getting your washing machine fixed shouldn't be a hassle. Here is how we work.
+      </p>
+    </div>
+
+    <div className="mx-auto grid max-w-6xl grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      {[
+        { step: "1", title: "Contact Us", desc: "Reach out via WhatsApp or call describing the issue and brand.", img: "/gm.webp" },
+        { step: "2", title: "Schedule", desc: "We'll arrange a convenient time for our technician to visit.", img: "/gm1.webp" },
+        { step: "3", title: "Diagnosis", desc: "We'll inspect the machine and provide a transparent quote.", img: "/gm2.webp" },
+        { step: "4", title: "Repair", desc: "Once approved, we fix the issue right then and there.", img: "/gm3.webp" },
+      ].map((item) => (
+        <div
+          key={item.step}
+          className="group relative h-96 overflow-hidden rounded-3xl bg-[#00182e] shadow-lg ring-1 ring-slate-200 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-[#00182e]/30"
+        >
+          {/* background image */}
+          <img
+            src={item.img}
+            alt=""
+            loading="lazy"
+            className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+          />
+
+          {/* dark gradient for readability */}
+          <div className="absolute inset-0 bg-gradient-to-t from-[#00182e]/80 via-[#00182e]/20 to-transparent" />
+
+          {/* glass step badge */}
+          <div className="absolute left-4 top-4 flex items-center gap-2 rounded-full border border-white/30 bg-white/15 py-1.5 pl-1.5 pr-4 shadow-lg backdrop-blur-md">
+            <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#e9ff00] text-sm font-extrabold text-[#00182e]">
+              {item.step}
+            </span>
+            <span className="text-xs font-semibold uppercase tracking-widest text-white">
+              Step {item.step}
+            </span>
           </div>
 
-          <div className="max-w-4xl mx-auto relative">
-            {/* Connecting line */}
-            <div className="hidden md:block absolute top-1/2 left-0 w-full h-1 bg-primary/20 -translate-y-1/2 z-0"></div>
-
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-8 relative z-10">
-              {[
-                { step: "1", title: "Contact Us", desc: "Reach out via WhatsApp or call describing the issue and brand." },
-                { step: "2", title: "Schedule", desc: "We'll arrange a convenient time for our technician to visit." },
-                { step: "3", title: "Diagnosis", desc: "We'll inspect the machine and provide a transparent quote." },
-                { step: "4", title: "Repair", desc: "Once approved, we fix the issue right then and there." }
-              ].map((item, idx) => (
-                <div key={idx} className="flex flex-col items-center text-center bg-lime-500 md:bg-transparent p-6 md:p-0 rounded-xl md:rounded-none shadow-sm md:shadow-none relative">
-                  <div className="w-16 h-16 rounded-full bg-green-500 text-white flex items-center justify-center text-2xl font-bold mb-4 shadow-lg ring-4 ring-white border-2 border-primary-foreground">
-                    {item.step}
-                  </div>
-                  <h3 className="text-xl font-bold text-slate-900 mb-2">{item.title}</h3>
-                  <p className="text-slate-800 text-sm">{item.desc}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="mt-16 text-center">
-            <Button size="lg" className="rounded-full px-8 py-6 text-lg bg-lime-500 hover:bg-accent/90 text-accent-foreground" asChild>
-              <a
-                href="https://wa.me/6584130016"
-                onClick={trackGoogleAdsConversion}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Book a Repair Now
-              </a>
-            </Button>
-            <p className="mt-4 text-sm text-slate-500">
-              Want to try a quick check first? Read our <Link href="/blog" className="font-semibold text-primary hover:underline">washing machine troubleshooting tips</Link>.
-            </p>
+          {/* glass content panel */}
+          <div className="absolute inset-x-3 bottom-3 rounded-2xl border border-white/30 bg-white/15 p-5 shadow-xl backdrop-blur-xl transition-colors duration-300 group-hover:bg-white/25">
+            <div className="mb-3 h-1 w-10 rounded-full bg-[#e9ff00] transition-all duration-300 group-hover:w-16" />
+            <h3 className="mb-1.5 text-xl font-bold text-white">{item.title}</h3>
+            <p className="text-sm leading-relaxed text-slate-100">{item.desc}</p>
           </div>
         </div>
-      </section>
+      ))}
+    </div>
+
+    <div className="mt-16 text-center">
+      <Button size="lg" className="rounded-full px-8 py-6 text-lg bg-lime-500 hover:bg-white text-accent-foreground" asChild>
+        <a
+          href="https://wa.me/6584130016"
+          onClick={trackGoogleAdsConversion}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Book a Repair Now
+        </a>
+      </Button>
+      <p className="mt-4 text-sm text-slate-500">
+        Want to try a quick check first? Read our <Link href="/blog" className="font-semibold text-primary hover:underline">washing machine troubleshooting tips</Link>.
+      </p>
+    </div>
+  </div>
+</section>
     </div>
   );
 }
