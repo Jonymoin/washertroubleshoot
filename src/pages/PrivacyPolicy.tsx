@@ -1,17 +1,8 @@
 import { useSEO } from "@/hooks/useSEO";
-import { breadcrumbListJsonLd } from "@/lib/seo";
+import { staticSeo } from "@/lib/route-seo";
 
 export default function PrivacyPolicy() {
-  useSEO({
-    title: "Privacy Policy | Washertroubleshoot SG",
-    description:
-      "Read how Washertroubleshoot SG collects, uses and protects your personal data when you use our washing machine repair services in Singapore.",
-    path: "/privacy-policy",
-    jsonLd: breadcrumbListJsonLd([
-      { name: "Home", path: "/" },
-      { name: "Privacy Policy", path: "/privacy-policy" },
-    ]),
-  });
+  useSEO(staticSeo("/privacy-policy"));
 
   return (
     <div className="min-h-screen bg-white text-slate-700">

@@ -14,6 +14,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Textarea } from "@/components/ui/textarea";
 import { trackGoogleAdsConversion } from "@/lib/googleAds";
 import {
+  brands,
   commonErrorCodes,
   findEntry,
   problems,
@@ -21,7 +22,7 @@ import {
 } from "./repair-data";
 import { findArticleByProblemSlug } from "./blog-data";
 import { useSEO } from "@/hooks/useSEO";
-import { breadcrumbListJsonLd, serviceJsonLd } from "@/lib/seo";
+import { repairEntrySeo } from "@/lib/route-seo";
 
 const phone = "+65 8413 0016";
 const waNumber = "6584130016";
@@ -63,23 +64,7 @@ export default function RepairDetail({
           .filter((p): p is RepairEntry => Boolean(p))
       : [];
 
-  useSEO({
-    title: `${entry.title} | Washertroubleshoot SG`,
-    description: `${entry.intro} Call ${phone} for in-home washing machine repair across Singapore.`,
-    path: basePath,
-    jsonLd: [
-      serviceJsonLd({
-        name: entry.title,
-        description: entry.intro,
-        path: basePath,
-      }),
-      breadcrumbListJsonLd([
-        { name: "Home", path: "/" },
-        { name: "Services", path: "/services" },
-        { name: entry.title, path: basePath },
-      ]),
-    ],
-  });
+  useSEO(repairEntrySeo(entry, kind));
 
   const update = (field: keyof typeof form, value: string) => {
     setForm((current) => ({
@@ -465,6 +450,29 @@ Message: ${form.message}` : ""}`;
           </Link>
         </section>
       )}
+
+      <section className="py-10 text-center">
+        <div className="container mx-auto max-w-6xl px-4 md:px-6">
+          <p className="mb-3 text-sm font-bold uppercase tracking-[0.15em] text-primary">
+            {kind === "brand" ? "Other brands we repair" : "Other problems we fix"}
+          </p>
+
+          <ul className="flex flex-wrap justify-center gap-x-5 gap-y-2 text-sm">
+            {(kind === "brand" ? brands : problems)
+              .filter((other) => other.slug !== entry.slug)
+              .map((other) => (
+                <li key={other.slug}>
+                  <Link
+                    href={`/${kind === "brand" ? "brands" : "problems"}/${other.slug}`}
+                    className="font-medium text-slate-600 transition-colors hover:text-primary hover:underline"
+                  >
+                    {other.name}
+                  </Link>
+                </li>
+              ))}
+          </ul>
+        </div>
+      </section>
 
       <section className="py-14 text-center">
         <h2 className="mb-4 text-2xl font-bold text-slate-900">

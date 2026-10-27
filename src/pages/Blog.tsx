@@ -1,44 +1,29 @@
-import { motion } from "framer-motion";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Wrench } from "lucide-react";
 import { articles } from "./blog-data";
 import { findEntry, problems } from "./repair-data";
 import { useSEO } from "@/hooks/useSEO";
-import { breadcrumbListJsonLd } from "@/lib/seo";
+import { staticSeo } from "@/lib/route-seo";
 
 export default function Blog() {
-  useSEO({
-    title: "Washing Machine Troubleshooting Tips & Advice | Washertroubleshoot SG",
-    description:
-      "Practical washing machine troubleshooting and maintenance tips from Washertroubleshoot SG — drainage issues, error codes, cleaning, and repair-vs-replace advice.",
-    path: "/blog",
-    jsonLd: breadcrumbListJsonLd([
-      { name: "Home", path: "/" },
-      { name: "Blog", path: "/blog" },
-    ]),
-  });
+  useSEO(staticSeo("/blog"));
 
   return (
     <div className="flex flex-col min-h-screen bg-slate-50">
       {/* Page Header */}
       <div className="bg-slate-900 text-white py-16 md:py-24">
         <div className="container mx-auto px-4 md:px-6 text-center max-w-3xl">
-          <motion.h1 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+          <h1
             className="text-4xl md:text-5xl font-bold mb-6"
           >
             Appliance Tips & Advice
-          </motion.h1>
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
+          </h1>
+          <p
             className="text-lg md:text-xl text-slate-300"
           >
             Helpful guides to maintain your washing machine, troubleshoot minor issues, and know when to call a professional.
-          </motion.p>
+          </p>
         </div>
       </div>
 
@@ -51,12 +36,8 @@ export default function Blog() {
                 : undefined;
 
               return (
-              <motion.article 
+              <article 
                 key={article.slug}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.1 }}
                 className="bg-white rounded-2xl p-6 md:p-10 shadow-sm border border-slate-100"
               >
                 <div className="flex items-center gap-4 text-sm text-slate-500 mb-4">
@@ -99,7 +80,7 @@ export default function Blog() {
                     </Button>
                   </div>
                 </div>
-              </motion.article>
+              </article>
               );
             })}
           </div>

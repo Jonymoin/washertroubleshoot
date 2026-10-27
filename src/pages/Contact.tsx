@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
@@ -36,7 +35,7 @@ import {
 
 import { toast } from "sonner";
 import { useSEO } from "@/hooks/useSEO";
-import { breadcrumbListJsonLd } from "@/lib/seo";
+import { staticSeo } from "@/lib/route-seo";
 
 const formSchema = z.object({
   name: z.string().min(2, {
@@ -65,16 +64,7 @@ const formSchema = z.object({
 });
 
 export default function Contact() {
-  useSEO({
-    title: "Contact Us | Book Washing Machine Repair in Singapore",
-    description:
-      "Get in touch with Washertroubleshoot SG for washing machine repair in Singapore. WhatsApp or call +65 8413 0016 for a fast quote and same-day visits.",
-    path: "/contact",
-    jsonLd: breadcrumbListJsonLd([
-      { name: "Home", path: "/" },
-      { name: "Contact", path: "/contact" },
-    ]),
-  });
+  useSEO(staticSeo("/contact"));
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -161,16 +151,13 @@ export default function Contact() {
   const isSubmitting = form.formState.isSubmitting;
 
   return (
-    <main className="min-h-screen bg-slate-950">
+    <div className="min-h-screen bg-slate-950">
       {/* Header */}
       <section className="relative overflow-hidden bg-slate-950 py-20">
         <div className="absolute inset-0 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950" />
 
         <div className="relative container mx-auto px-4 md:px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 25 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+          <div
             className="mx-auto max-w-3xl text-center"
           >
             <p className="mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-lime-400">
@@ -185,7 +172,7 @@ export default function Contact() {
               Need a washing machine technician? Contact us today for
               fast assistance, repair advice and service booking.
             </p>
-          </motion.div>
+          </div>
         </div>
       </section>
 
@@ -202,11 +189,7 @@ export default function Contact() {
 
           <div className="grid gap-8 lg:grid-cols-5">
             {/* Left Side */}
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
+            <div
               className="space-y-5 lg:col-span-2"
             >
               <div className="mb-7">
@@ -350,14 +333,10 @@ export default function Contact() {
                   </div>
                 </CardContent>
               </Card>
-            </motion.div>
+            </div>
 
             {/* Form */}
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
+            <div
               className="lg:col-span-3"
             >
               <Card className="overflow-hidden border border-white/20 bg-white/10 shadow-2xl backdrop-blur-2xl">
@@ -522,7 +501,7 @@ Washing Machine Brand </FormLabel>
                 </CardContent>
               </Card>
 
-            </motion.div>
+            </div>
           </div>
         </div>
       </section>
@@ -545,6 +524,6 @@ Washing Machine Brand </FormLabel>
           </div>
         </div>
       </section>
-    </main>
+    </div>
   );
 }

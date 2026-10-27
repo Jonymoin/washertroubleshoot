@@ -1,9 +1,9 @@
-import { motion } from "framer-motion";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { trackGoogleAdsConversion } from "@/lib/googleAds";
 import { useSEO } from "@/hooks/useSEO";
+import { staticSeo } from "@/lib/route-seo";
 
 import { 
    
@@ -34,22 +34,6 @@ const problemMeta: Record<string, { icon: string; tag: string }> = {
   "taking-too-long": { icon: "⏱️", tag: "Diagnosis" },
   "clothes-still-wet": { icon: "👕", tag: "Common" },
 };
-const fadeIn = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
-};
-
-const staggerContainer = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.2
-    }
-  }
-};
-  
-
 import {
   Select,
   SelectContent,
@@ -101,12 +85,7 @@ const formSchema = z.object({
   }),
 });
 export default function Home() {
-  useSEO({
-    title: "Washing Machine Repair Singapore | Washertroubleshoot SG",
-    description:
-      "Fast, reliable washing machine repair across Singapore. Washertroubleshoot SG repairs all major brands at home with transparent pricing — WhatsApp or call for same-day service.",
-    path: "/",
-  });
+  useSEO(staticSeo("/"));
   const form = useForm<z.infer<typeof formSchema>>({
   resolver: zodResolver(formSchema),
 
@@ -198,10 +177,10 @@ const isSubmitting = form.formState.isSubmitting;
         <div className="absolute inset-0 z-0">
           <img
   src="/hero-laundry.webp"
-  alt="washing machine repair"
-  width="1200"
-  height="800"
-  fetchPriority="high"
+  alt="Modern laundry room with a front-load washing machine and dryer, ready for washing machine repair in Singapore"
+  width="1408"
+  height="768"
+  {...{ fetchpriority: "high" }}
   decoding="async"
   className="w-full h-full object-cover"
 />
@@ -218,14 +197,15 @@ const isSubmitting = form.formState.isSubmitting;
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-6">
                 Washing Machine Repair Service
               </h1>
-              <h3 className="text-2xl font-semibold mb-6 text-lime-400">Give Your Washing Machine a Second Life.</h3>
+              <p className="text-2xl font-semibold mb-6 text-lime-400">Give Your Washing Machine a Second Life.</p>
               <p className="text-lg md:text-xl text-slate-200 mb-8 max-w-xl">
                 Don't buy a new washing machine just because yours has a problem. With expert diagnosis and professional repair, your existing washer can get back to performing like new. Save money, extend your machine's lifespan, and get back to hassle-free laundry.
               </p>
               
-              <motion.div variants={fadeIn} className="flex flex-col sm:flex-row gap-4">
+              <div className="flex flex-col sm:flex-row gap-4">
                 <Button
   size="lg"
+  asChild
   className="text-lg px-8 py-6 rounded-full bg-slate-900 text-lime-400 hover:bg-amber-400 hover:text-black">
   <a
     href="https://wa.me/6584130016"
@@ -246,9 +226,9 @@ const isSubmitting = form.formState.isSubmitting;
                     +65 8413 0016
                   </a>
                 </Button>
-              </motion.div>
+              </div>
 
-              <motion.div variants={fadeIn} className="mt-10 flex items-center gap-4 text-sm font-medium text-slate-300">
+              <div className="mt-10 flex items-center gap-4 text-sm font-medium text-slate-300">
                 <div className="flex items-center gap-1">
                   <CheckCircle2 className="text-green-400 w-5 h-5" /> Same-day Service
                 </div>
@@ -258,7 +238,7 @@ const isSubmitting = form.formState.isSubmitting;
                 <div className="flex items-center gap-1">
                   <CheckCircle2 className="text-green-400 w-5 h-5" /> Transparent Pricing
                 </div>
-              </motion.div>
+              </div>
             </div>
           </div>
         </div>
@@ -367,12 +347,8 @@ const isSubmitting = form.formState.isSubmitting;
                 desc: "No hidden fees. We provide a clear quote before any work begins, so you know exactly what you're paying for."
               }
             ].map((feature, idx) => (
-              <motion.div 
+              <div 
                 key={idx}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.1, duration: 0.5 }}
               >
                 <Card className="h-full border-none shadow-md hover:shadow-lg transition-shadow bg-white">
                   <CardContent className="p-8 text-center flex flex-col items-center">
@@ -383,7 +359,7 @@ const isSubmitting = form.formState.isSubmitting;
                     <p className="text-slate-600 leading-relaxed">{feature.desc}</p>
                   </CardContent>
                 </Card>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
@@ -392,21 +368,19 @@ const isSubmitting = form.formState.isSubmitting;
         <section className="py-20 bg-slate-50 border-y border-slate-200">
         <div className="container mx-auto px-4 md:px-6">
           <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5 mb-10">
-             <motion.div 
+             <div 
               className="lg:w-1/2"
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
             >
               <img 
                 src="/technician.webp" 
-                alt="Washing machine technician" 
+                alt="Washertroubleshoot SG technician repairing a front-load washing machine"
+                width={1200}
+                height={800}
                 className="rounded-2xl shadow-xl w-full object-cover aspect-[4/3]"
                 loading="lazy"
                decoding="async"
               />
-            </motion.div>
+            </div>
             <div>
               <p className="text-sm font-bold uppercase tracking-[0.15em] text-primary mb-3">Brands we know</p>
               <h2 className="text-3xl md:text-4xl font-bold text-slate-900">Brands We Service</h2>
@@ -431,27 +405,21 @@ const isSubmitting = form.formState.isSubmitting;
         <div className="container mx-auto px-4 md:px-6">
           <div className="flex flex-col lg:flex-row gap-12 items-center">
            
-            <motion.div 
+            <div 
               className="lg:w-1/2"
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
             >
               <img 
                 src="/technician1.webp"
-                alt="Washing machine technician" 
+                alt="Close-up of a technician's hands using a screwdriver on a washing machine panel"
+                width={1000}
+                height={700}
                 className="rounded-2xl shadow-xl w-full object-cover aspect-[4/3]"
                 loading="lazy"
                 decoding="async"
               />
-            </motion.div>
-            <motion.div 
+            </div>
+            <div 
               className="lg:w-1/2"
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
             >
               <p className="text-sm font-bold uppercase tracking-[0.15em] text-primary mb-3">Islandwide coverage</p>
               <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">Washing Machine Repair Across Singapore</h2>
@@ -472,7 +440,7 @@ const isSubmitting = form.formState.isSubmitting;
                 ))}
               </div>
               
-             <Button size="lg"
+             <Button size="lg" asChild
   className="bg-blue-600 text-white hover:bg-black"
 >
   <Link href="/contact">
@@ -483,7 +451,7 @@ const isSubmitting = form.formState.isSubmitting;
     </span>
   </Link>
 </Button>
-            </motion.div>
+            </div>
           </div>
         </div>
       </section>
@@ -511,36 +479,46 @@ const isSubmitting = form.formState.isSubmitting;
       {[
         {
           image: "/working1.webp",
+          width: 800,
+          height: 533,
           title: "1. Service Request",
-          alt: "Washing machine repair service request Singapore",
+          alt: "Washertroubleshoot SG technician checking a front-load washing machine after a service request in Singapore",
           text: "Contact us via phone or WhatsApp to describe your washing machine issue. We assist customers throughout Singapore with all major washer brands."
         },
         {
           image: "/working2.webp",
+          width: 800,
+          height: 800,
           title: "2. Inspection & Diagnosis",
-          alt: "Technician inspecting washing machine in Singapore",
+          alt: "Technician inspecting a washing machine control board with a multimeter during diagnosis",
           text: "Our technician performs a detailed inspection to identify faults such as drainage issues, spinning problems, leaks, unusual noises, or electrical faults."
         },
         {
           image: "/working3.webp",
+          width: 800,
+          height: 436,
           title: "3. Transparent Quotation",
-          alt: "Washing machine repair quotation Singapore",
+          alt: "Washing machine internal parts and repair tools laid out for a transparent repair quotation",
           text: "After diagnosing the problem, we provide a clear repair quotation with no hidden charges, allowing you to make an informed decision."
         },
         {
           image: "/working4.webp",
+          width: 800,
+          height: 800,
           title: "4. Professional Repair",
-          alt: "Professional washing machine repair service Singapore",
+          alt: "Close-up of a washing machine drum interior during professional repair",
           text: "Using quality replacement parts and industry best practices, our technicians repair your washing machine quickly and safely."
         },
         {
           image: "/working5.webp",
+          width: 800,
+          height: 560,
           title: "5. Testing & Completion",
-          alt: "Testing repaired washing machine Singapore",
+          alt: "Technician securing a washing machine panel while testing the repaired machine",
           text: "We thoroughly test the machine to ensure everything works perfectly before completing the service and providing maintenance recommendations."
         }
       ].map((step, idx) => (
-        <motion.div
+        <div
           key={idx}
           
           className="bg-slate-800 rounded-xl overflow-hidden border border-slate-700 hover:border-accent transition-all duration-300"
@@ -548,6 +526,8 @@ const isSubmitting = form.formState.isSubmitting;
           <img
             src={step.image}
             alt={step.alt}
+            width={step.width}
+            height={step.height}
             loading="lazy"
             decoding="async"
 
@@ -563,20 +543,33 @@ const isSubmitting = form.formState.isSubmitting;
               {step.text}
             </p>
           </div>
-        </motion.div>
+        </div>
       ))}
     </div>
 
     <div className="mt-16 max-w-4xl mx-auto text-center">
       <p className="text-slate-400 leading-relaxed">
-        Whether your washing machine is not spinning, leaking water, making
-        unusual noises, failing to drain, or displaying error codes, our
+        Whether your washing machine is{" "}
+        <Link href="/problems/not-spinning" className="underline decoration-slate-600 underline-offset-4 hover:text-white">not spinning</Link>,{" "}
+        <Link href="/problems/leaking-water" className="underline decoration-slate-600 underline-offset-4 hover:text-white">leaking water</Link>, making
+        <Link href="/problems/making-loud-noise" className="underline decoration-slate-600 underline-offset-4 hover:text-white"> unusual noises</Link>,{" "}
+        <Link href="/problems/not-draining" className="underline decoration-slate-600 underline-offset-4 hover:text-white">failing to drain</Link>, or{" "}
+        <Link href="/problems/showing-an-error-code" className="underline decoration-slate-600 underline-offset-4 hover:text-white">displaying error codes</Link>, our
         experienced technicians are ready to help. We repair front-load,
-        top-load, and washer-dryer units from leading brands including Samsung,
-        LG, Bosch, Electrolux, Panasonic, Toshiba, Sharp, Hitachi, Midea, and
+        top-load, and washer-dryer units from leading brands including{" "}
+        <Link href="/brands/samsung" className="underline decoration-slate-600 underline-offset-4 hover:text-white">Samsung</Link>,{" "}
+        <Link href="/brands/lg" className="underline decoration-slate-600 underline-offset-4 hover:text-white">LG</Link>,{" "}
+        <Link href="/brands/bosch" className="underline decoration-slate-600 underline-offset-4 hover:text-white">Bosch</Link>,{" "}
+        <Link href="/brands/electrolux" className="underline decoration-slate-600 underline-offset-4 hover:text-white">Electrolux</Link>,{" "}
+        <Link href="/brands/panasonic" className="underline decoration-slate-600 underline-offset-4 hover:text-white">Panasonic</Link>,{" "}
+        <Link href="/brands/toshiba" className="underline decoration-slate-600 underline-offset-4 hover:text-white">Toshiba</Link>,{" "}
+        <Link href="/brands/sharp" className="underline decoration-slate-600 underline-offset-4 hover:text-white">Sharp</Link>,{" "}
+        <Link href="/brands/hitachi" className="underline decoration-slate-600 underline-offset-4 hover:text-white">Hitachi</Link>, Midea, and
         more. Our goal is to provide affordable and dependable washing machine
         repair services throughout Singapore with fast response times and
-        customer satisfaction guaranteed.
+        customer satisfaction guaranteed. Not sure what is wrong? Read our{" "}
+        <Link href="/blog" className="underline decoration-slate-600 underline-offset-4 hover:text-white">washing machine troubleshooting tips</Link>{" "}
+        or browse all <Link href="/services" className="underline decoration-slate-600 underline-offset-4 hover:text-white">repair services</Link>.
       </p>
     </div>
   </div>
@@ -611,187 +604,180 @@ const isSubmitting = form.formState.isSubmitting;
   <div className="absolute inset-0 bg-[#00182e]/80" />
 
   <div className="container relative z-10 mx-auto px-4 md:px-6">
-    <motion.div
-      initial={{ opacity: 0, x: 30 }}
-      whileInView={{ opacity: 1, x: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.6 }}
+    <div
       className="mx-auto max-w-3xl"
     >
 
     
-      <Card className="overflow-hidden border border-white/20 bg-white/10 shadow-2xl backdrop-blur-2xl">
-                {/* Form Header */}
-                <div className="border-b border-white/15 bg-white/10 p-6 md:p-8">
-                  <h2 className="text-2xl font-bold text-white">
-                    Book a Repair
-                  </h2>
+     {/* Glass wrapper with background image */}
+<div className="relative overflow-hidden rounded-3xl p-4 md:p-10">
+  {/* background image */}
+  <img
+    src="/gm.webp"
+    alt=""
+    width={720}
+    height={1440}
+    loading="lazy"
+    className="absolute inset-0 h-full w-full object-cover"
+  />
 
-                  <p className="mt-2 text-sm leading-6 text-white/65">
-                    Fill in the details below and our technician will
-                    contact you shortly.
-                  </p>
-                </div>
+  {/* dark overlay so the form stays readable */}
+  <div className="absolute inset-0 bg-gradient-to-br from-[#00182e]/70 via-[#00182e]/40 to-[#00182e]/70" />
 
-                <CardContent className="p-6 md:p-8">
-                  <Form {...form}>
-                    <form
-                      onSubmit={form.handleSubmit(onSubmit)}
-                      className="space-y-6"
-                    >
-                      {/* Name + Phone */}
-                      <div className="grid gap-5 md:grid-cols-2">
-                        <FormField
-                          control={form.control}
-                          name="name"
-                          render={({ field }) => (
-                            <FormItem>
-                              <FormLabel className="text-white">
-                                Name
-                              </FormLabel>
+  {/* glass card */}
+  <Card className="relative overflow-hidden border border-white/20 bg-white/10 shadow-2xl backdrop-blur-2xl">
+    {/* Form Header */}
+    <div className="border-b border-white/15 bg-white/10 p-6 md:p-8">
+      <h2 className="text-2xl font-bold text-white">Book a Repair</h2>
 
-                              <FormControl>
-                                <Input
-                                  {...field}
-                                  placeholder="Your name"
-                                  className="h-12 border-white/20 bg-white/10 text-white placeholder:text-white/40 backdrop-blur-sm focus:border-white/40 focus:bg-white/15"
-                                />
-                              </FormControl>
+      <p className="mt-2 text-sm leading-6 text-white/65">
+        Fill in the details below and our technician will contact you shortly.
+      </p>
+    </div>
 
-                              <FormMessage />
-                            </FormItem>
-                          )}
-                        />
+    <CardContent className="p-6 md:p-8">
+      <Form {...form}>
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+          {/* Name + Phone */}
+          <div className="grid gap-5 md:grid-cols-2">
+            <FormField
+              control={form.control}
+              name="name"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="text-white">Name</FormLabel>
 
-                        <FormField
-                          control={form.control}
-                          name="phone"
-                          render={({ field }) => (
-                            <FormItem>
-                              <FormLabel className="text-white">
-                                Phone Number
-                              </FormLabel>
+                  <FormControl>
+                    <Input
+                      {...field}
+                      placeholder="Your name"
+                      className="h-12 border-white/20 bg-white/10 text-white placeholder:text-white/40 backdrop-blur-sm focus:border-white/40 focus:bg-white/15"
+                    />
+                  </FormControl>
 
-                              <FormControl>
-                                <Input
-                                  {...field}
-                                  type="tel"
-                                  placeholder="+65 XXXX XXXX"
-                                  className="h-12 border-white/20 bg-white/10 text-white placeholder:text-white/40 backdrop-blur-sm focus:border-white/40 focus:bg-white/15"
-                                />
-                              </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
 
-                              <FormMessage />
-                            </FormItem>
-                          )}
-                        />
-                      </div>
+            <FormField
+              control={form.control}
+              name="phone"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="text-white">Phone Number</FormLabel>
 
-                      {/* Email */}
-                      <FormField
-                        control={form.control}
-                        name="email"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormLabel className="text-white">
-                              Email
-                              <span className="ml-1 text-white/40">
-                                (Optional)
-                              </span>
-                            </FormLabel>
+                  <FormControl>
+                    <Input
+                      {...field}
+                      type="tel"
+                      placeholder="+65 XXXX XXXX"
+                      className="h-12 border-white/20 bg-white/10 text-white placeholder:text-white/40 backdrop-blur-sm focus:border-white/40 focus:bg-white/15"
+                    />
+                  </FormControl>
 
-                            <FormControl>
-                              <Input
-                                {...field}
-                                type="email"
-                                placeholder="your@email.com"
-                                className="h-12 border-white/20 bg-white/10 text-white placeholder:text-white/40 backdrop-blur-sm focus:border-white/40 focus:bg-white/15"
-                              />
-                            </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </div>
 
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
+          {/* Email */}
+          <FormField
+            control={form.control}
+            name="email"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel className="text-white">
+                  Email
+                  <span className="ml-1 text-white/40">(Optional)</span>
+                </FormLabel>
 
-                      {/* Brand */}
-                     {/* Brand */}
-<FormField
-control={form.control}
-name="brand"
-render={({ field }) => ( <FormItem> <FormLabel className="text-white">
-Washing Machine Brand </FormLabel>
+                <FormControl>
+                  <Input
+                    {...field}
+                    type="email"
+                    placeholder="your@email.com"
+                    className="h-12 border-white/20 bg-white/10 text-white placeholder:text-white/40 backdrop-blur-sm focus:border-white/40 focus:bg-white/15"
+                  />
+                </FormControl>
 
-```
-  <FormControl>
-    <Input
-      {...field}
-      placeholder="Enter your machine brand"
-      className="h-12 border-white/20 bg-white/10 text-white placeholder:text-white/40 backdrop-blur-sm focus:border-white/40 focus:bg-white/15"
-    />
-  </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
 
-  <FormMessage />
-</FormItem>
+          {/* Brand */}
+          <FormField
+            control={form.control}
+            name="brand"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel className="text-white">
+                  Washing Machine Brand
+                </FormLabel>
 
+                <FormControl>
+                  <Input
+                    {...field}
+                    placeholder="Enter your machine brand"
+                    className="h-12 border-white/20 bg-white/10 text-white placeholder:text-white/40 backdrop-blur-sm focus:border-white/40 focus:bg-white/15"
+                  />
+                </FormControl>
 
-)}
-/>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
 
+          {/* Problem */}
+          <FormField
+            control={form.control}
+            name="problem"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel className="text-white">
+                  Washing Machine Problem
+                </FormLabel>
 
-                      {/* Problem */}
-                      <FormField
-                        control={form.control}
-                        name="problem"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormLabel className="text-white">
-                              Washing Machine Problem
-                            </FormLabel>
+                <FormControl>
+                  <Textarea
+                    {...field}
+                    placeholder="Please describe the problem. For example: machine not spinning, not draining, leaking water, making noise..."
+                    className="min-h-[140px] resize-none border-white/20 bg-white/10 text-white placeholder:text-white/40 backdrop-blur-sm focus:border-white/40 focus:bg-white/15"
+                  />
+                </FormControl>
 
-                            <FormControl>
-                              <Textarea
-                                {...field}
-                                placeholder="Please describe the problem. For example: machine not spinning, not draining, leaking water, making noise..."
-                                className="min-h-[140px] resize-none border-white/20 bg-white/10 text-white placeholder:text-white/40 backdrop-blur-sm focus:border-white/40 focus:bg-white/15"
-                              />
-                            </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
 
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
+          {/* Submit */}
+          <Button
+            type="submit"
+            disabled={isSubmitting}
+            className="h-12 w-full border-0 bg-lime-600 text-base font-semibold text-white shadow-lg transition-all hover:bg-blue-600 disabled:cursor-not-allowed disabled:opacity-60"
+          >
+            {isSubmitting ? "Sending..." : "Send Repair Inquiry"}
+          </Button>
 
-                      {/* Submit */}
-                      <Button
-                        type="submit"
-                        disabled={isSubmitting}
-                        className="h-12 w-full bg-lime-600 text-base font-semibold text-white shadow-lg border-0 transition-all hover:bg-blue-600 disabled:cursor-not-allowed disabled:opacity-60"
-                      >
-                        {isSubmitting
-                          ? "Sending..."
-                          : "Send Repair Inquiry"}
-                      </Button>
+          <p className="text-center text-xs leading-5 text-white/50">
+            Your information will only be used to contact you regarding your
+            washing machine repair request.
+          </p>
+        </form>
+      </Form>
+    </CardContent>
+  </Card>
+</div>
 
-                      <p className="text-center text-xs leading-5 text-white/50">
-                        Your information will only be used to contact you
-                        regarding your washing machine repair request.
-                      </p>
-                    </form>
-                  </Form>
-                </CardContent>
-              </Card>
-
-    </motion.div>
+    </div>
   </div>
 </section>
               <section className="relative overflow-hidden bg-cover bg-center bg-no-repeat py-10 md:py-24"
   style={{ backgroundImage: "url('/gm1.webp')" }}>
-                  <motion.div
-                              initial={{ opacity: 0, x: -30 }}
-                              whileInView={{ opacity: 1, x: 0 }}
-                              viewport={{ once: true }}
-                              transition={{ duration: 0.6 }}
+                  <div
                               className="space-y-5 lg:col-span-2"
                             >
                               <div className="mb-7">
@@ -935,7 +921,7 @@ Washing Machine Brand </FormLabel>
                                   </div>
                                 </CardContent>
                               </Card>
-                            </motion.div>
+                            </div>
               </section>
               
             <div/>

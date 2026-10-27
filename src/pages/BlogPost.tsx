@@ -1,11 +1,10 @@
-import { motion } from "framer-motion";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Wrench, ArrowLeft } from "lucide-react";
-import { findArticle } from "./blog-data";
+import { articles, findArticle } from "./blog-data";
 import { findEntry, problems } from "./repair-data";
 import { useSEO } from "@/hooks/useSEO";
-import { articleJsonLd, breadcrumbListJsonLd } from "@/lib/seo";
+import { blogPostSeo, notFoundSeo } from "@/lib/route-seo";
 import NotFound from "./not-found";
 
 export default function BlogPost({ slug }: { slug?: string }) {
@@ -14,35 +13,8 @@ export default function BlogPost({ slug }: { slug?: string }) {
     ? findEntry(problems, article.relatedProblemSlug)
     : undefined;
 
-  // Called unconditionally (rules of hooks); becomes a no-op noindex fallback
-  // when the slug doesn't match a known article, right before rendering 404.
-  useSEO(
-    article
-      ? {
-          title: `${article.title} | Washertroubleshoot SG`,
-          description: article.summary,
-          path: `/blog/${article.slug}`,
-          jsonLd: [
-            articleJsonLd({
-              title: article.title,
-              description: article.summary,
-              path: `/blog/${article.slug}`,
-              datePublished: article.isoDate,
-            }),
-            breadcrumbListJsonLd([
-              { name: "Home", path: "/" },
-              { name: "Blog", path: "/blog" },
-              { name: article.title, path: `/blog/${article.slug}` },
-            ]),
-          ],
-        }
-      : {
-          title: "Page Not Found | Washertroubleshoot SG",
-          description: "The blog article you're looking for could not be found.",
-          path: `/blog/${slug ?? ""}`,
-          noindex: true,
-        }
-  );
+  // Called unconditionally (rules of hooks); falls back to the noindex 404 config.
+  useSEO((slug && blogPostSeo(slug)) || notFoundSeo);
 
   if (!article) {
     return <NotFound />;
@@ -60,21 +32,16 @@ export default function BlogPost({ slug }: { slug?: string }) {
             <span className="w-1 h-1 rounded-full bg-slate-500"></span>
             <span>{article.readTime}</span>
           </div>
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+          <h1
             className="text-3xl md:text-5xl font-bold mb-4"
           >
             {article.title}
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
+          </h1>
+          <p
             className="text-lg md:text-xl text-slate-300"
           >
             {article.summary}
-          </motion.p>
+          </p>
         </div>
       </div>
 
@@ -103,7 +70,20 @@ export default function BlogPost({ slug }: { slug?: string }) {
           </article>
 
           <div className="mt-10 text-center">
+            <p className="mb-3 text-sm text-slate-500">
+              More tips:{" "}
+              {articles
+                .filter((other) => other.slug !== article.slug)
+                .map((other, index, list) => (
+                  <span key={other.slug}>
+                    <Link href={`/blog/${other.slug}`} className="font-semibold text-primary hover:underline">{other.title}</Link>
+                    {index < list.length - 1 ? " · " : ""}
+                  </span>
+                ))}
+            </p>
             <Link href="/blog" className="text-primary font-semibold hover:underline">See all troubleshooting tips</Link>
+            <span className="mx-2 text-slate-300">|</span>
+            <Link href="/services" className="text-primary font-semibold hover:underline">Washing machine repair services</Link>
           </div>
         </div>
       </section>

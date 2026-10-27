@@ -7,7 +7,6 @@ import {
   MessageCircle,
 } from "lucide-react";
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import { trackGoogleAdsConversion } from "@/lib/googleAds";
 
 const navLinks = [
@@ -70,7 +69,9 @@ export default function Header() {
             <div className="bg-primary p-2 rounded-lg text-white group-hover:bg-primary/90 transition-colors">
               <img
                 src="/logo.webp"
-                alt="Washertroubleshoot Singapore"
+                alt="Washertroubleshoot SG logo"
+                width={40}
+                height={40}
                 className="w-10 h-10 object-contain"
               />
             </div>
@@ -126,10 +127,11 @@ export default function Header() {
           {/* ================= MOBILE MENU BUTTON ================= */}
           <button
             type="button"
-            className="md:hidden p-2 text-slate-600 hover:text-primary transition-colors"
+            className="md:hidden p-3 -mr-1 text-slate-600 hover:text-primary transition-colors"
             onClick={() => setMobileMenuOpen(true)}
             aria-label="Open menu"
             aria-expanded={mobileMenuOpen}
+            aria-controls="mobile-menu"
           >
             <Menu size={24} />
           </button>
@@ -141,32 +143,25 @@ export default function Header() {
           IMPORTANT: This is OUTSIDE the header
          ========================================================= */}
 
-      <AnimatePresence>
-        {mobileMenuOpen && (
-          <>
-            {/* Dark Overlay */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.2 }}
-              className="fixed inset-0 z-[9998] bg-slate-900/60 backdrop-blur-sm md:hidden"
-              onClick={() => setMobileMenuOpen(false)}
-            />
+      {/* Dark Overlay (CSS transition, no animation library) */}
+      <div
+        aria-hidden="true"
+        className={`fixed inset-0 z-[9998] bg-slate-900/60 backdrop-blur-sm transition-opacity duration-200 md:hidden ${
+          mobileMenuOpen ? "opacity-100" : "pointer-events-none opacity-0"
+        }`}
+        onClick={() => setMobileMenuOpen(false)}
+      />
 
-            {/* Mobile Drawer */}
-            <motion.aside
-              initial={{ x: "100%" }}
-              animate={{ x: 0 }}
-              exit={{ x: "100%" }}
-              transition={{
-                type: "spring",
-                damping: 25,
-                stiffness: 200,
-              }}
-              className="fixed top-0 right-0 bottom-0 z-[9999] flex w-[85%] max-w-sm flex-col bg-white shadow-2xl md:hidden"
-            >
-              {/* Menu Header */}
+      {/* Mobile Drawer */}
+      <aside
+        id="mobile-menu"
+        aria-label="Mobile menu"
+        aria-hidden={!mobileMenuOpen}
+        className={`fixed top-0 right-0 bottom-0 z-[9999] flex w-[85%] max-w-sm flex-col bg-white shadow-2xl transition-[transform,visibility] duration-300 ease-out md:hidden ${
+          mobileMenuOpen ? "translate-x-0" : "invisible translate-x-full"
+        }`}
+      >
+        {/* Menu Header */}
               <div className="flex items-center justify-between border-b border-slate-100 p-5">
                 <span className="text-lg font-bold text-slate-900">
                   Menu
@@ -235,10 +230,7 @@ export default function Header() {
                   </a>
                 </Button>
               </div>
-            </motion.aside>
-          </>
-        )}
-      </AnimatePresence>
+      </aside>
     </>
   );
 }

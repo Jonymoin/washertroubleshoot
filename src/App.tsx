@@ -44,7 +44,7 @@ function Router() {
         <Route path="/about" component={About} />
         <Route path="/contact" component={Contact} />
         <Route path="/blog" component={Blog} />
-        <Route path="/blog/:slug">{(params) => <BlogPost slug={params.slug} />}</Route>
+        <Route path="/blog/:slug">{(params) => <BlogPost slug={params?.slug} />}</Route>
         <Route path="/privacy-policy" component={PrivacyPolicy} />
         <Route path="/terms-and-conditions" component={TermsAndCondition} />
         {/* Old malformed URL kept as a redirect so existing links/bookmarks still work. */}
@@ -67,11 +67,11 @@ function Router() {
   );
 }
 
-function App() {
+function App({ ssrPath }: { ssrPath?: string }) {
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
-        <WouterRouter>
+        <WouterRouter ssrPath={ssrPath}>
           <Layout>
             <Router />
           </Layout>

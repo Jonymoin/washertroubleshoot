@@ -4,7 +4,7 @@ import { Link } from "wouter";
 import { trackGoogleAdsConversion } from "@/lib/googleAds";
 import { brands, problems } from "./repair-data";
 import { useSEO } from "@/hooks/useSEO";
-import { breadcrumbListJsonLd } from "@/lib/seo";
+import { staticSeo } from "@/lib/route-seo";
 
 const problemIcons = [Droplets, Disc, AlertTriangle, Settings, DoorOpen, Wrench];
 
@@ -28,16 +28,7 @@ const brandStyles = [
 ];
 
 export default function Services() {
-  useSEO({
-    title: "Washing Machine Repair Services in Singapore | Washertroubleshoot SG",
-    description:
-      "Browse washing machine repair services in Singapore by brand or problem — not draining, not spinning, leaking, noise, error codes and more. Book a technician today.",
-    path: "/services",
-    jsonLd: breadcrumbListJsonLd([
-      { name: "Home", path: "/" },
-      { name: "Services", path: "/services" },
-    ]),
-  });
+  useSEO(staticSeo("/services"));
 
   return (
     <div className="flex flex-col min-h-screen bg-slate-50">
@@ -169,6 +160,8 @@ export default function Services() {
           <img
             src={item.img}
             alt=""
+            width={736}
+            height={1308}
             loading="lazy"
             className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
           />

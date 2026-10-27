@@ -1,14 +1,11 @@
+import { Link } from "wouter";
 import { Card, CardContent } from "@/components/ui/card";
 import { AlertCircle } from "lucide-react";
 import { useSEO } from "@/hooks/useSEO";
+import { notFoundSeo } from "@/lib/route-seo";
 
 export default function NotFound() {
-  useSEO({
-    title: "Page Not Found | Washertroubleshoot SG",
-    description: "The page you're looking for could not be found.",
-    path: "/404",
-    noindex: true,
-  });
+  useSEO(notFoundSeo);
 
   return (
     <div className="min-h-screen w-full flex items-center justify-center bg-gray-50">
@@ -20,7 +17,12 @@ export default function NotFound() {
           </div>
 
           <p className="mt-4 text-sm text-gray-600">
-            Did you forget to add the page to the router?
+            Sorry, we could not find that page. Go back to the{" "}
+            <Link href="/" className="font-semibold text-primary hover:underline">home page</Link>,
+            browse our{" "}
+            <Link href="/services" className="font-semibold text-primary hover:underline">washing machine repair services</Link>{" "}
+            or{" "}
+            <Link href="/contact" className="font-semibold text-primary hover:underline">contact us</Link>.
           </p>
         </CardContent>
       </Card>

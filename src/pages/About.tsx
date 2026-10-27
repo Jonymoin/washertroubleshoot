@@ -1,80 +1,61 @@
-import { motion } from "framer-motion";
 import { Shield, Award, Users, HeartHandshake } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 import { trackGoogleAdsConversion } from "@/lib/googleAds";
 import { useSEO } from "@/hooks/useSEO";
-import { breadcrumbListJsonLd } from "@/lib/seo";
+import { staticSeo } from "@/lib/route-seo";
 
 export default function About() {
-  useSEO({
-    title: "About Us | Washing Machine Repair Company in Singapore",
-    description:
-      "Meet Washertroubleshoot SG, a trusted washing machine repair and servicing team helping homes across Singapore with honest diagnostics and quality workmanship.",
-    path: "/about",
-    jsonLd: breadcrumbListJsonLd([
-      { name: "Home", path: "/" },
-      { name: "About", path: "/about" },
-    ]),
-  });
+  useSEO(staticSeo("/about"));
 
   return (
     <div className="flex flex-col min-h-screen bg-white">
       {/* Page Header */}
       <div className="bg-slate-900 text-white py-16 md:py-24">
         <div className="container mx-auto px-4 md:px-6 text-center max-w-3xl">
-          <motion.h1 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+          <h1
             className="text-4xl md:text-5xl font-bold mb-6"
           >
             About Washertroubleshoot SG
-          </motion.h1>
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
+          </h1>
+          <p
             className="text-lg md:text-xl text-slate-300"
           >
             Your trusted neighborhood washing machine repair experts serving homes across Singapore with honesty and technical excellence.
-          </motion.p>
+          </p>
         </div>
       </div>
 
       <section className="py-20">
         <div className="container mx-auto px-4 md:px-6">
           <div className="flex flex-col lg:flex-row gap-16 items-center">
-            <motion.div 
+            <div 
               className="lg:w-1/2"
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
             >
               <div className="grid grid-cols-2 gap-4">
                 <img 
                   src="/technician.webp" 
-                  alt="Technician at work" 
+                  alt="Washertroubleshoot SG technician repairing a front-load washing machine" 
+                  width={1200}
+                  height={800}
                   className="rounded-2xl w-full h-64 object-cover shadow-lg"
                   loading="lazy"
                   decoding="async"
                 />
                 <img 
                   src="/hero-laundry.webp" 
-                  alt="Clean washing machine" 
+                  alt="Clean laundry room with a front-load washing machine and dryer" 
+                  width={1408}
+                  height={768}
                   className="rounded-2xl w-full h-64 object-cover shadow-lg mt-8"
                   loading="lazy"
                   decoding="async"
                 />
               </div>
-            </motion.div>
+            </div>
             
-            <motion.div 
+            <div 
               className="lg:w-1/2"
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
             >
               <h2 className="text-3xl font-bold text-slate-900 mb-6">Our Story</h2>
               <div className="space-y-4 text-lg text-slate-600">
@@ -87,19 +68,22 @@ export default function About() {
                 <p>
                   Today, we are proud to be a trusted name in local appliance repair. Our philosophy remains unchanged: we treat every home with respect, we diagnose problems accurately, and we only fix what actually needs fixing.
                 </p>
+                <p>
+                  Explore our <Link href="/services" className="font-semibold text-primary hover:underline">washing machine repair services</Link> or read our <Link href="/blog" className="font-semibold text-primary hover:underline">troubleshooting tips</Link>.
+                </p>
               </div>
               
               <div className="mt-10 grid grid-cols-2 gap-6">
                 <div>
-                  <h4 className="text-4xl font-extrabold text-primary mb-2">10+</h4>
+                  <p className="text-4xl font-extrabold text-primary mb-2">10+</p>
                   <p className="font-medium text-slate-900">Years Experience</p>
                 </div>
                 <div>
-                  <h4 className="text-4xl font-extrabold text-primary mb-2">5000+</h4>
+                  <p className="text-4xl font-extrabold text-primary mb-2">5000+</p>
                   <p className="font-medium text-slate-900">Machines Fixed</p>
                 </div>
               </div>
-            </motion.div>
+            </div>
           </div>
         </div>
       </section>
@@ -136,12 +120,8 @@ export default function About() {
                 desc: "We believe good service comes with a smile. We're happy to explain the issue and how to prevent it in the future."
               }
             ].map((feature, idx) => (
-              <motion.div
+              <div
                 key={idx}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.1 }}
                 className="bg-white p-6 rounded-xl shadow-sm border border-slate-100"
               >
                 <div className="mb-4 bg-primary/10 w-14 h-14 rounded-lg flex items-center justify-center">
@@ -149,7 +129,7 @@ export default function About() {
                 </div>
                 <h3 className="text-xl font-bold text-slate-900 mb-2">{feature.title}</h3>
                 <p className="text-slate-600">{feature.desc}</p>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>

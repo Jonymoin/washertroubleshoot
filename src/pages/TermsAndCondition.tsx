@@ -1,17 +1,8 @@
 import { useSEO } from "@/hooks/useSEO";
-import { breadcrumbListJsonLd } from "@/lib/seo";
+import { staticSeo } from "@/lib/route-seo";
 
 export default function TermsAndCondition() {
-  useSEO({
-    title: "Terms & Conditions | Washertroubleshoot SG",
-    description:
-      "Terms and conditions governing the use of the Washertroubleshoot SG website and washing machine repair services in Singapore.",
-    path: "/terms-and-conditions",
-    jsonLd: breadcrumbListJsonLd([
-      { name: "Home", path: "/" },
-      { name: "Terms & Conditions", path: "/terms-and-conditions" },
-    ]),
-  });
+  useSEO(staticSeo("/terms-and-conditions"));
 
   return (
     <div className="min-h-screen bg-white text-slate-700">
